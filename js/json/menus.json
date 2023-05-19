@@ -1,0 +1,25 @@
+{
+    "menus": [
+      {
+        "id": 1,
+        "title": "Dimsum Nori",
+        "subtitle": "(8 pcs)",
+        "discountPrice": "30000",
+        "originPrice": "35000"
+      },
+      {
+        "id": 2,
+        "title": "Dimsum Nori Mentai",
+        "subtitle": "(8 pcs)",
+        "discountPrice": "35000",
+        "originPrice": "45000"
+      },
+      {
+        "id": 3,
+        "title": "Dimsum Crab Stick",
+        "subtitle": "(8 pcs)",
+        "discountPrice": "30000",
+        "originPrice": "35000"
+      }
+    ] 
+  }

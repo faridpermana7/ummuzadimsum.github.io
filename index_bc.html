@@ -31,7 +31,7 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body ng-app="ummuza" ng-controller="mainCtrl">
+<body>
     <!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border text-primary" role="status"></div>
@@ -186,20 +186,36 @@
     <!-- Feature Start -->
     <section id="feature">
         <div class="container-fluid bg-light bg-icon my-5 py-6">
-            <div class="container"> 
+            <div class="container">
                 <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                     <h1 class="display-5 mb-3">Keunggulan Ummuza</h1>
                     <p>Berikut 3 unggulan utama kenapa sobat harus pilih Dimsum by Ummuza Dimsum.</p>
                 </div>
                 <div class="row g-4">
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" ng-repeat="x in listunggul" data-wow-delay="{{x.delay}}"> 
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="bg-white text-center h-100 p-4 p-xl-5">
-                            <img class="img-fluid mb-4" ng-src="{{x.src}}" alt="">
-                            <h4 class="mb-3">{{x.name}}</h4>
-                            <p class="mb-4">{{x.detail}}</p>
+                            <img class="img-fluid mb-4" src="img/icon-1.png" alt="">
+                            <h4 class="mb-3">Fresh Meat</h4>
+                            <p class="mb-4">Hanya mengolah daging yang fresh, agar kebersihan terjaga & menghadirkan makanan yang sehat.</p>
                             <a class="btn btn-outline-primary border-2 py-2 px-4 rounded-pill" href="">Read More</a>
                         </div>
-                    </div> 
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="bg-white text-center h-100 p-4 p-xl-5">
+                            <img class="img-fluid mb-4" src="img/icon-2.png" alt="">
+                            <h4 class="mb-3">Dimsum Juicy</h4>
+                            <p class="mb-4">Menggunakan bahan daging ayam pilihan, yang membuat tekstur dimsum menjadi lebih juicy, yummy.</p>
+                            <a class="btn btn-outline-primary border-2 py-2 px-4 rounded-pill" href="">Read More</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="bg-white text-center h-100 p-4 p-xl-5">
+                            <img class="img-fluid mb-4" src="img/icon-3.png" alt="">
+                            <h4 class="mb-3">Safe Earth</h4>
+                            <p class="mb-4">Meminimalisir penggunaan plastik dengan menggunakan bahan yang bisa didaur ulang, seperti packaging berbahan dasar kertas.</p>
+                            <a class="btn btn-outline-primary border-2 py-2 px-4 rounded-pill" href="">Read More</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -821,9 +837,7 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js">
-    </script> 
-    <script src="js/mainController.js"></script>
+    <script src="js/menus.js"></script>
 </body>
 
 </html>
