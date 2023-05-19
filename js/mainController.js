@@ -8,32 +8,197 @@
     function mainCtrl($scope, $http){
  
         //START JSON
-        var menus = {
-            "menus": [
+        var menus = [
             {
                 "id": 1,
                 "title": "Dimsum Nori",
                 "subtitle": "(8 pcs)",
+                "src": "img/prod-nori.jpg",
+                "delay": "0.1s",
                 "discountPrice": "30000",
-                "originPrice": "35000"
+                "originPrice": "35000",
+                "isDiscount": true,
+                "isNew": true,
+                "isBest": false
             },
             {
                 "id": 2,
                 "title": "Dimsum Nori Mentai",
                 "subtitle": "(8 pcs)",
+                "src": "img/prod-norimentai.jpg",
+                "delay": "0.3s",
                 "discountPrice": "35000",
-                "originPrice": "45000"
+                "originPrice": "45000",
+                "isDiscount": false,
+                "isNew": true,
+                "isBest": false
             },
             {
                 "id": 3,
                 "title": "Dimsum Crab Stick",
                 "subtitle": "(8 pcs)",
+                "src": "img/prod-crabstick.jpg",
+                "delay": "0.5s",
                 "discountPrice": "30000",
-                "originPrice": "35000"
+                "originPrice": "35000",
+                "isDiscount": true,
+                "isNew": true,
+                "isBest": false
+            },
+            {
+                "id": 4,
+                "title": "Dimsum Mozzarela",
+                "subtitle": "(8 pcs)",
+                "src": "img/prod-crabstick.jpg",
+                "delay": "0.75s",
+                "discountPrice": "35000",
+                "originPrice": "35000",
+                "isDiscount": false,
+                "isNew": true,
+                "isBest": true
+            },
+            {
+                "id": 5,
+                "title": "Dimsum Original",
+                "subtitle": "(8 pcs)",
+                "src": "img/prod-original.jpg",
+                "delay": "1s",
+                "discountPrice": "25000",
+                "originPrice": "0",
+                "isDiscount": false,
+                "isNew": false,
+                "isBest": true
+            },
+            {
+                "id": 6,
+                "title": "Dimsum Mentai",
+                "subtitle": "(8 pcs)",
+                "src": "img/prod-mentai.jpg",
+                "delay": "1.3s",
+                "discountPrice": "30000",
+                "originPrice": "0",
+                "isDiscount": false,
+                "isNew": false,
+                "isBest": true
             }
-            ] 
-        };  
-
+        ];  
+        
+        var mix_menus = [
+            {
+                "id": 1,
+                "title": "Mix 1",
+                "subtitle": "(8 pcs)",
+                "src": "img/prod-mix1.jpg",
+                "delay": "0.1s",
+                "discountPrice": "27000",
+                "originPrice": "30000",
+                "isDiscount": true,
+                "isNew": false,
+                "isBest": true
+            },
+            {
+                "id": 2,
+                "title": "Mix 2",
+                "subtitle": "(8 pcs)",
+                "src": "img/prod-mix2.jpg",
+                "delay": "0.3s",
+                "discountPrice": "27000",
+                "originPrice": "30000",
+                "isDiscount": true,
+                "isNew": false,
+                "isBest": false
+            },
+            {
+                "id": 3,
+                "title": "Mix 3",
+                "subtitle": "(8 pcs)",
+                "src": "img/prod-mix3.jpg",
+                "delay": "0.5s",
+                "discountPrice": "30000",
+                "originPrice": "35000",
+                "isDiscount": false,
+                "isNew": false,
+                "isBest": false
+            },
+            {
+                "id": 4,
+                "title": "Mix 4",
+                "subtitle": "(8 pcs)",
+                "src": "img/prod-mix4.jpg",
+                "delay": "0.75s",
+                "discountPrice": "33000",
+                "originPrice": "35000",
+                "isDiscount": false,
+                "isNew": false,
+                "isBest": true
+            },
+            {
+                "id": 5,
+                "title": "Mix 5",
+                "subtitle": "(8 pcs)",
+                "src": "img/prod-mix5.jpg",
+                "delay": "1s",
+                "discountPrice": "33000",
+                "originPrice": "35000",
+                "isDiscount": false,
+                "isNew": false,
+                "isBest": true
+            }
+        ];  
+        
+        var hampres_menus = [
+            {
+                "id": 1,
+                "title": "Mini Hampres",
+                "subtitle": "(16 pcs + paper bag + kartu ucapan + hiasan)",
+                "src": "img/prod-hampres.jpg",
+                "delay": "0.1s",
+                "discountPrice": "85000",
+                "originPrice": "95000",
+                "isDiscount": true,
+                "isNew": true,
+                "isBest": false
+            },
+            {
+                "id": 2,
+                "title": "Dimsum Nampan",
+                "subtitle": "(50 pcs + nampan + cover + hiasan)",
+                "src": "img/prod-nampan.jpg",
+                "delay": "0.3s",
+                "discountPrice": "190000",
+                "originPrice": "200000",
+                "isDiscount": true,
+                "isNew": false,
+                "isBest": false
+            }
+        ];
+        
+        var frozen_menus = [
+            {
+                "id": 1,
+                "title": "Frozen Original",
+                "subtitle": "(10 pcs)",
+                "src": "img/prod-forzen-ori.jpg",
+                "delay": "0.1s",
+                "discountPrice": "35000",
+                "originPrice": "0",
+                "isDiscount": false,
+                "isNew": true,
+                "isBest": false
+            },
+            {
+                "id": 2,
+                "title": "Frozen Mix Varian",
+                "subtitle": "(10 pcs)",
+                "src": "img/prod-nampan.jpg",
+                "delay": "0.3s",
+                "discountPrice": "40000", 
+                "originPrice": "0",
+                "isDiscount": false,
+                "isNew": true,
+                "isBest": true
+            }
+        ]; 
 
         var listunggul = [
             {
@@ -62,6 +227,10 @@
 
         
         $scope.listunggul = listunggul;  
+        $scope.listMenu = menus;  
+        $scope.listMixMenu = mix_menus;  
+        $scope.listHampresMenu = hampres_menus;  
+        $scope.listFrozenMenu = frozen_menus; 
 
         // $http.get('js/json/menus.json').then(function(response) {
         //     $scope.menus = response.data;
