@@ -49,7 +49,7 @@
                 "id": 4,
                 "title": "Dimsum Mozzarela",
                 "subtitle": "(8 pcs)",
-                "src": "img/prod-crabstick.jpg",
+                "src": "img/prod-mozza.jpg",
                 "delay": "0.75s",
                 "discountPrice": "35000",
                 "originPrice": "35000",
@@ -223,6 +223,39 @@
                 "detail": "Meminimalisir penggunaan plastik dengan menggunakan bahan yang bisa didaur ulang, seperti packaging berbahan dasar kertas."
             },
         ]; 
+        
+        var lates_posts = [
+            {
+                "id": 1,
+                "type": "image",
+                "src": "img/blog-1.jpg",
+                "user": "admin",
+                "postDate": "07 May 2023",
+                "delay": "0.1s",
+                "title": "Bismillah, open order kembali mulai Senin, 8 Mei ya Sobat 🙏...",
+                "detail": "Bismillah, open order kembali mulai Senin, 8 Mei ya Sobat 🙏..."
+            },
+            {
+                "id": 2,
+                "type": "video",
+                "src": "img/blog-2.mp4",
+                "user": "admin",
+                "postDate": "07 May 2023",
+                "delay": "0.3s",
+                "title": "Terima kasih ya sobat setia Ummuza buat...",
+                "detail": "Terima kasih ya sobat setia Ummuza buat..."
+            },
+            {
+                "id": 3,
+                "type": "video",
+                "src": "img/blog-3.mp4",
+                "user": "admin",
+                "postDate": "07 May 2023",
+                "delay": "0.5s",
+                "title": "Assalamualaikum Sobat Ummuza gmn kabarnya?...",
+                "detail": "Assalamualaikum Sobat Ummuza gmn kabarnya?..."
+            },
+        ]; 
         //END JSON
 
         
@@ -231,6 +264,7 @@
         $scope.listMixMenu = mix_menus;  
         $scope.listHampresMenu = hampres_menus;  
         $scope.listFrozenMenu = frozen_menus; 
+        $scope.listLatesPost = lates_posts; 
 
         // $http.get('js/json/menus.json').then(function(response) {
         //     $scope.menus = response.data;
