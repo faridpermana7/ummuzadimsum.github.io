@@ -190,7 +190,7 @@
                 "id": 2,
                 "title": "Frozen Mix Varian",
                 "subtitle": "(10 pcs)",
-                "src": "img/prod-nampan.jpg",
+                "src": "img/prod-forzen-mix.jpg",
                 "delay": "0.3s",
                 "discountPrice": "40000", 
                 "originPrice": "0",
