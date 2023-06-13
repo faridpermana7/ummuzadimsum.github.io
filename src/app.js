@@ -6,7 +6,7 @@ console.log("step1");
 
 
 // import 'dotenv/config'
-import { connect } from '/@planetscale/database'
+// import { connect } from '/node_modules/@planetscale/database'
 // var config = require('dotenv');
 
 // require('dotenv').config();
@@ -20,6 +20,5 @@ import { connect } from '/@planetscale/database'
 // }
 
 // var conn = connect(config);
-// var results = await conn.execute('select 1 from dual where 1=?', [1]);
-
+// var results = await conn.execute('select 1 from dual where 1=?', [1]); 
 console.log("berhasil");
