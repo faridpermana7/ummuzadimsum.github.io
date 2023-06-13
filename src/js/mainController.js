@@ -1,3 +1,6 @@
+// import { connect } from '/node_modules/@planetscale/database'
+// const connect = require('@planetscale/database'); 
+
 (function ($) {
     "use strict"; 
     var app = angular.module('ummuza', [])
@@ -13,7 +16,7 @@
                 "id": 1,
                 "title": "Dimsum Nori",
                 "subtitle": "(8 pcs)",
-                "src": "img/prod-nori.jpg",
+                "src": "src/img/prod-nori.jpg",
                 "delay": "0.1s",
                 "discountPrice": "30000",
                 "originPrice": "35000",
@@ -25,7 +28,7 @@
                 "id": 2,
                 "title": "Dimsum Nori Mentai",
                 "subtitle": "(8 pcs)",
-                "src": "img/prod-norimentai.jpg",
+                "src": "src/img/prod-norimentai.jpg",
                 "delay": "0.3s",
                 "discountPrice": "35000",
                 "originPrice": "45000",
@@ -37,7 +40,7 @@
                 "id": 3,
                 "title": "Dimsum Crab Stick",
                 "subtitle": "(8 pcs)",
-                "src": "img/prod-crabstick.jpg",
+                "src": "src/img/prod-crabstick.jpg",
                 "delay": "0.5s",
                 "discountPrice": "30000",
                 "originPrice": "35000",
@@ -49,7 +52,7 @@
                 "id": 4,
                 "title": "Dimsum Mozzarela",
                 "subtitle": "(8 pcs)",
-                "src": "img/prod-mozza.jpg",
+                "src": "src/img/prod-mozza.jpg",
                 "delay": "0.75s",
                 "discountPrice": "35000",
                 "originPrice": "35000",
@@ -61,7 +64,7 @@
                 "id": 5,
                 "title": "Dimsum Original",
                 "subtitle": "(8 pcs)",
-                "src": "img/prod-original.jpg",
+                "src": "src/img/prod-original.jpg",
                 "delay": "1s",
                 "discountPrice": "25000",
                 "originPrice": "0",
@@ -73,7 +76,7 @@
                 "id": 6,
                 "title": "Dimsum Mentai",
                 "subtitle": "(8 pcs)",
-                "src": "img/prod-mentai.jpg",
+                "src": "src/img/prod-mentai.jpg",
                 "delay": "1.3s",
                 "discountPrice": "30000",
                 "originPrice": "0",
@@ -88,7 +91,7 @@
                 "id": 1,
                 "title": "Mix 1",
                 "subtitle": "(8 pcs)",
-                "src": "img/prod-mix1.jpg",
+                "src": "src/img/prod-mix1.jpg",
                 "delay": "0.1s",
                 "discountPrice": "27000",
                 "originPrice": "30000",
@@ -100,7 +103,7 @@
                 "id": 2,
                 "title": "Mix 2",
                 "subtitle": "(8 pcs)",
-                "src": "img/prod-mix2.jpg",
+                "src": "src/img/prod-mix2.jpg",
                 "delay": "0.3s",
                 "discountPrice": "27000",
                 "originPrice": "30000",
@@ -112,7 +115,7 @@
                 "id": 3,
                 "title": "Mix 3",
                 "subtitle": "(8 pcs)",
-                "src": "img/prod-mix3.jpg",
+                "src": "src/img/prod-mix3.jpg",
                 "delay": "0.5s",
                 "discountPrice": "30000",
                 "originPrice": "35000",
@@ -124,7 +127,7 @@
                 "id": 4,
                 "title": "Mix 4",
                 "subtitle": "(8 pcs)",
-                "src": "img/prod-mix4.jpg",
+                "src": "src/img/prod-mix4.jpg",
                 "delay": "0.75s",
                 "discountPrice": "33000",
                 "originPrice": "35000",
@@ -136,7 +139,7 @@
                 "id": 5,
                 "title": "Mix 5",
                 "subtitle": "(8 pcs)",
-                "src": "img/prod-mix5.jpg",
+                "src": "src/img/prod-mix5.jpg",
                 "delay": "1s",
                 "discountPrice": "33000",
                 "originPrice": "35000",
@@ -151,7 +154,7 @@
                 "id": 1,
                 "title": "Mini Hampres",
                 "subtitle": "(16 pcs + paper bag + kartu ucapan + hiasan)",
-                "src": "img/prod-hampres.jpg",
+                "src": "src/img/prod-hampres.jpg",
                 "delay": "0.1s",
                 "discountPrice": "85000",
                 "originPrice": "95000",
@@ -163,7 +166,7 @@
                 "id": 2,
                 "title": "Dimsum Nampan",
                 "subtitle": "(50 pcs + nampan + cover + hiasan)",
-                "src": "img/prod-nampan.jpg",
+                "src": "src/img/prod-nampan.jpg",
                 "delay": "0.3s",
                 "discountPrice": "190000",
                 "originPrice": "200000",
@@ -178,7 +181,7 @@
                 "id": 1,
                 "title": "Frozen Original",
                 "subtitle": "(10 pcs)",
-                "src": "img/prod-forzen-ori.jpg",
+                "src": "src/img/prod-forzen-ori.jpg",
                 "delay": "0.1s",
                 "discountPrice": "35000",
                 "originPrice": "0",
@@ -190,7 +193,7 @@
                 "id": 2,
                 "title": "Frozen Mix Varian",
                 "subtitle": "(10 pcs)",
-                "src": "img/prod-forzen-mix.jpg",
+                "src": "src/img/prod-forzen-mix.jpg",
                 "delay": "0.3s",
                 "discountPrice": "40000", 
                 "originPrice": "0",
@@ -204,21 +207,21 @@
             {
                 "id": 1,
                 "name": "Fresh Meat",
-                "src": "img/icon-1.png",
+                "src": "src/img/icon-1.png",
                 "delay": "0.1s",
                 "detail": "Hanya mengolah daging yang fresh, agar kebersihan terjaga & menghadirkan makanan yang sehat."
             },
             {
                 "id": 2,
                 "name": "Dimsum Juicy",
-                "src": "img/icon-2.png",
+                "src": "src/img/icon-2.png",
                 "delay": "0.3s",
                 "detail": "Menggunakan bahan daging ayam pilihan, yang membuat tekstur dimsum menjadi lebih juicy, yummy."
             },
             {
                 "id": 3,
                 "name": "Safe Earth",
-                "src": "img/icon-3.png",
+                "src": "src/img/icon-3.png",
                 "delay": "0.5s",
                 "detail": "Meminimalisir penggunaan plastik dengan menggunakan bahan yang bisa didaur ulang, seperti packaging berbahan dasar kertas."
             },
@@ -228,7 +231,7 @@
             {
                 "id": 1,
                 "type": "image",
-                "src": "img/blog-1.jpg",
+                "src": "src/img/blog-1.jpg",
                 "user": "admin",
                 "postDate": "07 May 2023",
                 "delay": "0.1s",
@@ -238,7 +241,7 @@
             {
                 "id": 2,
                 "type": "video",
-                "src": "img/blog-2.mp4",
+                "src": "src/img/blog-2.mp4",
                 "user": "admin",
                 "postDate": "07 May 2023",
                 "delay": "0.3s",
@@ -248,7 +251,7 @@
             {
                 "id": 3,
                 "type": "video",
-                "src": "img/blog-3.mp4",
+                "src": "src/img/blog-3.mp4",
                 "user": "admin",
                 "postDate": "07 May 2023",
                 "delay": "0.5s",
@@ -271,6 +274,25 @@
         //     console.log($scope.menus);
         //  });
 
+        var recursiveEncoded = $.param( listunggul );
+        
+
+        // Start function
+        const start = async function(a, b) {
+            
+            const config = {
+                host: 'aws.connect.psdb.cloud',
+                username: 'qfog5d066wrzyjciknnj',
+                password: 'pscale_pw_VGXxCCjfp1QfquaqSiI6cABADFEwrddVi0fdOhj2nqp'
+            } 
+                
+            // console.log(config);
+            const conn = await connect(config);
+            const results = await conn.execute('SELECT * FROM hotels')
+        }
+        
+        // Call start
+        // start();
     };
 
     
