@@ -10,7 +10,7 @@
         {
             "id": 1,
             "type": "image",
-            "src": "img/blog-1.jpg",
+            "src": "src/img/blog-1.jpg",
             "user": "admin",
             "postDate": "07 May 2023",
             "delay": "0.1s",
@@ -20,7 +20,7 @@
         {
             "id": 2,
             "type": "video",
-            "src": "img/blog-2.mp4",
+            "src": "src/img/blog-2.mp4",
             "user": "admin",
             "postDate": "07 May 2023",
             "delay": "0.3s",
@@ -30,7 +30,7 @@
         {
             "id": 3,
             "type": "video",
-            "src": "img/blog-3.mp4",
+            "src": "src/img/blog-3.mp4",
             "user": "admin",
             "postDate": "07 May 2023",
             "delay": "0.5s",
@@ -40,7 +40,7 @@
         {
             "id": 4,
             "type": "video",
-            "src": "img/blog-4.mp4",
+            "src": "src/img/blog-4.mp4",
             "user": "admin",
             "postDate": "05 April 2023",
             "delay": "0.1s",
@@ -50,7 +50,7 @@
         {
             "id": 5,
             "type": "image",
-            "src": "img/blog-5.jpg",
+            "src": "src/img/blog-5.jpg",
             "user": "admin",
             "postDate": "25 March 2023",
             "delay": "0.3s",
@@ -60,7 +60,7 @@
         {
             "id": 6,
             "type": "image",
-            "src": "img/blog-6.jpg",
+            "src": "src/img/blog-6.jpg",
             "user": "admin",
             "postDate": "25 March 2023",
             "delay": "0.5s",
@@ -70,7 +70,7 @@
         {
             "id": 7,
             "type": "video",
-            "src": "img/blog-7.mp4",
+            "src": "src/img/blog-7.mp4",
             "user": "admin",
             "postDate": "25 March 2023",
             "delay": "0.1s",
@@ -80,7 +80,7 @@
         {
             "id": 8,
             "type": "image",
-            "src": "img/blog-8.jpg",
+            "src": "src/img/blog-8.jpg",
             "user": "admin",
             "postDate": "23 March 2023",
             "delay": "0.3s",
@@ -90,7 +90,7 @@
         {
             "id": 9,
             "type": "video",
-            "src": "img/blog-9.mp4",
+            "src": "src/img/blog-9.mp4",
             "user": "admin",
             "postDate": "19 March 2023",
             "delay": "0.5s",
