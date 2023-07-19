@@ -1,0 +1,115 @@
+<form name="menuApi" ng-submit="menuApi.$valid && mna.ui.save()" autocomplete="off" novalidate>
+    <div class="modal-header">
+        <h5 class="modal-title">{{mna.titleForm}}</h5>
+    </div>
+
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <h5>Read</h5>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Type</th>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="i in mna.model.read">
+                            <td>{{ $index+1 }}</td>
+                            <td>
+                                <ui-select ng-model="i.claimType" theme="select2" title="Choose .." name="claimType"
+                                    required>
+                                    <ui-select-match placeholder="Please choose ..">
+                                        {{$select.selected.name}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="x.name as x in mna.claimTypeList">
+                                        {{ x.name }}
+                                    </ui-select-choices>
+                                    <ui-select-no-choice>
+                                        <div class="text-center pb-2">No record found</div>
+                                    </ui-select-no-choice>
+                                </ui-select>
+                            </td>
+                            <td><input type="text" class="form-control" ng-model="i.claimValue"></td>
+                            <td><button class="btn btn-sm btn-danger mb-3" ng-click="mna.removeApi(1,$index)" type="button"><i
+                                        class="fas fa-times"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-sm btn-success mb-3" ng-click="mna.addApi(1)" type="button">Add</button>
+                <h5>Write</h5>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Type</th>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="i in mna.model.write">
+                            <td>{{ $index+1 }}</td>
+                            <td>
+                                <ui-select ng-model="i.claimType" theme="select2" title="Choose .." name="claimType"
+                                    required>
+                                    <ui-select-match placeholder="Please choose ..">
+                                        {{$select.selected.name}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="x.name as x in mna.claimTypeList">
+                                        {{ x.name }}
+                                    </ui-select-choices>
+                                    <ui-select-no-choice>
+                                        <div class="text-center pb-2">No record found</div>
+                                    </ui-select-no-choice>
+                                </ui-select>
+                            </td>
+                            <td><input type="text" class="form-control" ng-model="i.claimValue"></td>
+                            <td><button class="btn btn-sm btn-danger mb-3" ng-click="mna.removeApi(2,$index)" type="button"><i
+                                        class="fas fa-times"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-sm btn-success mb-3" ng-click="mna.addApi(2)" type="button">Add</button>
+                <h5>Delete</h5>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Type</th>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="i in mna.model.delete">
+                            <td>{{ $index+1 }}</td>
+                            <td>
+                                <ui-select ng-model="i.claimType" theme="select2" title="Choose .." name="claimType"
+                                    required>
+                                    <ui-select-match placeholder="Please choose ..">
+                                        {{$select.selected.name}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="x.name as x in mna.claimTypeList">
+                                        {{ x.name }}
+                                    </ui-select-choices>
+                                    <ui-select-no-choice>
+                                        <div class="text-center pb-2">No record found</div>
+                                    </ui-select-no-choice>
+                                </ui-select>
+                            </td>
+                            <td><input type="text" class="form-control" ng-model="i.claimValue"></td>
+                            <td><button class="btn btn-sm btn-danger mb-3" ng-click="mna.removeApi(3,$index)" type="button"><i
+                                        class="fas fa-times"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-sm btn-success mb-3" ng-click="mna.addApi(3)" type="button">Add</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-default" type="button" ng-click="mna.closeModal()">CANCEL</button>
+        <button class="btn btn-primary" type="submit">SAVE</button>
+    </div>
+</form>

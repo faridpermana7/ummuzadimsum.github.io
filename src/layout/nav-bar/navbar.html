@@ -1,0 +1,239 @@
+<div ng-controller="navBarCtrl as nav">
+    <div class="container-fluid fixed-top px-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="top-bar row gx-0 align-items-center d-none d-lg-flex">
+            <div class="col-lg-6 px-4 text-start">
+                <small><i class="fa fa-map-marker-alt me-2"></i>Borneo Paradiso, Balikpapan Selatan, Kalimantan Timur</small>
+                <small class="ms-4"><i class="fa fa-envelope me-2"></i>ummuza@gmail.com</small>
+            </div>
+            <div class="col-lg-6 px-5 text-end" style="color: hsl(0, 0%, 100%)">
+                <small>Kepoin yuk:</small>
+                <a class="text-body ms-3" href="https://api.whatsapp.com/send/?phone=6281549027460&text&type=phone_number&app_absent=0" target="_blank"><i class="fab fa-whatsapp" style="color: #ffffff"></i></a>
+                <a class="text-body ms-3" href="https://www.instagram.com/ummuzadimsum/?hl=en" target="_blank"><i class="fab fa-instagram" style="color: #ffffff"></i></a>
+                <a class="text-body ms-3" href="" ><i class="fab fa-facebook-f" style="color: #ffffff"></i></a>
+                <!-- <a class="text-body ms-3" href=""><i class="fab fa-twitter"></i></a> -->
+                <!-- <a class="text-body ms-3" href=""><i class="fab fa-linkedin-in"></i></a> -->
+            </div>
+        </div>
+
+        <nav class="navbar navbar-expand-lg navbar-light py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+            <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
+                <h1 class="fw-bold text-primary m-0" style="font-family: Didot, fantasy;"> <span class="text-last">Ummuza</span> Dimsum</h1>
+            </a>
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <a ui-sref="app.main.page" ng-click="nav.changeMenu(1)" ng-class="nav.bar == 1 ? 'nav-item nav-link active' : 'nav-item nav-link'">Beranda</a>
+                    <a ui-sref="app.pages.menu" ng-click="nav.changeMenu(2)" ng-class="nav.bar == 2 ? 'nav-item nav-link active' : 'nav-item nav-link'">Menu</a>
+                    <a ui-sref="app.pages.post" ng-click="nav.changeMenu(3)" ng-class="nav.bar == 3 ? 'nav-item nav-link active' : 'nav-item nav-link'">Post</a>
+                   <!-- <div class="nav-item dropdown" ng-if="!nav.isBegining">
+                        <a href="#"  ng-click="nav.changeMenu(5)" ng-class="nav.bar == 5 ? 'nav-link dropdown-toggle active' : 'nav-link dropdown-toggle'" data-bs-toggle="dropdown">Management</a>
+                        <div class="dropdown-menu m-0"> 
+                            <a ui-sref="app.management.product" class="dropdown-item">Product</a>
+                            <a ui-sref="app.management.news" class="dropdown-item">News</a>
+                            <a ui-sref="app.management.majority" class="dropdown-item">Majority</a> 
+                        </div>
+                    </div> -->
+                    <div class="nav-item dropdown">
+                        <a href="#"  ng-click="nav.changeMenu(8)" ng-class="nav.bar == 8 ? 'nav-link dropdown-toggle active' : 'nav-link dropdown-toggle'" data-bs-toggle="dropdown">Lainnya</a>
+                        <ul class="dropdown-menu m-0">
+                            <li class="nav-item">
+                                <a ui-sref="app.pages.contact" class="dropdown-item"><i class="fas fa-headphones-alt"></i>Hubungi</a>
+                            </li>
+                            <li class="nav-item">
+                                <a ui-sref="app.pages.about" class="dropdown-item"><i class="fas fa-id-card-alt"></i>Tentang</a>
+                            </li>
+                            <!-- <a href="#feature" class="dropdown-item">Kenapa pilih Ummuza?</a> -->
+                            <!-- <a href="#/testimoni" class="dropdown-item">Testimonial</a> -->
+                            <!-- <a href="404.html" class="dropdown-item">404 Page</a> -->
+                        </ul>
+                    </div>
+                    
+                
+                    <nav id="mainnav" class="navbar navbar-expand-lg navbar-light">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto" id="nav">
+                            </ul>
+                        </div>
+                    </nav>
+                    <a href="cart.html" class="nav-item nav-link d-lg-fade" ng-click="nav.generateShoopingCart()" data-bs-toggle="modal" data-bs-target="#shoppingCartModal">Carts
+                            <span class="badge-cart">{{nav.cartQty}}</span>
+                            <!-- <span class="badge-cart">{{someModel}}</span>  -->
+                        </a>
+                </div>
+                <div class="d-none d-lg-flex ms-2">
+                    <a class="btn-sm-square bg-white rounded-circle ms-3" href="">
+                        <small class="fa fa-search text-body"></small>
+                    </a>
+                    <!-- <a class="btn-sm-square bg-white rounded-circle ms-3" href="">
+                        <small class="fa fa-user text-body"></small>
+                    </a>  -->
+                    <div class="btn-sm-square bg-white rounded-circle ms-3" uib-dropdown is-open="status.isopen">
+                        <button id="single-button" type="button"
+                            class="fa fa-user text-body" uib-dropdown-toggle=""
+                            ng-disabled="disabled" aria-haspopup="true" aria-expanded="false"> 
+                        </button>
+                        <div class="dropdown-menu-user" uib-dropdown-menu="" role="menu" aria-labelledby="single-button">
+                            <div class="dropdown-header">
+                                <div class="image-bock text-center">
+                                    <h1 style="height: 45px; background-color: #e9ecef; color: #C21010 !important">Profil</h1>
+                                </div>
+                                <ul ng-if="nav.isBegining == false" class="block-list">
+                                    <li>User</li> 
+                                    <li class="mb-2"><small>{{ nav.user.username }}</small></li>
+                                    <li>Role</li>
+                                    <li class="mb-2"><small>{{ nav.user.roleName }}</small></li>
+                                    <li>Branch</li> 
+                                    <li class="mb-2"><small>{{ nav.user.memberName }}</small></li>
+                                    <li>Group</li> 
+                                    <li class="mb-2"><small>{{ nav.user.parentMemberName }}</small></li>
+                                    <li ng-if="nav.user.customerName != null">Company</li>
+                                    <li><small>{{ nav.user.customerName }}</small></li>
+                                </ul>
+                            </div>
+                            <a ng-if="nav.isBegining == false" class="dropdown-item"  ui-sref="app.user-change">
+                                <i class="fa fa-shield-alt"></i>Change
+                                Password
+                            </a>
+                            <a ng-if="nav.isBegining == false" class="dropdown-item" ng-click="nav.logout()"><i class="fa fa-lock"></i>Logout</a>
+                            <a ng-if="nav.isBegining == true" class="dropdown-item" ng-click="nav.logout()"><i class="fas fa-sign-in-alt"></i>Login</a>
+                        </div>
+                        <change-password-modal callback="nav.cp"></change-password-modal>
+                    </div>
+                    <a class="btn-sm-square bg-white rounded-circle ms-3" ng-click="nav.generateShoopingCart()" data-bs-toggle="modal" data-bs-target="#shoppingCartModal">
+                        <small class="fa fa-shopping-bag text-body"></small>
+                        <span class="badge">{{nav.cartQty}}</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    
+    <!-- Modal -->
+    <div class="modal fade" id="shoppingCartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Keranjang Saya</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="max-w-md mx-auto bg-gray-100 shadow-lg rounded-lg  md:max-w-5xl">
+                    <div class="md:flex ">
+                        <div class="w-full">
+                            <div class="md:grid md:grid-cols-3 gap-2 ">
+                                <div class="col-span-2 p-3">
+                                    <!-- <h1 class="text-xl font-medium ">Shopping Cart</h1> -->
+                                    <div class="flex justify-between items-center mt-6 pt-6 border-t" ng-repeat="x in nav.shoppingCarts">
+                                        <div class="flex  items-center">
+                                            <img src="{{x.src}}" width="60" class="rounded-full ">
+                                            <div class="flex flex-col ml-3">
+                                                <span class="md:text-md font-medium" style="width: 8rem;">{{x.title}}</span>
+                                                <span class="text-xs font-light text-gray-400" style="width: 8rem;">{{x.subtitle}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex justify-center items-center">
+                                            <div class="pr-8 flex">
+                                                <span class="text-xs font-medium">Rp{{x.discountPrice | currency: '':0}}</span>
+                                            </div>
+                                            <div class="pr-6">
+                                                <button tabindex="1" ng-click="nav.addQtyItem('minus', x.productMenuId)"><span class="font-semibold">-</span></button>
+                                                <input type="number" ng-disabled="true" class="focus:outline-none bg-gray-100 border h-6 w-8 rounded text-sm px-2 mx-2" value="{{x.qty}}">
+                                                <button tabindex="2" ng-click="nav.addQtyItem('add', x.productMenuId)"><span class="font-semibold">+</span></button>
+                                            </div>
+                                            <div class="pr-6 " style="width: 4.5rem;">
+                                                <span class="text-xs font-medium">Rp{{x.subPrice | currency: '':0}}</span>
+                                            </div>
+                                            <div>
+                                                <i class="fa fa-close text-xs font-medium"></i>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <div class="flex justify-between items-center mt-6 pt-6 border-t"> 
+                                        <div class="flex items-center">
+                                            <button data-bs-dismiss="modal">
+                                            <i class="fa fa-arrow-left text-sm pr-2"></i>
+                                            <span class="text-md  font-medium text-red-500">Lanjut Belanja</span>
+                                            </button>
+                                        </div>
+                                        <div class="flex justify-center items-end">
+                                            <span class="text-sm font-medium text-gray-400 mr-1">Subtotal:</span>
+                                            <span class="text-lg font-bold text-gray-800 ">Rp{{nav.subTotalCart | currency: '':0}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-3 bg-gray-800 rounded overflow-visible">
+                                    <span class="text-xl font-medium text-gray-100 block pb-3">Informasi Saya</span>
+                                    <!-- <span class="text-xs text-gray-400 ">Card Type</span> -->
+                                    <!-- <div class="overflow-visible flex justify-between items-center mt-2">
+                                        <div class="rounded w-52 h-28 bg-gray-500 py-2 px-2 relative right-10">
+                                            <span class="italic text-lg font-medium text-gray-200 underline">VISA</span>
+                                            <div class="flex justify-between items-center pt-4 ">
+                                                <span class="text-xs text-gray-200 font-medium">****</span>
+                                                <span class="text-xs text-gray-200 font-medium">****</span>
+                                                <span class="text-xs text-gray-200 font-medium">****</span>
+                                                <span class="text-xs text-gray-200 font-medium">****</span>
+                                            </div>
+                                            <div class="flex justify-between items-center mt-3">
+                                                <span class="text-xs  text-gray-200">Giga Tamarashvili</span>
+                                                <span class="text-xs  text-gray-200">12/18</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex justify-center  items-center flex-col">
+                                            <img src="https://img.icons8.com/color/96/000000/mastercard-logo.png" width="40" class="relative right-5" />
+                                            <span class="text-xs font-medium text-gray-200 bottom-2 relative right-5">mastercard.</span>
+                                        </div>
+                                    </div> -->
+                                    <div class="flex justify-center flex-col pt-3">
+                                        <label class="text-xs text-gray-100 ">Order Untuk Tanggal</label>
+                                        <input date-time-picker type="text" tabindex="3" name="OrderDate"
+                                        class="date-picker focus:outline-none w-full h-6 bg-gray-800
+                                        text-white placeholder-gray-500 text-sm border-b border-gray-400 py-3" 
+                                        ng-model="nav.model.orderDate" options="opts" placeholder="Masukkan Tanggal"/>
+                                        <!-- <input type="date" tabindex="1" name="Date"
+                                            class="form-control date-picker" ng-model="model.orderDate" options="opts" /> -->
+                                    </div>
+                                    <div class="flex justify-center flex-col pt-3">
+                                        <label class="text-xs text-gray-100 ">Nama</label>
+                                        <input type="text" tabindex="4" class="focus:outline-none w-full h-6 bg-gray-800 
+                                            text-white placeholder-gray-500 text-sm border-b border-gray-400 py-4" 
+                                            placeholder="Masukkan Nama" ng-model="nav.model.name">
+                                    </div>
+                                    <div class="flex justify-center flex-col pt-3">
+                                        <label class="text-xs text-gray-100 ">Nomor Handphone (WA)</label>
+                                        <input type="text" tabindex="5" class="focus:outline-none w-full h-6 bg-gray-800 
+                                            text-white placeholder-gray-500 text-sm border-b border-gray-400 py-4" 
+                                            placeholder="Masukkan nomor (cth. 0812 0000 000)" ng-model="nav.model.noHp">
+                                    </div>
+                                    <!-- <div class="grid grid-cols-3 gap-2 pt-2 mb-3">
+                                        <div class="col-span-2 ">
+                                            <label class="text-xs text-gray-400">Expiration Date</label>
+                                            <div class="grid grid-cols-2 gap-2">
+                                                <input type="text" class="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4" placeholder="mm">
+                                                <input type="text" class="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4" placeholder="yyyy">
+                                            </div>
+                                        </div>
+                                        <div class="">
+                                            <label class="text-xs text-gray-400">CVV</label>
+                                            <input type="text" class="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4" placeholder="XXX">
+                                        </div>
+                                    </div> -->
+                                    <button tabindex="6" class="h-12 w-full bg-red-500 rounded focus:outline-none text-white hover:bg-red-600" ng-click="nav.checkOut()">Order Sekarang</button>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div> -->
+            </div>
+        </div>
+    </div>
+    <!-- Modal End -->
+
+</div>

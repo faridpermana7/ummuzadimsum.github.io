@@ -1,0 +1,64 @@
+{
+    "mix_menus": [
+        {
+            "id": 1,
+            "title": "Mix 1",
+            "subtitle": "(8 pcs)",
+            "src": "src/img/prod-mix1.jpg",
+            "delay": "0.1s",
+            "discountPrice": "27000",
+            "originPrice": "30000",
+            "isDiscount": true,
+            "isNew": false,
+            "isBest": true
+        },
+        {
+            "id": 2,
+            "title": "Mix 2",
+            "subtitle": "(8 pcs)",
+            "src": "src/img/prod-mix2.jpg",
+            "delay": "0.3s",
+            "discountPrice": "27000",
+            "originPrice": "30000",
+            "isDiscount": true,
+            "isNew": false,
+            "isBest": false
+        },
+        {
+            "id": 3,
+            "title": "Mix 3",
+            "subtitle": "(8 pcs)",
+            "src": "src/img/prod-mix3.jpg",
+            "delay": "0.5s",
+            "discountPrice": "30000",
+            "originPrice": "35000",
+            "isDiscount": false,
+            "isNew": false,
+            "isBest": false
+        },
+        {
+            "id": 4,
+            "title": "Mix 4",
+            "subtitle": "(8 pcs)",
+            "src": "src/img/prod-mix4.jpg",
+            "delay": "0.75s",
+            "discountPrice": "33000",
+            "originPrice": "35000",
+            "isDiscount": false,
+            "isNew": false,
+            "isBest": true
+        },
+        {
+            "id": 5,
+            "title": "Mix 5",
+            "subtitle": "(8 pcs)",
+            "src": "src/img/prod-mix5.jpg",
+            "delay": "1s",
+            "discountPrice": "33000",
+            "originPrice": "35000",
+            "isDiscount": false,
+            "isNew": false,
+            "isBest": true
+        }
+    ] 
+  }

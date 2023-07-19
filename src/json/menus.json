@@ -1,25 +1,76 @@
 {
     "menus": [
       {
-        "id": 1,
-        "title": "Dimsum Nori",
-        "subtitle": "(8 pcs)",
-        "discountPrice": "30000",
-        "originPrice": "35000"
+          "id": 1,
+          "title": "Dimsum Nori",
+          "subtitle": "(8 pcs)",
+          "src": "src/img/prod-nori.jpg",
+          "delay": "0.1s",
+          "discountPrice": "30000",
+          "originPrice": "35000",
+          "isDiscount": true,
+          "isNew": true,
+          "isBest": false
       },
       {
-        "id": 2,
-        "title": "Dimsum Nori Mentai",
-        "subtitle": "(8 pcs)",
-        "discountPrice": "35000",
-        "originPrice": "45000"
+          "id": 2,
+          "title": "Dimsum Nori Mentai",
+          "subtitle": "(8 pcs)",
+          "src": "src/img/prod-norimentai.jpg",
+          "delay": "0.3s",
+          "discountPrice": "35000",
+          "originPrice": "45000",
+          "isDiscount": false,
+          "isNew": true,
+          "isBest": false
       },
       {
-        "id": 3,
-        "title": "Dimsum Crab Stick",
-        "subtitle": "(8 pcs)",
-        "discountPrice": "30000",
-        "originPrice": "35000"
+          "id": 3,
+          "title": "Dimsum Crab Stick",
+          "subtitle": "(8 pcs)",
+          "src": "src/img/prod-crabstick.jpg",
+          "delay": "0.5s",
+          "discountPrice": "30000",
+          "originPrice": "35000",
+          "isDiscount": true,
+          "isNew": true,
+          "isBest": false
+      },
+      {
+          "id": 4,
+          "title": "Dimsum Mozzarela",
+          "subtitle": "(8 pcs)",
+          "src": "src/img/prod-mozza.jpg",
+          "delay": "0.75s",
+          "discountPrice": "35000",
+          "originPrice": "35000",
+          "isDiscount": false,
+          "isNew": true,
+          "isBest": true
+      },
+      {
+          "id": 5,
+          "title": "Dimsum Original",
+          "subtitle": "(8 pcs)",
+          "src": "src/img/prod-original.jpg",
+          "delay": "1s",
+          "discountPrice": "25000",
+          "originPrice": "0",
+          "isDiscount": false,
+          "isNew": false,
+          "isBest": true
+      },
+      {
+          "id": 6,
+          "title": "Dimsum Mentai",
+          "subtitle": "(8 pcs)",
+          "src": "src/img/prod-mentai.jpg",
+          "delay": "1.3s",
+          "discountPrice": "30000",
+          "originPrice": "0",
+          "isDiscount": false,
+          "isNew": false,
+          "isBest": true
       }
     ] 
   }

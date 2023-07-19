@@ -1,0 +1,105 @@
+<!-- Page Header Start -->
+<div class="container-fluid page-header wow fadeIn" data-wow-delay="0.1s">
+	<div class="container">
+		<!-- <h1 class="display-3 mb-3 animated slideInDown">Menu Grid</h1> --> 
+		<div ncy-breadcrumb></div>
+	</div>
+</div>
+<!-- Page Header End --> 
+<div class="container-fluid">
+	<div class="row main-header">
+		<div class="col-md-12 p-0">
+			<div class="toolbar mt-2"> 
+				<div class="row">
+					<div class="col-md-12 p-0"> 
+						<f-filter> 
+							<button class="btn btn-default" tabindex="1" tooltip-placement="bottom" uib-tooltip="New User" ng-click="usr.ui.add()"><i
+									class="fas fa-plus"></i> ADD</button> 
+							<div class="search" ><i class="fas fa-search"></i> <input type="text" placeholder="Search .." ng-model="usr.Keyword"
+								 ng-model-options="{ debounce: 300 }" ng-change="usr.ui.search()" />
+							</div>
+							<div class="col-md-12 overlayed-search" ng-class="{'show-overlay': toogleOverlay}">
+								<div uib-collapse="usr.isCollapsed">  
+									<div id="AdvanceSearch"> 
+										<fieldset class="pb-0">
+											<div class="row"> 
+												<div class="form-group col-sm-2" ng-if="usr.isVisibleMember == true">
+													<label for="Branch">Branch</label>
+													<ui-select tabindex="1" ng-model="usr.memberId" theme="select2" title="Choose a Branch"
+														name="Branch">
+														<ui-select-match placeholder="Select a Branch">{{$select.selected.code}}
+														</ui-select-match>
+														<ui-select-choices refresh="usr.getMemberList($select.search)" refresh-delay="0"
+															repeat="Member.memberId as Member in usr.listMember">
+															<div ng-bind-html="Member.code | highlight: $select.search"></div>
+															<small>{{Member.name}}</small>
+														</ui-select-choices>
+														<ui-select-no-choice>
+															No Record Found
+														</ui-select-no-choice>
+													</ui-select> 
+												</div> 
+												<div class="form-group col-sm-2">
+													<label for="Code">Code</label>
+													<input type="text" tabindex="1" class="form-control" name="Code"
+														ng-model="usr.username" autofocus>
+												</div> 
+												<div class="form-group col-sm-2">
+													<label for="FullName">Full Name</label>
+													<input type="text" tabindex="2" class="form-control" name="FullName"
+														ng-model="usr.fullName" autofocus>
+												</div> 
+												<div class="form-group col-sm-2">
+													<label for="Role">Role</label>
+													<input type="text" tabindex="3" class="form-control" name="Role"
+														ng-model="usr.roleName" autofocus>
+												</div> 
+												<div class="form-group col-sm-2">
+													<label for="Name">Status</label>
+													<select ng-model="usr.status" tabindex="4" ng-options="item.value as item.label for item in usr.statusParam">
+													</select>
+												</div> 
+												<div class="pt-4 pb-3" style="display: inline-flex;"> 
+													<label for="button"></label>
+        											<button class="btn btn-white" tabindex="5" type="button" ng-click="usr.ui.clear()">Clear</button>
+        											<button class="btn btn-primary" tabindex="6" type="button" ng-click="usr.ui.filter()">Filter</button>
+												</div>
+											</div>
+										</fieldset>
+									</div> 
+								</div>
+							</div>
+							<div class="showAdvanceSearch">
+								<a href="javascript:void(0)" ng-click="usr.isCollapsed = !usr.isCollapsed">
+									<i ng-class="{'fa fa-angle-double-up': !usr.isCollapsed, 'fa fa-angle-double-down': usr.isCollapsed}"></i>
+									Show Advance Search
+								</a>  
+							</div> 
+						</f-filter> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row main-body">
+		<div class="col-md-12 p-0 fixed-table">
+			<table id="user" datatable="" dt-options="usr.dtOptions" dt-columns="usr.dtColumns" dt-instance="usr.dtCallback"
+			 class="row-border hover">
+				<thead>
+					<tr>
+						<th>No</th> 
+						<th>Username</th>
+						<th>Full Name</th> 
+						<th>Role</th>
+						<th>Member</th>
+						<th>Status</th>
+						<th>Updated By</th>
+						<th>Updated Date</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,124 @@
+<!-- Page Header Start -->
+<div class="container-fluid page-header wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+        <!-- <h1 class="display-3 mb-3 animated slideInDown">Menu Grid</h1> --> 
+        <div ncy-breadcrumb></div>
+    </div>
+</div>
+<div class="container-fluid">
+    <form name="roleForm" ng-submit="roleForm.$valid && rle.ui.save()" autocomplete="off" novalidate>
+        <div class="row main-header">
+            <div class="col-md-12 p-0">
+                <f-toolbar>
+                    <f-appbar title="Role"></f-appbar>
+                        <button class="btn btn-default" tooltip-placement="bottom" tabindex="17"
+                            uib-tooltip="Back to List" type="button" ng-click="rle.ui.back()"><i
+                                class="fas fa-arrow-left"></i>
+                            BACK</button>
+                        <button class="btn btn-primary float-right" tabindex="16" type="submit"><i class="far fa-save"></i> SAVE</button>
+                </f-toolbar>
+            </div>
+        </div>
+        <div class="row main-form pt-3">
+            <div class="form-group col-sm-3">
+                <label for="roleCode">Code <small class="required">*</small></label>
+                <input type="roleCode" tabindex="1" class="form-control" placeholder="" ng-model="rle.model.roleCode"
+                    name="roleCode" required>
+                <div class="invalid-feedback" ng-show="rle.validate('roleCode', 'required')">This
+                    field is required</div>
+            </div>
+            <div class="form-group col-sm-3">
+                <label for="name">Name <small class="required">*</small></label>
+                <input type="name" tabindex="2" class="form-control" placeholder="" ng-model="rle.model.name"
+                    name="name" required>
+                <div class="invalid-feedback" ng-show="rle.validate('name', 'required')">This
+                    field is required</div>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="type">Type <small class="required">*</small></label>
+                <ui-select ng-model="rle.model.type" on-select="rle.changeRoleType($item)" theme="select2" title="Choose .." name="type" tabindex="3"
+                    required>
+                    <ui-select-match placeholder="Please choose ..">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="x.id as x in rle.accessLevel">
+                        <div ng-bind-html="x.name | highlight: $select.search"></div>
+                    </ui-select-choices>
+                    <ui-select-no-choice>
+                        <div class="text-center pb-2">No record found</div>
+                    </ui-select-no-choice>
+                </ui-select>
+                <div class="invalid-feedback" ng-show="rle.validate('type', 'required')">
+                    This field is required
+                </div>
+            </div>
+            <div class="col-md-3">
+                <label class="control control--checkbox mt-30">
+                    <input type="checkbox" tabindex="4" name="isActive" placeholder=""
+                        ng-model="rle.model.isActive">
+                    <div class="control__indicator"></div>
+                    Active
+                </label>
+            </div>
+            <!-- <div class="form-group col-md-3">
+                <label for="type">Access Level <small class="required">*</small></label>
+                <select id="cbomenuAccessTypes" class="form-control input-lg" ng-model="rle.model.type"
+                    name="type" required>
+                    <option ng-repeat="x in rle.accessLevel"  ng-selected="x.id == rle.model.type" value={{x.id}}>{{x.name}}</option>
+                </select>
+                <div class="invalid-feedback" ng-show="rle.validate('type', 'required')">
+                    This field is required
+                </div>
+            </div> -->
+
+            <div class="col-md-12" ng-hide="rle.isCreate">
+                <div class="table-container" style="height: calc( 115vh - 350px);overflow: hidden auto">
+                    <table class="table table-padding header-fixed">
+                        <thead>
+                            <tr>
+                                <th style="width: 50px">No</th>
+                                <th style="width: 100px">Code</th>
+                                <th>Menu</th>
+                                <th class="w-100 text-center">Access</th>
+                                <th class="w-100 text-center">Read</th>
+                                <th class="w-100 text-center">Write</th>
+                                <th class="w-100 text-center">Delete</th>
+                            </tr>
+                        </thead>
+                        <tr ng-repeat="i in rle.model.roleAccess">
+                            <td>{{ $index+1 }}</td>
+                            <td>{{ i.menu.menuCode }}</td>
+                            <td>{{ i.menu.name }}</td>
+                            <td class="text-center">
+                                <label class="control control--checkbox">
+                                    <input type="checkbox" tabindex="{{ ($index * 6) + 3 }}" name="list"
+                                         placeholder="" ng-model="i.access" ng-click="">
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </td>
+                            <td class="text-center">
+                                <label class="control control--checkbox">
+                                    <input type="checkbox" tabindex="{{ ($index * 6) + 4 }}" name="read"
+                                         placeholder="" ng-model="i.read">
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </td>
+                            <td class="text-center">
+                                <label class="control control--checkbox">
+                                    <input type="checkbox" tabindex="{{ ($index * 6) + 5 }}" name="write"
+                                         placeholder="" ng-model="i.write">
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </td>
+                            <td class="text-center">
+                                <label class="control control--checkbox">
+                                    <input type="checkbox" tabindex="{{ ($index * 6) + 6 }}" name="delete"
+                                         placeholder="" ng-model="i.delete">
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

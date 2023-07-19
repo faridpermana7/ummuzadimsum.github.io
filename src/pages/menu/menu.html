@@ -1,0 +1,169 @@
+<!-- Page Header Start -->
+<div class="container-fluid page-header wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+        <!-- <h1 class="display-3 mb-3 animated slideInDown">Menu Grid</h1> --> 
+        <div ncy-breadcrumb></div>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-0 gx-5 align-items-end">
+            <div class="col-lg-6">
+                <div class="section-header text-start mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                    <h1 class="display-5 mb-3">Ummuza Menu</h1>
+                    <p>Halo Sobat Ummuza, udah nyobain Dimsum yang varian apa nih?  Setiap varian rasa punya citarasa masing-masing loh, bikin sensasi makan dimsum nya jadi beda dan InsyaAllah semuanya yummy hihihii ☺</p>
+                </div>
+            </div>
+            <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
+                <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
+                    <li class="nav-item me-2">
+                        <a class="btn btn-outline-primary border-2 active" data-bs-toggle="pill" href="#tab-1">Dimsum</a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="btn btn-outline-primary border-2" data-bs-toggle="pill" href="#tab-2">Dimsum Mix </a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="btn btn-outline-primary border-2" data-bs-toggle="pill" href="#tab-3">Hampers </a>
+                    </li>
+                    <li class="nav-item me-0">
+                        <a class="btn btn-outline-primary border-2" data-bs-toggle="pill" href="#tab-4">Frozen</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div id="tab-1" class="tab-pane fade show p-0 active">
+                <div class="row g-4">
+                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" ng-repeat="x in mn.listMenu" data-wow-delay="{{x.delay}}">
+                        <div class="product-item">
+                            <div class="position-relative bg-light overflow-hidden">
+                                <img ng-class="{'img-fluid w-100 img-blur' : x.stok == 0 }" ng-src="{{x.src}}" alt="">
+                                <div ng-hide="x.isNew==false" class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">New</div>
+                                <div ng-hide="x.isBest==false" class="bg-primary rounded text-white position-absolute top-0 m-4 py-1 px-3" ng-class="x.isNew==false ? 'start-0' : 'start-25'">Best Seller</div>
+                                <div ng-hide="x.stok>0" class="bg-gray-500 text-white position-absolute start-20 top-20 m-4 py-1 px-3" style="font-size: xx-large">HABIS</div>
+                            </div>
+                            <div class="text-center p-2">
+                                <a class="d-block h5 mb-2" href="">{{x.title}}</a> 
+                                <a class="d-block h6">{{x.subtitle}}</a>
+                                <span class="text-primary me-1">Rp{{x.discountPrice | currency: '':0}}</span>
+                                <span ng-hide="x.isDiscount==false" class="text-body text-decoration-line-through">Rp{{x.originPrice | currency: '':0}}</span>
+                            </div>
+                            <div class="d-flex border-top">
+                                <small class="w-50 text-center border-end py-2">
+                                    <a class="text-body" href=""><i class="fa fa-eye text-primary me-2"></i>View detail</a>
+                                </small>
+                                <small class="w-50 text-center py-2">
+                                    <button class="text-body" ng-click="mn.addToCart('ori', x.productMenuId)" ng-disabled="x.stok == 0"><i class="fa fa-shopping-bag text-primary me-2"></i>Keranjang</button>
+                                </small>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
+                        <a class="btn btn-primary rounded-pill py-3 px-5" href="">Mau Lagi?</a>
+                    </div>
+                </div>
+            </div>
+            <div id="tab-2" class="tab-pane fade show p-0">
+                <div class="row g-4">  
+                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" ng-repeat="x in mn.listMixMenu" data-wow-delay="{{x.delay}}">
+                        <div class="product-item">
+                            <div class="position-relative bg-light overflow-hidden">
+                                <img ng-class="{'img-fluid w-100 img-blur' : x.stok == 0 }" ng-src="{{x.src}}" alt="">
+                                <div ng-hide="x.isNew==false" class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">New</div>
+                                <div ng-hide="x.isBest==false" class="bg-primary rounded text-white position-absolute top-0 m-4 py-1 px-3" ng-class="x.isNew==false ? 'start-0' : 'start-25'">Best Seller</div>
+                                <div ng-hide="x.stok>0" class="bg-gray-500 text-white position-absolute start-20 top-20 m-4 py-1 px-3" style="font-size: xx-large">HABIS</div>
+                            </div>
+                            <div class="text-center p-2">
+                                <a class="d-block h5 mb-2" href="">{{x.title}}</a> 
+                                <a class="d-block h6">{{x.subtitle}}</a>
+                                <span class="text-primary me-1">Rp{{x.discountPrice | currency: '':0}}</span>
+                                <span ng-hide="x.isDiscount==false" class="text-body text-decoration-line-through">Rp{{x.originPrice | currency: '':0}}</span>
+                            </div>
+                            <div class="d-flex border-top">
+                                <small class="w-50 text-center border-end py-2">
+                                    <a class="text-body" href=""><i class="fa fa-eye text-primary me-2"></i>View detail</a>
+                                </small>
+                                <small class="w-50 text-center py-2"> 
+                                        <a class="text-body" ng-click="mn.addToCart('mix', x.productMenuId)"><i class="fa fa-shopping-bag text-primary me-2"></i>Keranjang</a>
+                                </small>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="col-12 text-center">
+                        <a class="btn btn-primary rounded-pill py-3 px-5" href="">Browse More Menus</a>
+                    </div>
+                </div>
+            </div>
+            <div id="tab-3" class="tab-pane fade show p-0">
+                <div class="row g-4">
+                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" ng-repeat="x in mn.listHampresMenu" data-wow-delay="{{x.delay}}">
+                        <div class="product-item">
+                            <div class="position-relative bg-light overflow-hidden">
+                                <img ng-class="{'img-fluid w-100 img-blur' : x.stok == 0 }" ng-src="{{x.src}}" alt="">
+                                <div ng-hide="x.isNew==false" class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">New</div>
+                                <div ng-hide="x.isBest==false" class="bg-primary rounded text-white position-absolute top-0 m-4 py-1 px-3" ng-class="x.isNew==false ? 'start-0' : 'start-25'">Best Seller</div>
+                                <div ng-hide="x.stok>0" class="bg-gray-500 text-white position-absolute start-20 top-20 m-4 py-1 px-3" style="font-size: xx-large">HABIS</div>
+                            </div>
+                            <div class="text-center p-2">
+                                <a class="d-block h5 mb-2" href="">{{x.title}}</a> 
+                                <a class="d-block h6">{{x.subtitle}}</a>
+                                <!-- <a class="d-block h6">Stok: {{x.stok}} Pack</a> -->
+                                <span class="text-primary me-1">Rp{{x.discountPrice | currency: '':0}}</span>
+                                <span ng-hide="x.isDiscount==false" class="text-body text-decoration-line-through">Rp{{x.originPrice | currency: '':0}}</span>
+                            </div>
+                            <div class="d-flex border-top">
+                                <small class="w-50 text-center border-end py-2">
+                                    <a class="text-body" href=""><i class="fa fa-eye text-primary me-2"></i>View detail</a>
+                                </small>
+                                <small class="w-50 text-center py-2">
+                                        <a class="text-body" ng-click="mn.addToCart('ham', x.productMenuId)"><i class="fa fa-shopping-bag text-primary me-2"></i>Keranjang</a>
+                                </small>
+                            </div>
+                        </div>
+                    </div>  
+                    <div class="col-12 text-center">
+                        <a class="btn btn-primary rounded-pill py-3 px-5" href="">Browse More Menus</a>
+                    </div>
+                </div>
+            </div>
+            <div id="tab-4" class="tab-pane fade show p-0">
+                <div class="row g-4">
+                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" ng-repeat="x in mn.listFrozenMenu" data-wow-delay="{{x.delay}}">
+                        <div class="product-item">
+                            <div class="position-relative bg-light overflow-hidden">
+                                <img ng-class="{'img-fluid w-100 img-blur' : x.stok == 0 }" ng-src="{{x.src}}" alt="">
+                                <div ng-hide="x.isNew==false" class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">New</div>
+                                <div ng-hide="x.isBest==false" class="bg-primary rounded text-white position-absolute top-0 m-4 py-1 px-3" ng-class="x.isNew==false ? 'start-0' : 'start-25'">Best Seller</div>
+                                <div ng-hide="x.stok>0" class="bg-gray-500 text-white position-absolute start-20 top-20 m-4 py-1 px-3" style="font-size: xx-large">HABIS</div>
+                            </div>
+                            <div class="text-center p-4">
+                                <a class="d-block h5 mb-2" href="">{{x.title}}</a>
+                                <a class="d-block h6">{{x.subtitle}}</a>
+                                <!-- <a class="d-block h6">Stok: {{x.stok}}</a> -->
+                                <span class="text-primary me-1">Rp{{x.discountPrice | currency: '':0}}</span>
+                                <span ng-hide="x.isDiscount==false" class="text-body text-decoration-line-through">Rp{{x.originPrice | currency: '':0}}</span>
+                            </div>
+                            <div class="d-flex border-top">
+                                <small class="w-50 text-center border-end py-2">
+                                    <a class="text-body" href=""><i class="fa fa-eye text-primary me-2"></i>View detail</a>
+                                </small>
+                                <small class="w-50 text-center py-2">
+                                        <button class="text-body" ng-click="mn.addToCart('froz', x.productMenuId)"><i class="fa fa-shopping-bag text-primary me-2"></i>Keranjang</button>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 text-center">
+                        <a class="btn btn-primary rounded-pill py-3 px-5" href="">Browse More Menus</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- footer Start -->
+<div ng-include="'src/layout/footer/footer.html'"></div>
+<!-- footer End -->

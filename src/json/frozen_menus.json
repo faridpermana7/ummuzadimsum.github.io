@@ -1,0 +1,28 @@
+{
+    "frozen_menus": [
+        {
+            "id": 1,
+            "title": "Frozen Original",
+            "subtitle": "(10 pcs)",
+            "src": "src/img/prod-forzen-ori.jpg",
+            "delay": "0.1s",
+            "discountPrice": "35000",
+            "originPrice": "0",
+            "isDiscount": false,
+            "isNew": true,
+            "isBest": false
+        },
+        {
+            "id": 2,
+            "title": "Frozen Mix Varian",
+            "subtitle": "(10 pcs)",
+            "src": "src/img/prod-forzen-mix.jpg",
+            "delay": "0.3s",
+            "discountPrice": "40000", 
+            "originPrice": "0",
+            "isDiscount": false,
+            "isNew": true,
+            "isBest": true
+        }
+    ] 
+  }

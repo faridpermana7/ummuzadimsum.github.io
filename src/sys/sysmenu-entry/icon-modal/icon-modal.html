@@ -1,0 +1,35 @@
+<div class="modal-header">
+    <h5 class="modal-title">List Of Icon</h5>
+</div>
+
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12 p-0">
+            <div class="toolbar border-0">
+                <div class="filter">
+                    <div class="search">
+                        <i class="fas fa-search"></i> <input type="text" placeholder="Search .." ng-model="modal.Keyword" ng-change="modal.search()" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 p-0">
+            <div class="for-icon">
+                <div class="col-sm-12">
+                    <label ng-repeat="icon in modal.icons | limitTo: modal.pageSize track by $index">
+                        <input type="radio" ng-model="modal.iconSelected" name="icon" ng-value="icon" />
+                        <i class="{{ icon }}"></i>
+                    </label>
+                    <button class="btn btn-primary btn-sm" style="width: 100%" ng-click="modal.moreIcon()" ng-show="modal.isMore">Load More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+        <button class="btn btn-default" type="button" ng-click="modal.cancel()">CANCEL</button>
+    <button class="btn btn-primary" type="button" ng-click="modal.ok()">CHOOSE</button>
+</div>

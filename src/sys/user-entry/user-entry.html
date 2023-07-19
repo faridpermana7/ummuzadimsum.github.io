@@ -1,0 +1,194 @@
+<!-- Page Header Start -->
+<div class="container-fluid page-header wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+        <!-- <h1 class="display-3 mb-3 animated slideInDown">Menu Grid</h1> --> 
+        <div ncy-breadcrumb></div>
+    </div>
+</div>
+<div class="container-fluid">
+    <form name="user" ng-submit="user.$valid && usre.ui.save()" autocomplete="off" novalidate>
+        <div class="row main-header">
+            <div class="col-md-12 p-0">
+                <f-toolbar>
+                    <f-appbar title="User"></f-appbar>
+                        <button class="btn btn-default" tooltip-placement="bottom" tabindex="17"
+                            uib-tooltip="Back to List" type="button" ng-click="usre.ui.back()"><i
+                                class="fas fa-arrow-left"></i>
+                            BACK</button>
+                        <button class="btn btn-primary float-right" tooltip-placement="bottom" tabindex="16"
+                            uib-tooltip="Save User" type="submit"><i class="far fa-save"></i> SAVE</button>
+                </f-toolbar>
+            </div>
+        </div>
+        <div class="row main-form pt-3">
+            <div class="col-sm-6">
+                <fieldset>
+                    <legend>Base Info</legend>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="Username">Username <small class="required">*</small></label>
+                            <input type="text" tabindex="1" class="form-control" name="Username"
+                                ng-model="usre.model.username" autofocus required>
+                            <div class="invalid-feedback" ng-show="usre.validate('Username', 'required')">This
+                                field is required</div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="Password">Password <small ng-show="usre.isCreate"
+                                    class="required">*</small></label>
+                            <input type="password" tabindex="2" class="form-control" placeholder=""
+                                ng-model="usre.model.password" name="Password" ng-required="usre.isCreate" 
+                                ng-change="usre.CheckPassword()">
+
+                            <small ng-show="!usre.isCreate">Leave empty if you dont want to change the password.</small>
+                            <div class="invalid-feedback" ng-show="usre.validate('Password', 'required')">This
+                                field is required</div>
+                            <div class="invalid-feedback" style="white-space: pre;" ng-show="usre.invalidPass != ''">{{usre.invalidPass}}</div>
+                        </div>
+                        <div class="form-group col-sm-6 ">
+                            <label for="Role">Role <small class="required">*</small></label>
+                            <ui-select tabindex="3" ng-model="usre.model.roleId" theme="select2" title="Choose a Role"
+                                name="Role" required ng-disabled="usre.model.module=='COU'">
+                                <ui-select-match placeholder="Select a Role">{{$select.selected.name}}
+                                </ui-select-match>
+                                <ui-select-choices refresh="usre.getRole($select.search)" refresh-delay="0"
+                                    repeat="Role.roleId as Role in usre.listRole">
+                                    <div ng-bind-html="Role.name | highlight: $select.search"></div>
+                                </ui-select-choices>
+                                <ui-select-no-choice>
+                                    No Record Found
+                                </ui-select-no-choice>
+                            </ui-select>
+
+                            <div class="invalid-feedback" ng-show="usre.validate('Role', 'required')">This
+                                field is required</div>
+                        </div> 
+                        <div class="form-group col-sm-6">
+                            <label for="Status">Status <small class="required">*</small></label>
+                            <ui-select tabindex="5" ng-model="usre.model.isActive" theme="select2" title="Choose a Status"
+                                name="Status" required>
+                                <ui-select-match placeholder="Select a Status">{{$select.selected.name}}
+                                </ui-select-match>
+                                <ui-select-choices refresh="usre.getStatus($select.search)" refresh-delay="0"
+                                    repeat="Status.id as Status in usre.listStatus">
+                                    <div ng-bind-html="Status.name | highlight: $select.search"></div>
+                                </ui-select-choices>
+                                <ui-select-no-choice>
+                                    No Record Found
+                                </ui-select-no-choice>
+                            </ui-select>
+
+                            <div class="invalid-feedback" ng-show="usre.validate('Status', 'required')">This
+                                field is required</div>
+                        </div> 
+                        <div class="col-md-6">
+                            <label class="control control--checkbox mt-4">
+                                <input type="checkbox" tabindex="5" name="isGroup" class="form-control" placeholder=""
+                                    ng-model="usre.isGroup">
+                                <div class="control__indicator"></div>
+                                Balikpapan
+                            </label>
+                        </div>
+                        <div class="form-group col-sm-6" ng-if="usre.isVisibleMember == true">
+                            <label for="Member">Member <small class="required">*</small></label>
+                            <ui-select tabindex="5" ng-model="usre.model.memberId" theme="select2" title="Choose a Member"
+                                name="Member" ng-required="usre.isGroup == false" ng-disabled="usre.isGroup==true">
+                                <ui-select-match placeholder="Select a Member">{{$select.selected.name}}
+                                </ui-select-match>
+                                <ui-select-choices refresh="usre.getMemberList($select.search)" refresh-delay="0"
+                                    repeat="Member.memberId as Member in usre.listMember">
+                                    <div ng-bind-html="Member.code | highlight: $select.search"></div>
+                                    <small>{{Member.name}}</small>
+                                </ui-select-choices>
+                                <ui-select-no-choice>
+                                    No Record Found
+                                </ui-select-no-choice>
+                            </ui-select>
+
+                            <div class="invalid-feedback" ng-show="usre.validate('Role', 'required')">This
+                                field is required</div>
+                        </div> 
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="col-sm-6">
+                <fieldset>
+                    <legend>User Info</legend>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="FullName">Full Name <small class="required">*</small></label>
+                            <input type="text" tabindex="6" class="form-control" placeholder=""
+                                ng-model="usre.model.fullName" name="fullName" required>
+                            <div class="invalid-feedback" ng-show="usre.validate('fullName', 'required')">This
+                                field is required</div>
+                        </div> 
+                        <div class="form-group col-sm-6">
+                            <label>Birth Date <small class="required">*</small></label>
+                            <input date-time-picker type="text" tabindex="7" name="BirthDate"
+                                class="form-control date-picker" ng-model="usre.model.birthDate" options="usre.opts" />
+                            <div class="invalid-feedback" ng-show="usre.validate('BirthDate', 'required')">This
+                                field is required</div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label>Gender <small class="required">*</small></label>
+                            <ui-select tabindex="8" ng-model="usre.model.sex" theme="select2" title="Choose a Gender"
+                                name="Gender" required>
+                                <ui-select-match placeholder="Select a Gender">{{$select.selected.name}}
+                                </ui-select-match>
+                                <ui-select-choices refresh="usre.getGender($select.search)" refresh-delay="0"
+                                    repeat="Gender.id as Gender in usre.listGender">
+                                    <div ng-bind-html="Gender.name | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+
+                            <div class="invalid-feedback" ng-show="usre.validate('Gender', 'required')">This
+                                field is required</div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="PhoneNumber">Phone Number</label>
+                            <input type="text" tabindex="9" class="form-control" placeholder=""
+                                ng-model="usre.model.phoneNumber" name="PhoneNumber">
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="Email">Email</label>
+                            <input type="text" tabindex="10" class="form-control" placeholder=""
+                                ng-model="usre.model.email" name="Email">
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="KTP">KTP</label>
+                            <input type="text" tabindex="11" class="form-control" placeholder=""
+                                ng-model="usre.model.ktp" name="KTP">
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="KK">KK</label>
+                            <input type="text" tabindex="12" class="form-control" placeholder=""
+                                ng-model="usre.model.kk" name="KK">
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label>City</label>
+                            <ui-select tabindex="14" ng-model="usre.model.cityId" theme="select2" title="Choose a City"
+                                name="City">
+                                <ui-select-match placeholder="Select a City">{{$select.selected.name}}
+                                </ui-select-match>
+                                <ui-select-choices refresh="usre.getCity($select.search)" refresh-delay="0"
+                                    repeat="City.cityId as City in usre.listCity">
+                                    <div ng-bind-html="City.name | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div> 
+                        <div class="form-group col-sm-6">
+                            <label for="PostalCode">Postal Code</label>
+                            <input type="text" tabindex="16" class="form-control" placeholder=""
+                                ng-model="usre.model.postalCode" name="PostalCode">
+                        </div>
+
+                        <div class="form-group col-sm-12">
+                            <label for="Address">Address</label>
+                            <textarea name="Address" class="form-control" ng-model="usre.model.address"></textarea>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </form>
+</div>
