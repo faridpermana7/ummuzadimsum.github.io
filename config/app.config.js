@@ -17,13 +17,13 @@ var $wConfig;
 
         vm.config = new WConfig({
             apiProtocol: "https://",
-            usePort: false,
+            usePort: true,
             autoDefineApi: false,
             autoDefineApiPort: false,
             apiPort: "44346",
             apiPoint: "/api",
-            apiUrl: "ummuza.bsite.net",
-            // apiUrl: "localhost",
+            // apiUrl: "ummuza.bsite.net",
+            apiUrl: "localhost",
             log: false,
             apiPrefix: undefined, 
             osmAttrib: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
