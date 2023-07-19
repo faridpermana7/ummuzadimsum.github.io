@@ -1,0 +1,84 @@
+<!-- Page Header Start -->
+<div class="container-fluid page-header wow fadeIn" data-wow-delay="0.1s">
+		<div class="container">
+			<!-- <h1 class="display-3 mb-3 animated slideInDown">Menu Grid</h1> --> 
+			<div ncy-breadcrumb></div>
+		</div>
+	</div>
+	<!-- Page Header End --> 
+	<div class="container-fluid">
+		<div class="row main-header">
+			<div class="col-md-12 p-0">
+				<div class="toolbar mt-2"> 
+					<div class="row">
+						<div class="col-md-12 p-0"> 
+							<f-filter>
+								<button class="btn btn-default" tabindex="1" tooltip-placement="bottom" uib-tooltip="New Role" ng-click="rl.ui.add()"><i
+									class="fas fa-plus"></i> ADD</button>
+								<div class="search" ><i class="fas fa-search"></i> <input type="text" placeholder="Search .." ng-model="rl.Keyword"
+									ng-model-options="{ debounce: 300 }" ng-change="rl.ui.search()" />
+								</div>
+										
+								<div class="col-md-12 overlayed-search" ng-class="{'show-overlay': toogleOverlay}">
+									<div uib-collapse="rl.isCollapsed">  
+										<div id="AdvanceSearch"> 
+											<fieldset class="pb-0">
+													<div class="row">
+														<div class="form-group col-sm-2">
+															<label for="Name">Name</label>
+															<input type="text" tabindex="1" class="form-control" name="Name"
+																ng-model="rl.name" autofocus>
+														</div> 
+														<div class="form-group col-sm-2">
+															<label for="Type">Type</label>
+															<input type="text" tabindex="2" class="form-control" name="Type"
+																ng-model="rl.type" autofocus>
+														</div>  
+														<div class="form-group col-sm-2">
+															<label for="Name">Status</label>
+															<select ng-model="rl.status" ng-options="item.value as item.label for item in rl.statusParam">
+															</select>
+														</div> 
+														<div class="pt-4 pb-3" style="display: inline-flex;"> 
+															<label for="button"></label>
+															<button class="btn btn-white" type="button" ng-click="rl.ui.clear()">Clear</button>
+															<button class="btn btn-primary" type="button" ng-click="rl.ui.filter()">Filter</button>
+														</div>
+													</div>
+											</fieldset>
+										</div> 
+									</div>
+								</div>
+								<div class="showAdvanceSearch">
+									<a href="javascript:void(0)" ng-click="rl.isCollapsed = !rl.isCollapsed">
+										<i ng-class="{'fa fa-angle-double-up': !rl.isCollapsed, 'fa fa-angle-double-down': rl.isCollapsed}"></i>
+										Show Advance Search
+									</a>  
+								</div> 
+							</f-filter>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<div class="row main-body">
+		<div class="col-md-12 p-0 fixed-table">
+			<table id="role" datatable="" dt-options="rl.dtOptions" dt-columns="rl.dtColumns" dt-instance="rl.dtCallback"
+			 class="row-border hover">
+				<thead>
+					<tr>
+						<th>No</th>
+						<th>Name</th>
+						<th>Type</th>
+						<!-- <th>Branch</th> -->
+						<th>Status</th>
+						<th>Updated By</th>
+						<th>Updated Date</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+	</div>
+</div>

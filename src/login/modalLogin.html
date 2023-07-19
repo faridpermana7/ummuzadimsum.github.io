@@ -1,0 +1,64 @@
+<div ng-controller="modalLoginCtrl as auth">
+    <div class="overlay-login" ng-show="auth.isOpen">
+        <div></div>
+    </div>
+    <div class="modal-login position-login" ng-show="auth.isOpen">
+        <div class="container-login">
+            <div class="row">  
+                <div class="col-md-6 left-login">
+                    <div class="form-inner-login">
+                        <div class="tabs-login">
+                            <ul class="tabs-login">
+                                <li ng-class="{'current': auth.isRegistered == false}" data-tab="member">
+                                    <a href="" ng-click="auth.mappingTabs('log')">Sign-in</a>
+                                </li> 
+                                <li ng-class="{'current': auth.isRegistered == true}" data-tab="member">
+                                    <a href="" ng-click="auth.mappingTabs('reg')">Register</a>
+                                </li>
+                            </ul>
+                            
+                            <div class="form-content-login current" ng-if="auth.isRegistered == false" > 
+                                <form id="sign-in-login" ng-submit="auth.signin()">
+                                    <input type="text" id="username" name="login-id" placeholder="user"
+                                        ng-model="auth.model.username" class="field-login input-login" requ1ired />
+                                    <input type="password" id="pass" name="usrpw" placeholder="password"
+                                        ng-model="auth.model.password" class="field-login input-login" autocomplete="on"
+                                        required />
+                                    <div class="clear-login"></div>
+                                    <a  ui-sref="forgot" href="">
+                                        <span class="forgot-login secondary-text-login"><i class="fas fa-lock"></i>  Forgot
+                                            password?</span>
+                                    </a>
+                                    <button type="submit" name="sign-in-button" class="flat-button-login signin-login"
+                                        ng-disabled="auth.isLoading"><i class="fas fa-circle-notch fa-spin"
+                                            ng-show="auth.isLoading"></i><span
+                                            ng-show="!auth.isLoading">LOGIN</span></button>
+                                </form> 
+                                
+                                <div class="flex items-center pt-2">
+                                    <button ui-sref="app.main.page">
+                                    <i class="fa fa-arrow-left text-sm text-black pr-0"></i>
+                                    <span class="text-md  font-medium text-black">Kembali</span>
+                                    </button>
+                                </div> 
+                            </div> 
+                            <div class="form-content-login current" ng-if="auth.isRegistered == true">
+                                <p class="mb-0" style="text-align: center; font-size: x-large;"><i class="fas fa-user-clock"></i></p>
+                                <h4 style="text-align: center">How to get an account?</h4>
+                                <p class="mb-0" style="text-align: center;color: #000;">Please contact your administrator to get your account. Email to: <b><i>ummuza@gmail.com</i></b>.</p>
+                                
+                                <!-- <span class="build-version" style="font-style: italic">Have a blessed day.</span> -->
+                            </div>
+                        </div>
+                        <!-- <span class="build-version" ng-if="auth.isRegistered == false">Ummuza Dimsum</span> -->
+                        
+                    </div>
+                </div>
+                <div class="col-md-6 right-login">
+                    <!-- <div class="login-desc"> -->
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

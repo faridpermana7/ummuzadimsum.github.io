@@ -1,0 +1,224 @@
+<!-- Page Header Start -->
+<div class="container-fluid page-header wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+        <!-- <h1 class="display-3 mb-3 animated slideInDown">Menu Grid</h1> --> 
+        <div ncy-breadcrumb></div>
+    </div>
+</div>
+<!-- Page Header End -->
+    <!-- Contact Start -->
+    <div id='DivIdToPrint' class="container-xxl py-6">
+        <div class="container">
+            <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <h1 class="display-5 mb-3">Ummuza : Checkout</h1>
+            </div>
+            <div class="row g-2 justify-content-center">
+                <div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="d-flex flex-column justify-content-center h-100 p-3 shadow-order">
+                        <h5>{{ck.model.name}} {{ck.model.noHp}}</h5>
+                        <h5><i class="fa fa-map-marker-alt me-3"></i>Alamat Pengiriman </h5>
+                        <fieldset>
+                            <legend>
+                                <label class="switch" style="position: absolute">
+                                    <input type="checkbox" tabindex="9" ng-model="ck.model.isHaveGeoPoint">
+                                    <span class="slider round"></span>
+                                </label>
+                                <label class="pl-12">
+                                    Pilih alamat otomatis dengan map
+                                </label>
+                            </legend>
+                            <div class="row">
+                                <!-- <div class="form-group col-6">
+                                    <label for="lat">Latitude</label>
+                                    <input type="text" tabindex="12" class="form-control" placeholder=""
+                                        ng-model="ck.model.latitude" ng-required="ck.model.isHaveGeoPoint &&
+                                            ck.model.isHaveGeoPoint === true"
+                                            ng-change="setMarker(ck.model.latitude, ck.model.longitude)"
+                                        name="lat" ng-disabled="!ck.model.isHaveGeoPoint">
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="long">Longitude
+                                    </label>
+                                    <input type="text" tabindex="13" class="form-control" placeholder=""
+                                        ng-model="ck.model.longitude" ng-required="ck.model.isHaveGeoPoint &&
+                                            ck.model.isHaveGeoPoint === true" 
+                                            ng-change="setMarker(ck.model.latitude, ck.model.longitude)"
+                                        name="long" ng-disabled="!ck.model.isHaveGeoPoint"> 
+                                </div> -->
+                                <div class="form-group col-12">
+                                    <label for="notes">Copy link google maps </label>
+                                    <textarea tabindex="3" class="form-control"  id="textAreaCopy" 
+                                        ng-paste="convertLinkGoogleMaps($event)"
+                                        name="notes" ng-disabled="!ck.model.isHaveGeoPoint"> </textarea>
+                                </div>
+                            </div>
+                        </fieldset>
+                        
+                        <!-- <div contenteditable="true" id="EDITABLE">
+                                <div class="content" id="address" ng-model="ck.model.address">Alamat Detail</div> 
+                            </div> -->
+                        <textarea id="textArea" class="form-control" placeholder="Alamat detail" ng-model="ck.model.address" style="height: 4rem"></textarea>
+                        <textarea class="form-control" placeholder="Catatan untuk driver" ng-model="ck.model.addressNote" style="height: 20px"></textarea>
+                    </div> 
+                </div> 
+                
+                <div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s">   
+                    <button class="btn btn-primary rounded" ng-click="ck.getCurrentLocation()" ng-disabled="!ck.model.isHaveGeoPoint">
+                        <i class="fas fa-search-location text-sm"></i>
+                        <span class="text-md font-medium text-white-500">Lokasi saya</span>
+                    </button>
+                    <div ng-class="ck.model.isHaveGeoPoint == true ? 'map-container' : 'map-container img-blur'">
+                        <div id="mapid" style="height: 424px;">
+                        </div>
+                    </div>
+                </div> 
+                
+                <div class="col-md-12 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="d-flex flex-column justify-content-center h-100 p-3 shadow-order">
+                        <div class="md:flex ">
+                            <div class="w-full">
+                                <div class="md:grid md:grid-cols-3 gap-2 ">
+                                    <div class="col-span-12 p-1"> 
+                                        <h5>Produk Dipesan</h5>
+                                        <div class="flex justify-between items-center mt-1 pt-1 border-t">
+                                            <div class="flex items-center" width="60"> 
+                                                <span class="text-xs font-black">Dimsum</span>
+                                            </div>
+                                            <div class="flex justify-center items-center">
+                                                <div class="pr-12 flex" width="20">
+                                                    <span class="text-xs font-black">Harga Satuan</span>
+                                                </div>
+                                                <div class="pr-12" width="10"> 
+                                                        <span class="text-xs font-black">QTY</span></div>
+                                                <div class="pr-2" width="20">
+                                                    <span class="text-xs font-black">Total Pesanan</span>
+                                                </div> 
+                                            </div>
+                                        </div> 
+                                        <div class="flex justify-between items-center mt-2 pt-2 border-t" ng-repeat="x in ck.model.shoppingCarts">
+                                            <div class="flex  items-center">
+                                                <img src="{{x.src}}" width="60" class="rounded-full">
+                                                <div class="flex flex-col ml-3">
+                                                    <span class="md:text-md font-medium" style="width: 8rem;">{{x.title}}</span>
+                                                    <span class="text-xs font-light text-gray-400" style="width: 8rem;">{{x.subtitle}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="flex justify-center items-center">
+                                                <div class="pr-16 flex" width="20">
+                                                    <span class="text-xs font-medium">Rp{{x.discountPrice | currency: '':0}}</span>
+                                                </div>
+                                                <div class="pr-12" width="10">
+                                                        <span class="text-xs font-medium">{{x.qty}}</span></div>
+                                                <div class="pr-2" width="20%">
+                                                    <span class="text-xs font-medium">Rp{{x.subPrice | currency: '':0}}</span>
+                                                </div> 
+                                            </div>
+                                        </div> 
+                                        <div class="justify-between items-center mt-1 pt-1 border-t ta-r"> 
+                                            <div class="row">
+                                                <div class="col-sm-7"></div>
+                                                <div class="col-sm-3">
+                                                    <span class="text-sm font-medium text-gray-400 mr-1">Total Pesanan:</span>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <span class="text-lg font-bold text-gray-800 ">Rp{{ck.model.subTotalCart | currency: '':0}}</span>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                    </div> 
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-12 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="d-flex flex-column justify-content-center h-100 p-3 shadow-order">
+                            <div class="md:flex ">
+                                <div class="w-full">
+                                    <div class="md:grid md:grid-cols-3 gap-2 ">
+                                        <div class="col-span-12 p-1"> 
+                                            <h5>Metode Pembayaran</h5> 
+                                            <div class="row">
+                                                    <div class="col-lg-3 radio-group" ng-class="{'gray' : ck.model.paymentMethod == 'cod' }"> 
+                                                    <div class="row d-flex px-3 radio" ng-click="ck.choosePaymentMethod('transfer')">
+                                                        <i class="pay fas fa-university text-3xl text-blue-500 text-center"></i> 
+                                                        <p class="my-auto">Transfer Bank</p>
+                                                    </div> 
+                                                </div>
+                                                <div class="col-lg-3 radio-group" ng-class="{'gray' : ck.model.paymentMethod == 'transfer' }"> 
+                                                    <div class="row d-flex px-3 radio" ng-click="ck.choosePaymentMethod('cod')">
+                                                            <i class="pay fas fa-money-bill-wave text-3xl text-center" 
+                                                            ng-class="ck.model.paymentMethod == 'transfer' ? ' text-gray-500':' text-blue-500'" ></i> 
+                                                        <p class="my-auto">COD (Bayar di Tempat)</p>
+                                                    </div> 
+                                                </div>
+                                            </div> 
+                                            <div class="flex justify-between items-center mt-1 pt-1 border-t" ng-hide="ck.model.paymentMethod != 'transfer'">
+                                                <fieldset class="form-group row">
+                                                    <legend class="col-form-label col-sm-2 float-sm-left pt-0">Pilih Bank</legend>
+                                                    <div class="col-sm-10">
+                                                        <div class="d-flex mb-2 form-check">
+                                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                                                            <img class="ml-3" style="width: 35px" src="src/img/img_bankid_bsm.png"/>
+                                                            <label class="form-check-label ml-3" for="gridRadios1">
+                                                                Bank Syariah Indonesia (BSI)
+                                                            </label>
+                                                        </div>
+                                                        <div class="d-flex mb-2 form-check">    
+                                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option2" disabled>
+                                                            <img class="ml-3" style="width: 35px" src="src/img/img_bankid_bsa_syariah.png"/>
+                                                            <label class="form-check-label ml-3" for="gridRadios1">
+                                                                BCA Syariah
+                                                            </label>
+                                                        </div> 
+                                                    </div>
+                                                </fieldset> 
+                                            </div>
+                                            <div class="justify-between items-center mt-1 pt-1 border-t ta-r"> 
+                                                <div class="row">
+                                                    <div class="col-sm-7"></div>
+                                                    <div class="col-sm-3">
+                                                        <span class="text-sm font-medium text-gray-400 mr-1">Subtotal untuk Produk :</span>
+                                                    </div> 
+                                                    <div class="col-sm-2">
+                                                        <span class="text-lg font-bold text-gray-800 ">Rp{{ck.model.subTotalCart | currency: '':0}}</span>
+                                                    </div> 
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-7"></div>
+                                                    <div class="col-sm-3">
+                                                        <span class="text-sm font-medium text-gray-400 mr-1">Total Ongkos Kirim :</span>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <span class="text-lg font-bold text-gray-800 ">Rp{{ck.model.ongkir | currency: '':0}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-7"></div>
+                                                    <div class="col-sm-3">
+                                                        <span class="text-sm font-medium text-gray-400 mr-1">Total Pembayaran :</span>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <span class="text-3xl font-bold text-red-800 ">Rp{{ck.model.grandTotal | currency: '':0}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12 ta-c">
+                                                        <button class="btn btn-primary" ng-click='ck.printDiv()'>Print</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+ 
+
+    <div id="out_image" style="display: none;" class="container-xxl py-6"></div>

@@ -1,0 +1,68 @@
+<!-- Page Header Start -->
+<div class="container-fluid page-header wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+        <!-- <h1 class="display-3 mb-3 animated slideInDown">Menu Grid</h1> --> 
+        <div ncy-breadcrumb></div>
+    </div>
+</div>
+<div class="container-fluid">
+    <form name="majority" ng-submit="majority.$valid && mje.ui.save()" autocomplete="off" novalidate>
+        <div class="row main-header">
+            <div class="col-md-12 p-0">
+                <f-toolbar>
+                    <f-appbar title="User"></f-appbar>
+                        <button class="btn btn-default" tooltip-placement="bottom" tabindex="6"
+                            uib-tooltip="Back to List" type="button" ng-click="mje.ui.back()"><i
+                                class="fas fa-arrow-left"></i>
+                            BACK</button>
+                        <button class="btn btn-primary float-right" tooltip-placement="bottom" tabindex="7"
+                            uib-tooltip="Save User" type="submit"><i class="far fa-save"></i> SAVE</button>
+                </f-toolbar>
+            </div>
+        </div>
+        <div class="row main-form pt-3">
+            <div class="col-sm-6">
+                <fieldset>
+                    <legend>Base Info</legend>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="Username">Product Name <small class="required">*</small></label>
+                            <input type="text" tabindex="1" class="form-control" name="ProductName"
+                                ng-model="mje.model.productName" autofocus required>
+                            <div class="invalid-feedback" ng-show="mje.validate('ProductName', 'required')">This
+                                field is required</div>
+                        </div> 
+                        <div class="form-group col-sm-6">
+                            <label for="Username">Delay <small class="required">*</small></label>
+                            <input type="text" tabindex="2" class="form-control" name="Delay"
+                                ng-model="mje.model.delay" required>
+                            <div class="invalid-feedback" ng-show="mje.validate('Delay', 'required')">This
+                                field is required</div>
+                        </div>    
+                        <div class="form-group col-sm-12">
+                            <label for="Address">Detail (Description)<small class="required">*</small></label>
+                            <textarea tabindex="3" name="Detail" class="form-control" 
+                                ng-model="mje.model.detail"required></textarea>
+                                <div class="invalid-feedback" ng-show="mje.validate('Detail', 'required')">This
+                                    field is required</div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label for="Username">SRC <small class="required">*</small></label>
+                            <input type="text" class="form-control" name="SRC"
+                                ng-model="mje.model.src" disabled required>
+                            <div class="invalid-feedback" ng-show="mje.validate('SRC', 'required')">This
+                                field is required</div>
+                        </div> 
+                    </div>
+                </fieldset>
+            </div> 
+            <div class="col-sm-6">
+                <fieldset>
+                    <legend>Image</legend>
+                    <div class="row"> 
+                    </div>
+                </fieldset>
+            </div> 
+        </div>
+    </form>
+</div>
