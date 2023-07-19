@@ -1,0 +1,28 @@
+{
+    "hampres_menus": [
+        {
+            "id": 1,
+            "title": "Mini Hampres",
+            "subtitle": "(16 pcs + paper bag + kartu ucapan + hiasan)",
+            "src": "src/img/prod-hampres.jpg",
+            "delay": "0.1s",
+            "discountPrice": "85000",
+            "originPrice": "95000",
+            "isDiscount": true,
+            "isNew": true,
+            "isBest": false
+        },
+        {
+            "id": 2,
+            "title": "Dimsum Nampan",
+            "subtitle": "(50 pcs + nampan + cover + hiasan)",
+            "src": "src/img/prod-nampan.jpg",
+            "delay": "0.3s",
+            "discountPrice": "190000",
+            "originPrice": "200000",
+            "isDiscount": true,
+            "isNew": false,
+            "isBest": false
+        }
+    ] 
+  }

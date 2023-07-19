@@ -1,0 +1,166 @@
+<form name="menu" ng-submit="menu.$valid && sme.ui.save()" autocomplete="off" novalidate>
+    <div class="modal-header">
+        <h5 class="modal-title">{{sme.titleForm}}</h5>
+    </div>
+
+    <div class="modal-body py-0">
+        <div class="row">
+            <div class="col-md-6 mt-2">
+                <div class="form-group">
+                    <label for="name">Name <small class="required">*</small></label>
+                    <input type="text" class="form-control" ng-model="sme.model.name" placeholder="" name="name"
+                        required>
+                    <div class="invalid-feedback" ng-show="sme.validate('name', 'required')">
+                        This field is required
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mt-2">
+                <div class="form-group">
+                    <label for="menuCode">Menu Code <small class="required">*</small></label>
+                    <input type="text" class="form-control" ng-model="sme.model.menuCode" placeholder="" name="menuCode"
+                        required>
+                    <div class="invalid-feedback" ng-show="sme.validate('menuCode', 'required')">
+                        This field is required
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="path">Path <small class="required">*</small></label>
+                    <input type="text" class="form-control" ng-model="sme.model.path" placeholder="" name="path"
+                        required>
+                    <div class="invalid-feedback" ng-show="sme.validate('path', 'required')">
+                        This field is required
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mb-3">
+                <div class="form-group">
+                    <label for="path">Sub Path <small class="required">*</small></label>
+                    <div ng-repeat="item in sme.model.subPath track by $index">
+                        <div class="input-group mb-1">
+                                <input type="text" class="form-control" ng-model="item.path" placeholder="" name="path">
+                            <div class="input-group-append">
+                                <button class="btn btn-danger" type="button" ng-click="sme.removeSubPath($index)"><i class="fas fa-times"></i></button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <br/>
+                    <button class="btn btn-sm btn-success" type="button" ng-click="sme.addSubPath()">Add Sub
+                        Path</button>
+
+                    <div class="invalid-feedback" ng-show="sme.validate('path', 'required')">
+                        This field is required
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="icon">Icon</label>
+                <div class="input-group mb-3 icon-form">
+                    <i class="{{ sme.model.Icon }} icon-left"></i>
+                    <input type="text" class="form-control" placeholder="" ng-model="sme.model.icon" value="test"
+                        readonly>
+                    <div class="input-group-append">
+                        <button class="input-group-text" type="button" modal-icon callback="sme.iconCallback"><i
+                                class="fa fa-search"></i></button>
+                    </div>
+                    <div class="invalid-feedback" ng-show="sme.validate('icon', 'required')">
+                        This field is required
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="menuAccessType">Access Level <small class="required">*</small></label>
+                <!-- <select id="cbomenuAccessTypes" class="form-control input-lg" ng-model="sme.model.menuAccessType"
+                    name="menuAccessType" required>
+                    <option ng-repeat="x in sme.accessLevel" ng-selected="x.id == sme.model.menuAccessType"
+                        value={{x.id}}>{{x.name}}</option>
+                </select> -->
+                <ui-select ng-model="sme.model.menuAccessType" theme="select2" title="Choose .." name="menuAccessType"
+                    required>
+                    <ui-select-match placeholder="Please choose ..">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="x.id as x in sme.accessLevel">
+                        <div ng-bind-html="x.name | highlight: $select.search"></div>
+                    </ui-select-choices>
+                    <ui-select-no-choice>
+                        <div class="text-center pb-2">No record found</div>
+                    </ui-select-no-choice>
+                </ui-select>
+                <div class="invalid-feedback" ng-show="sme.validate('menuAccessType', 'required')">
+                    This field is required
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="parent">Parent Menu <small class="required">*</small></label>
+                <!-- <select id="cboParents" class="form-control input-lg" ng-model="sme.model.parentMenuId"
+                    name="parentMenuId" required>
+                    <option ng-repeat="x in sme.menuParents" ng-selected="( x.menuId == sme.model.parentMenuId && sme.model.parentMenuId > 0 ) || (sme.model.parentMenuId == 'undefined' && x.menuId == 7 )"
+                        value={{x.menuId}}>{{x.name}}</option>
+                </select>  -->
+                <ui-select ng-model="sme.model.parentMenuId" theme="select2" title="Choose .." name="parentMenuId"
+                    required>
+                    <ui-select-match placeholder="Please choose ..">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="x.menuId as x in sme.menuParents">
+                        <div ng-bind-html="x.name | highlight: $select.search"></div>
+                    </ui-select-choices>
+                    <ui-select-no-choice>
+                        <div class="text-center pb-2">No record found</div>
+                    </ui-select-no-choice>
+                </ui-select>
+                <div class="invalid-feedback" ng-show="sme.validate('parentMenuId', 'required')">
+                    This field is required
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="sequence">Sequence <small class="required">*</small></label>
+                    <input type="number" class="form-control" ng-model="sme.model.sequence" placeholder="" name="sequence"
+                        required>
+                    <div class="invalid-feedback" ng-show="sme.validate('sequence', 'required')">
+                        This field is required
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label class="control control--checkbox mt-4">
+                    <input type="checkbox" tabindex="23" name="isGroup" class="form-control" placeholder=""
+                        ng-model="sme.model.isGroup">
+                    <div class="control__indicator"></div>
+                    Group Menu
+                </label>
+            </div>
+            <div class="col-md-3">
+                <label class="control control--checkbox mt-4">
+                    <input type="checkbox" tabindex="23" name="isActive" class="form-control" placeholder=""
+                        ng-model="sme.model.isActive">
+                    <div class="control__indicator"></div>
+                    Active
+                </label>
+            </div>
+            <div class="col-md-3">
+                <label class="control control--checkbox mt-4">
+                    <input type="checkbox" tabindex="24" name="IsSystemProtected" class="form-control" placeholder=""
+                        ng-model="sme.model.isSystemProtected">
+                    <div class="control__indicator"></div>
+                    Protected
+                </label>
+            </div>
+            <!-- <div class="col-md-3">
+                <label class="control control--checkbox mt-4">
+                    <input type="checkbox" tabindex="23" name="isVirtual" class="form-control" placeholder=""
+                        ng-model="sme.model.isVirtual">
+                    <div class="control__indicator"></div>
+                    Is Virtual Menu
+                </label>
+            </div> -->
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-default" type="button" ng-click="sme.closeModal()">CANCEL</button>
+        <button class="btn btn-primary" type="submit">SAVE</button>
+    </div>
+</form>

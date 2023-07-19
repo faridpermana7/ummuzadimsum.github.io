@@ -1,0 +1,34 @@
+{
+    "lates_posts": [
+        {
+            "id": 1,
+            "type": "image",
+            "src": "src/img/blog-1.jpg",
+            "user": "admin",
+            "postDate": "07 May 2023",
+            "delay": "0.1s",
+            "title": "Bismillah, open order kembali mulai Senin, 8 Mei ya Sobat 🙏...",
+            "detail": "Bismillah, open order kembali mulai Senin, 8 Mei ya Sobat 🙏..."
+        },
+        {
+            "id": 2,
+            "type": "video",
+            "src": "src/img/blog-2.mp4",
+            "user": "admin",
+            "postDate": "07 May 2023",
+            "delay": "0.3s",
+            "title": "Terima kasih ya sobat setia Ummuza buat...",
+            "detail": "Terima kasih ya sobat setia Ummuza buat..."
+        },
+        {
+            "id": 3,
+            "type": "video",
+            "src": "src/img/blog-3.mp4",
+            "user": "admin",
+            "postDate": "07 May 2023",
+            "delay": "0.5s",
+            "title": "Assalamualaikum Sobat Ummuza gmn kabarnya?...",
+            "detail": "Assalamualaikum Sobat Ummuza gmn kabarnya?..."
+        }
+    ] 
+  }

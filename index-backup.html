@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Ummuza Dimsum - Dimsum Ayam</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="src/img/umuza.png" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Lora:wght@600;700&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tailwind/tailwind.min.css" rel="stylesheet">
+    <link href="node_modules/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
+	<link href="src/css/bootstrap-datetimepicker.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="src/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="src/css/style.css" rel="stylesheet">
+</head>
+
+<body ng-app="ummuza" ng-controller="mainCtrl as vm">
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End --> 
+
+    <!-- Navbar Start -->
+    <div ng-include="'src/layout/nav-bar/navbar.html'"></div>
+    <!-- Navbar End -->
+
+
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
+        <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="w-100" src="src/img/carousel-1.jpg" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-start">
+                                <div class="col-lg-7">
+                                    <h1 class="display-2 mb-0 animated slideInDown">Homemade</h1>
+                                    <a href="#menu" class="btn btn-primary rounded-pill py-sm-3 px-sm-5">Menus</a>
+                                    <!-- <a href="" class="btn btn-secondary rounded-pill py-sm-3 px-sm-5 ms-3">Services</a> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="src/img/carousel-2.jpg" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-start">
+                                <div class="col-lg-7">
+                                    <h1 class="display-2 mb-0 animated slideInDown">Halal</h1>
+                                    <a href="#menu" class="btn btn-primary rounded-pill py-sm-3 px-sm-5">Menus</a>
+                                    <!-- <a href="" class="btn btn-secondary rounded-pill py-sm-3 px-sm-5 ms-3">Services</a> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="src/img/carousel-3.jpg" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-start">
+                                <div class="col-lg-7">
+                                    <h1 class="display-2 mb-0 animated slideInDown">Yummy</h1>
+                                    <a href="#menu" class="btn btn-primary rounded-pill py-sm-3 px-sm-5">Menus</a>
+                                    <!-- <a href="" class="btn btn-secondary rounded-pill py-sm-3 px-sm-5 ms-3">Services</a> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <!-- Carousel End -->
+
+
+    <!-- About Start -->
+    <section id="about">
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                        <div class="about-img position-relative overflow-hidden p-5 pe-0">
+                            <img class="img-fluid w-100" src="src/img/about.jpg">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                        <h1 class="display-5 mb-4">Best Inggredient Insha Allah</h1>
+                        <p class="mb-4">Dibuat dengan daging ayam pilihan yang masih segar berpadu dengan bumbu racikan spesial dari Ummuza Dimsum yang bikin nagih disetiap gigitannya 😍</p>
+                        <p><i class="fa fa-check text-primary me-3"></i>Jangan lupa berdoa sebelum dan sesudah makan ya Sobat</p>
+                        <p><i class="fa fa-check text-primary me-3"></i>Tuangkan saus ke dalam wadah</p>
+                        <p><i class="fa fa-check text-primary me-3"></i>Dimsum siap disajikan bersama keluarga atau kerabat terkasih</p>
+                        <a class="btn btn-primary rounded-pill py-3 px-5 mt-3" href="">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About End -->
+
+
+    <!-- Feature Start -->
+    <section id="feature">
+        <div class="container-fluid bg-light bg-icon my-5 py-6">
+            <div class="container"> 
+                <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                    <h1 class="display-5 mb-3">Keunggulan Ummuza</h1>
+                    <p>Berikut 3 unggulan utama kenapa sobat harus pilih Dimsum by Ummuza Dimsum.</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" ng-repeat="x in vm.listunggul" data-wow-delay="{{x.delay}}"> 
+                        <div class="bg-white text-center h-100 p-4 p-xl-5">
+                            <img class="img-fluid mb-4" ng-src="{{x.src}}" alt="">
+                            <h4 class="mb-3">{{x.name}}</h4>
+                            <p class="mb-4">{{x.detail}}</p>
+                            <a class="btn btn-outline-primary border-2 py-2 px-4 rounded-pill" href="">Read More</a>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Feature End -->
+
+
+    <!-- Product Start -->
+    <section id="menu">
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-0 gx-5 align-items-end">
+                    <div class="col-lg-6">
+                        <div class="section-header text-start mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                            <h1 class="display-5 mb-3">Ummuza Menu</h1>
+                            <p>Halo Sobat Ummuza, udah nyobain Dimsum yang varian apa nih?  Setiap varian rasa punya citarasa masing-masing loh, bikin sensasi makan dimsum nya jadi beda dan InsyaAllah semuanya yummy hihihii ☺</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
+                        <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
+                            <li class="nav-item me-2">
+                                <a class="btn btn-outline-primary border-2 active" data-bs-toggle="pill" href="#tab-1">Dimsum</a>
+                            </li>
+                            <li class="nav-item me-2">
+                                <a class="btn btn-outline-primary border-2" data-bs-toggle="pill" href="#tab-2">Dimsum Mix </a>
+                            </li>
+                            <li class="nav-item me-2">
+                                <a class="btn btn-outline-primary border-2" data-bs-toggle="pill" href="#tab-3">Hampers </a>
+                            </li>
+                            <li class="nav-item me-0">
+                                <a class="btn btn-outline-primary border-2" data-bs-toggle="pill" href="#tab-4">Frozen</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab-content">
+                    <div id="tab-1" class="tab-pane fade show p-0 active">
+                        <div class="row g-4">
+                            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" ng-repeat="x in vm.listMenu" data-wow-delay="{{x.delay}}">
+                                <div class="product-item">
+                                    <div class="position-relative bg-light overflow-hidden">
+                                        <img ng-class="{'img-fluid w-100 img-blur' : x.stok == 0 }" ng-src="{{x.src}}" alt="">
+                                        <div ng-hide="x.isNew==false" class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">New</div>
+                                        <div ng-hide="x.isBest==false" class="bg-primary rounded text-white position-absolute top-0 m-4 py-1 px-3" ng-class="x.isNew==false ? 'start-0' : 'start-25'">Best Seller</div>
+                                        <div ng-hide="x.stok>0" class="bg-gray-500 text-white position-absolute start-20 top-20 m-4 py-1 px-3" style="font-size: xx-large">HABIS</div>
+                                    </div>
+                                    <div class="text-center p-2">
+                                        <a class="d-block h5 mb-2" href="">{{x.title}}</a> 
+                                        <a class="d-block h6">{{x.subtitle}}</a>
+                                        <span class="text-primary me-1">Rp{{x.discountPrice | currency: '':0}}</span>
+                                        <span ng-hide="x.isDiscount==false" class="text-body text-decoration-line-through">Rp{{x.originPrice | currency: '':0}}</span>
+                                    </div>
+                                    <div class="d-flex border-top">
+                                        <small class="w-50 text-center border-end py-2">
+                                            <a class="text-body" href=""><i class="fa fa-eye text-primary me-2"></i>View detail</a>
+                                        </small>
+                                        <small class="w-50 text-center py-2">
+                                            <button class="text-body" ng-click="vm.addToCart('ori', x.productMenuId)" ng-disabled="x.stok == 0"><i class="fa fa-shopping-bag text-primary me-2"></i>Keranjang</button>
+                                        </small>
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
+                                <a class="btn btn-primary rounded-pill py-3 px-5" href="">Mau Lagi?</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab-2" class="tab-pane fade show p-0">
+                        <div class="row g-4">  
+                            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" ng-repeat="x in vm.listMixMenu" data-wow-delay="{{x.delay}}">
+                                <div class="product-item">
+                                    <div class="position-relative bg-light overflow-hidden">
+                                        <img ng-class="{'img-fluid w-100 img-blur' : x.stok == 0 }" ng-src="{{x.src}}" alt="">
+                                        <div ng-hide="x.isNew==false" class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">New</div>
+                                        <div ng-hide="x.isBest==false" class="bg-primary rounded text-white position-absolute top-0 m-4 py-1 px-3" ng-class="x.isNew==false ? 'start-0' : 'start-25'">Best Seller</div>
+                                        <div ng-hide="x.stok>0" class="bg-gray-500 text-white position-absolute start-20 top-20 m-4 py-1 px-3" style="font-size: xx-large">HABIS</div>
+                                    </div>
+                                    <div class="text-center p-2">
+                                        <a class="d-block h5 mb-2" href="">{{x.title}}</a> 
+                                        <a class="d-block h6">{{x.subtitle}}</a>
+                                        <span class="text-primary me-1">Rp{{x.discountPrice | currency: '':0}}</span>
+                                        <span ng-hide="x.isDiscount==false" class="text-body text-decoration-line-through">Rp{{x.originPrice | currency: '':0}}</span>
+                                    </div>
+                                    <div class="d-flex border-top">
+                                        <small class="w-50 text-center border-end py-2">
+                                            <a class="text-body" href=""><i class="fa fa-eye text-primary me-2"></i>View detail</a>
+                                        </small>
+                                        <small class="w-50 text-center py-2"> 
+                                                <a class="text-body" ng-click="vm.addToCart('mix', x.productMenuId)"><i class="fa fa-shopping-bag text-primary me-2"></i>Keranjang</a>
+                                        </small>
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="col-12 text-center">
+                                <a class="btn btn-primary rounded-pill py-3 px-5" href="">Browse More Menus</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab-3" class="tab-pane fade show p-0">
+                        <div class="row g-4">
+                            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" ng-repeat="x in vm.listHampresMenu" data-wow-delay="{{x.delay}}">
+                                <div class="product-item">
+                                    <div class="position-relative bg-light overflow-hidden">
+                                        <img ng-class="{'img-fluid w-100 img-blur' : x.stok == 0 }" ng-src="{{x.src}}" alt="">
+                                        <div ng-hide="x.isNew==false" class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">New</div>
+                                        <div ng-hide="x.isBest==false" class="bg-primary rounded text-white position-absolute top-0 m-4 py-1 px-3" ng-class="x.isNew==false ? 'start-0' : 'start-25'">Best Seller</div>
+                                        <div ng-hide="x.stok>0" class="bg-gray-500 text-white position-absolute start-20 top-20 m-4 py-1 px-3" style="font-size: xx-large">HABIS</div>
+                                    </div>
+                                    <div class="text-center p-2">
+                                        <a class="d-block h5 mb-2" href="">{{x.title}}</a> 
+                                        <a class="d-block h6">{{x.subtitle}}</a>
+                                        <!-- <a class="d-block h6">Stok: {{x.stok}} Pack</a> -->
+                                        <span class="text-primary me-1">Rp{{x.discountPrice | currency: '':0}}</span>
+                                        <span ng-hide="x.isDiscount==false" class="text-body text-decoration-line-through">Rp{{x.originPrice | currency: '':0}}</span>
+                                    </div>
+                                    <div class="d-flex border-top">
+                                        <small class="w-50 text-center border-end py-2">
+                                            <a class="text-body" href=""><i class="fa fa-eye text-primary me-2"></i>View detail</a>
+                                        </small>
+                                        <small class="w-50 text-center py-2">
+                                                <a class="text-body" ng-click="vm.addToCart('ham', x.productMenuId)"><i class="fa fa-shopping-bag text-primary me-2"></i>Keranjang</a>
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>  
+                            <div class="col-12 text-center">
+                                <a class="btn btn-primary rounded-pill py-3 px-5" href="">Browse More Menus</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab-4" class="tab-pane fade show p-0">
+                        <div class="row g-4">
+                            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" ng-repeat="x in vm.listFrozenMenu" data-wow-delay="{{x.delay}}">
+                                <div class="product-item">
+                                    <div class="position-relative bg-light overflow-hidden">
+                                        <img ng-class="{'img-fluid w-100 img-blur' : x.stok == 0 }" ng-src="{{x.src}}" alt="">
+                                        <div ng-hide="x.isNew==false" class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">New</div>
+                                        <div ng-hide="x.isBest==false" class="bg-primary rounded text-white position-absolute top-0 m-4 py-1 px-3" ng-class="x.isNew==false ? 'start-0' : 'start-25'">Best Seller</div>
+                                        <div ng-hide="x.stok>0" class="bg-gray-500 text-white position-absolute start-20 top-20 m-4 py-1 px-3" style="font-size: xx-large">HABIS</div>
+                                    </div>
+                                    <div class="text-center p-4">
+                                        <a class="d-block h5 mb-2" href="">{{x.title}}</a>
+                                        <a class="d-block h6">{{x.subtitle}}</a>
+                                        <!-- <a class="d-block h6">Stok: {{x.stok}}</a> -->
+                                        <span class="text-primary me-1">Rp{{x.discountPrice | currency: '':0}}</span>
+                                        <span ng-hide="x.isDiscount==false" class="text-body text-decoration-line-through">Rp{{x.originPrice | currency: '':0}}</span>
+                                    </div>
+                                    <div class="d-flex border-top">
+                                        <small class="w-50 text-center border-end py-2">
+                                            <a class="text-body" href=""><i class="fa fa-eye text-primary me-2"></i>View detail</a>
+                                        </small>
+                                        <small class="w-50 text-center py-2">
+                                                <button class="text-body" ng-click="vm.addToCart('froz', x.productMenuId)"><i class="fa fa-shopping-bag text-primary me-2"></i>Keranjang</button>
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <a class="btn btn-primary rounded-pill py-3 px-5" href="">Browse More Menus</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Product End -->
+
+
+    <!-- Firm Visit Start -->
+    <div class="container-fluid bg-primary bg-icon mt-5 py-6">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-md-7 wow fadeIn" data-wow-delay="0.1s">
+                    <h1 class="display-5 text-white mb-3">Youtube Ummuza Dimsum</h1>
+                    <p class="text-white mb-0">Ummuza Dimsum rencananya akan ada Youtube nya lho, nanti disitu akan diposting semua kegiatan Ummuza dan hal-hal menarik nan bermanfaat, terus pantengin ya. Terima kasih😍</p>
+                </div>
+                <div class="col-md-5 text-md-end wow fadeIn" data-wow-delay="0.5s">
+                    <a class="btn btn-lg btn-secondary rounded-pill py-3 px-5" href="">Yuk Cuzz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Firm Visit End -->
+
+    <!-- Modal --> 
+    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Launch demo modal
+    </button> -->
+      
+    <!-- Modal -->
+    <div class="modal fade" id="shoppingCartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Keranjang Saya</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="max-w-md mx-auto bg-gray-100 shadow-lg rounded-lg  md:max-w-5xl">
+                    <div class="md:flex ">
+                        <div class="w-full">
+                            <div class="md:grid md:grid-cols-3 gap-2 ">
+                                <div class="col-span-2 p-3">
+                                    <!-- <h1 class="text-xl font-medium ">Shopping Cart</h1> -->
+                                    <div class="flex justify-between items-center mt-6 pt-6 border-t" ng-repeat="x in shoppingCarts">
+                                        <div class="flex  items-center">
+                                            <img src="{{x.src}}" width="60" class="rounded-full ">
+                                            <div class="flex flex-col ml-3">
+                                                <span class="md:text-md font-medium" style="width: 8rem;">{{x.title}}</span>
+                                                <span class="text-xs font-light text-gray-400" style="width: 8rem;">{{x.subtitle}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex justify-center items-center">
+                                            <div class="pr-8 flex">
+                                                <span class="text-xs font-medium">Rp{{x.discountPrice | currency: '':0}}</span>
+                                            </div>
+                                            <div class="pr-6">
+                                                <button tabindex="1" ng-click="addQtyItem('minus', x.id)"><span class="font-semibold">-</span></button>
+                                                <input type="number" ng-disabled="true" class="focus:outline-none bg-gray-100 border h-6 w-8 rounded text-sm px-2 mx-2" value="{{x.qty}}">
+                                                <button tabindex="2" ng-click="addQtyItem('add', x.id)"><span class="font-semibold">+</span></button>
+                                            </div>
+                                            <div class="pr-6 " style="width: 4.5rem;">
+                                                <span class="text-xs font-medium">Rp{{x.subPrice | currency: '':0}}</span>
+                                            </div>
+                                            <div>
+                                                <i class="fa fa-close text-xs font-medium"></i>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <div class="flex justify-between items-center mt-6 pt-6 border-t"> 
+                                        <div class="flex items-center">
+                                            <button data-bs-dismiss="modal">
+                                            <i class="fa fa-arrow-left text-sm pr-2"></i>
+                                            <span class="text-md  font-medium text-red-500">Lanjut Belanja</span>
+                                            </button>
+                                        </div>
+                                        <div class="flex justify-center items-end">
+                                            <span class="text-sm font-medium text-gray-400 mr-1">Subtotal:</span>
+                                            <span class="text-lg font-bold text-gray-800 ">Rp{{subTotalCart | currency: '':0}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-3 bg-gray-800 rounded overflow-visible">
+                                    <span class="text-xl font-medium text-gray-100 block pb-3">Informasi Saya</span>
+                                    <!-- <span class="text-xs text-gray-400 ">Card Type</span> -->
+                                    <!-- <div class="overflow-visible flex justify-between items-center mt-2">
+                                        <div class="rounded w-52 h-28 bg-gray-500 py-2 px-2 relative right-10">
+                                            <span class="italic text-lg font-medium text-gray-200 underline">VISA</span>
+                                            <div class="flex justify-between items-center pt-4 ">
+                                                <span class="text-xs text-gray-200 font-medium">****</span>
+                                                <span class="text-xs text-gray-200 font-medium">****</span>
+                                                <span class="text-xs text-gray-200 font-medium">****</span>
+                                                <span class="text-xs text-gray-200 font-medium">****</span>
+                                            </div>
+                                            <div class="flex justify-between items-center mt-3">
+                                                <span class="text-xs  text-gray-200">Giga Tamarashvili</span>
+                                                <span class="text-xs  text-gray-200">12/18</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex justify-center  items-center flex-col">
+                                            <img src="https://img.icons8.com/color/96/000000/mastercard-logo.png" width="40" class="relative right-5" />
+                                            <span class="text-xs font-medium text-gray-200 bottom-2 relative right-5">mastercard.</span>
+                                        </div>
+                                    </div> -->
+                                    <div class="flex justify-center flex-col pt-3">
+                                        <label class="text-xs text-gray-400 ">Order Untuk Tanggal</label>
+                                        <input date-time-picker type="text" tabindex="3" name="OrderDate"
+                                        class="form-control date-picker" ng-model="model.orderDate" options="opts" />
+                                        <!-- <input type="date" tabindex="1" name="Date"
+                                            class="form-control date-picker" ng-model="model.orderDate" options="opts" /> -->
+                                    </div>
+                                    <div class="flex justify-center flex-col pt-3">
+                                        <label class="text-xs text-gray-400 ">Nama</label>
+                                        <input type="text" tabindex="4" class="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4" 
+                                            placeholder="Shobat Ummuza" ng-model="model.name">
+                                    </div>
+                                    <div class="flex justify-center flex-col pt-3">
+                                        <label class="text-xs text-gray-400 ">Nomor Handphone (WA)</label>
+                                        <input type="text" tabindex="5" class="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4" 
+                                            placeholder="0812 0000 000" ng-model="model.noHp">
+                                    </div>
+                                    <!-- <div class="grid grid-cols-3 gap-2 pt-2 mb-3">
+                                        <div class="col-span-2 ">
+                                            <label class="text-xs text-gray-400">Expiration Date</label>
+                                            <div class="grid grid-cols-2 gap-2">
+                                                <input type="text" class="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4" placeholder="mm">
+                                                <input type="text" class="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4" placeholder="yyyy">
+                                            </div>
+                                        </div>
+                                        <div class="">
+                                            <label class="text-xs text-gray-400">CVV</label>
+                                            <input type="text" class="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4" placeholder="XXX">
+                                        </div>
+                                    </div> -->
+                                    <button tabindex="6" class="h-12 w-full bg-red-500 rounded focus:outline-none text-white hover:bg-red-600" ng-click="checkOut()">Order Sekarang</button>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div> -->
+            </div>
+        </div>
+    </div>
+    <!-- Modal End -->
+
+
+    <!-- Testimonial Start -->
+    <section id="testimoni">
+        <div class="container-fluid bg-light bg-icon py-6 mb-5">
+            <div class="container">
+                <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                    <h1 class="display-5 mb-3">Ulasan Sobat</h1>
+                    <p>Berikut ulasan sobat-sobat ummuza setelah order dan menyantap dimsum by Ummuza.</p>
+                </div>
+                <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="testimonial-item position-relative bg-white p-5 mt-4">
+                        <i class="fa fa-quote-left fa-3x text-primary position-absolute top-0 start-0 mt-n4 ms-5"></i>
+                        <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                        <div class="d-flex align-items-center">
+                            <img class="flex-shrink-0 rounded-circle" src="src/img/testimonial-1.jpg" alt="">
+                            <div class="ms-3">
+                                <h5 class="mb-1">Client Name</h5>
+                                <span>Profession</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-item position-relative bg-white p-5 mt-4">
+                        <i class="fa fa-quote-left fa-3x text-primary position-absolute top-0 start-0 mt-n4 ms-5"></i>
+                        <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                        <div class="d-flex align-items-center">
+                            <img class="flex-shrink-0 rounded-circle" src="src/img/testimonial-2.jpg" alt="">
+                            <div class="ms-3">
+                                <h5 class="mb-1">Client Name</h5>
+                                <span>Profession</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-item position-relative bg-white p-5 mt-4">
+                        <i class="fa fa-quote-left fa-3x text-primary position-absolute top-0 start-0 mt-n4 ms-5"></i>
+                        <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                        <div class="d-flex align-items-center">
+                            <img class="flex-shrink-0 rounded-circle" src="src/img/testimonial-3.jpg" alt="">
+                            <div class="ms-3">
+                                <h5 class="mb-1">Client Name</h5>
+                                <span>Profession</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-item position-relative bg-white p-5 mt-4">
+                        <i class="fa fa-quote-left fa-3x text-primary position-absolute top-0 start-0 mt-n4 ms-5"></i>
+                        <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                        <div class="d-flex align-items-center">
+                            <img class="flex-shrink-0 rounded-circle" src="src/img/testimonial-4.jpg" alt="">
+                            <div class="ms-3">
+                                <h5 class="mb-1">Client Name</h5>
+                                <span>Profession</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonial End -->
+
+
+    <!-- post Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <h1 class="display-5 mb-3">Latest Post</h1>
+                <p>Sobat terus pantengin ummuza ya baik diweb maupun disosmed, akan ada banyak hal menari yang ummuza share terkait dimsum.😍</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" ng-repeat="x in vm.listLatesPost" data-wow-delay="{{x.delay}}">
+                    <img ng-if="x.type == 'image'" class="img-fluid" ng-src="{{x.src}}" alt="">
+                    <video ng-if="x.type == 'video'" width="100%" height="260" controls>
+                        <source ng-src="{{x.src}}" type="video/mp4"> 
+                      Your browser does not support the video tag.
+                      </video>
+                    <div class="bg-light p-4">
+                        <a class="d-block h5 lh-base mb-4" href="">{{x.title}}</a>
+                        <div class="text-muted border-top pt-4">
+                            <small class="me-3"><i class="fa fa-user text-primary me-2"></i>{{x.user}}</small>
+                            <small class="me-3"><i class="fa fa-calendar text-primary me-2"></i>{{x.postDate}}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Post End -->
+
+
+    <!-- Footer Start -->
+    <div ng-include="'src/layout/footer/footer.html'"></div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
+	<script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="node_modules/angular-cookies/angular-cookies.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+
+    <!-- NodeJs --> 
+	<script src="node_modules/moment/moment.js"></script>
+	<script src="node_modules/moment-timezone/moment-timezone.js"></script>
+    <script src="node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+	<script src="lib/bootstrapDatetimePicker.js"></script>
+
+    <!-- Core --> 
+    <script src="src/app.js"></script> 
+	<script src="lib/farst-lib.js"></script>
+    <script src="config/app.config.js"></script>
+    
+    <!-- Template Javascript --> 
+    <script src="src/main.js"></script> 
+    <script src="src/js/farstFactory.js"></script> 
+    <script src="src/js/base/httpService.js"></script> 
+    <script src="src/directive/datetimePickerDirective.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+    <script src="src/layout/appController.js"></script> 
+	<script src="src/layout/appRoute.js"></script>
+    <script src="src/layout/nav-bar/navBarController.js"></script>  
+    <script src="src/layout/footer/footerController.js"></script>  
+    
+    <script src="src/js/mainController.js"></script>  
+</body>
+
+</html>

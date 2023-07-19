@@ -1,0 +1,25 @@
+{
+    "ungguls": [
+        {
+            "id": 1,
+            "name": "Fresh Meat",
+            "src": "src/img/icon-1.png",
+            "delay": "0.1s",
+            "detail": "Hanya mengolah daging yang fresh, agar kebersihan terjaga & menghadirkan makanan yang sehat."
+        },
+        {
+            "id": 2,
+            "name": "Dimsum Juicy",
+            "src": "src/img/icon-2.png",
+            "delay": "0.3s",
+            "detail": "Menggunakan bahan daging ayam pilihan, yang membuat tekstur dimsum menjadi lebih juicy, yummy."
+        },
+        {
+            "id": 3,
+            "name": "Safe Earth",
+            "src": "src/img/icon-3.png",
+            "delay": "0.5s",
+            "detail": "Meminimalisir penggunaan plastik dengan menggunakan bahan yang bisa didaur ulang, seperti packaging berbahan dasar kertas."
+        }
+    ] 
+  }

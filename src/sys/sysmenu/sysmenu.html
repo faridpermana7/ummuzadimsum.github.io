@@ -1,0 +1,99 @@
+<!-- Page Header Start -->
+<div class="container-fluid page-header wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+        <!-- <h1 class="display-3 mb-3 animated slideInDown">Menu Grid</h1> --> 
+        <div ncy-breadcrumb></div>
+    </div>
+</div>
+<!-- Page Header End --> 
+<div class="container-fluid">
+	<div class="row main-header">
+		<div class="col-md-12 p-0">
+			<div class="toolbar mt-2"> 
+				<div class="row">
+					<div class="col-md-12 p-0">
+							<modal-menu-entry callback="sm.modalMenuCallback"
+							on-close-callback="sm.onModalMenuCloseCallback">
+						</modal-menu-entry>
+
+						<modal-menu-api callback="sm.modalMenuApiCallback"
+							on-close-callback="sm.onModalMenuApiCloseCallback">
+						</modal-menu-api>
+
+						<f-filter>
+							<button class="btn btn-default" ng-click="sm.showMenuModal()" tabindex="1"
+								tooltip-placement="bottom" uib-tooltip="New User" ng-click="sm.ui.add()"><i
+									class="fas fa-plus"></i> ADD</button> 
+							<div class="search"><i class="fas fa-search"></i> <input type="text" placeholder="Search .."
+									ng-model="sm.Keyword" ng-model-options="{ debounce: 300 }"
+									ng-change="sm.ui.search()" /></div>
+									
+							<div class="col-md-12 overlayed-search" ng-class="{'show-overlay': toogleOverlay}">
+								<div uib-collapse="sm.isCollapsed">  
+									<div id="AdvanceSearch"> 
+										<fieldset class="pb-0">
+											<div class="row">
+												<div class="form-group col-sm-2">
+													<label for="Code">Name</label>
+													<input type="text" tabindex="1" class="form-control" name="Code"
+														ng-model="sm.name" autofocus>
+												</div> 
+												<div class="form-group col-sm-2">
+													<label for="FullName">Code</label>
+													<input type="text" tabindex="2" class="form-control" name="FullName"
+														ng-model="sm.code" autofocus>
+												</div> 
+												<div class="form-group col-sm-2">
+													<label for="Role">Path</label>
+													<input type="text" tabindex="3" class="form-control" name="Role"
+														ng-model="sm.path" autofocus>
+												</div> 
+												<div class="form-group col-sm-2">
+													<label for="Name">Status</label>
+													<select ng-model="sm.status" ng-options="item.value as item.label for item in sm.statusParam">
+													</select>
+												</div> 
+												<div class="pt-4 pb-3" style="display: inline-flex;"> 
+													<label for="button"></label>
+        											<button class="btn btn-white" type="button" ng-click="sm.ui.clear()">Clear</button>
+        											<button class="btn btn-primary" type="button" ng-click="sm.ui.filter()">Filter</button>
+												</div>
+											</div>
+										</fieldset>
+									</div> 
+								</div>
+							</div>
+							<div class="showAdvanceSearch">
+								<a href="javascript:void(0)" ng-click="sm.isCollapsed = !sm.isCollapsed">
+									<i ng-class="{'fa fa-angle-double-up': !sm.isCollapsed, 'fa fa-angle-double-down': sm.isCollapsed}"></i>
+									Show Advance Search
+								</a>  
+							</div> 
+						</f-filter>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row main-body">
+		<div class="col-md-12 p-0 fixed-table">
+			<table id="sysmenu" datatable="" dt-options="sm.dtOptions" dt-columns="sm.dtColumns"
+				dt-instance="sm.dtCallback" class="row-border hover">
+				<thead>
+					<tr>
+						<th>No</th>
+						<th>Name</th>
+						<th>Code</th>
+						<th>Path</th>
+						<th>Sequence</th>
+						<th>Icon</th>
+						<th>Group</th>
+						<th>Active</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+	</div>
+</div>
