@@ -10,13 +10,13 @@
         <div class="row main-header">
             <div class="col-md-12 p-0">
                 <f-toolbar>
-                    <f-appbar title="User"></f-appbar>
-                        <button class="btn btn-default" tooltip-placement="bottom" tabindex="6"
+                    <f-appbar title="Majority"></f-appbar>
+                        <button class="btn btn-default" tooltip-placement="bottom" tabindex="7"
                             uib-tooltip="Back to List" type="button" ng-click="mje.ui.back()"><i
                                 class="fas fa-arrow-left"></i>
                             BACK</button>
-                        <button class="btn btn-primary float-right" tooltip-placement="bottom" tabindex="7"
-                            uib-tooltip="Save User" type="submit"><i class="far fa-save"></i> SAVE</button>
+                        <button class="btn btn-primary float-right" tooltip-placement="bottom" tabindex="6"
+                            uib-tooltip="Save Majority" type="submit"><i class="far fa-save"></i> SAVE</button>
                 </f-toolbar>
             </div>
         </div>
@@ -45,13 +45,6 @@
                                 ng-model="mje.model.detail"required></textarea>
                                 <div class="invalid-feedback" ng-show="mje.validate('Detail', 'required')">This
                                     field is required</div>
-                        </div>
-                        <div class="form-group col-sm-12">
-                            <label for="Username">SRC <small class="required">*</small></label>
-                            <input type="text" class="form-control" name="SRC"
-                                ng-model="mje.model.src" disabled required>
-                            <div class="invalid-feedback" ng-show="mje.validate('SRC', 'required')">This
-                                field is required</div>
                         </div> 
                     </div>
                 </fieldset>
@@ -60,6 +53,25 @@
                 <fieldset>
                     <legend>Image</legend>
                     <div class="row"> 
+                        <div class="form-group col-sm-10">
+                            <label for="SRC">SRC <small class="required">*</small></label>
+                            <input type="text" tabindex="3" class="form-control" name="SRC"
+                                ng-model="mje.model.src" required>
+                            <div class="invalid-feedback" ng-show="mje.validate('SRC', 'required')">This
+                                field is required</div>
+                        </div> 
+                        
+                        <div class="form-group col-sm-2">
+                                <label for="Delay">Delay <small class="required">*</small></label>
+                                <input type="text" tabindex="4" class="form-control" name="Delay"
+                                    ng-model="mje.model.delay" required>
+                                <div class="invalid-feedback" ng-show="mje.validate('Delay', 'required')">This
+                                    field is required</div>
+                            </div> 
+                        
+                        <div class="form-group col-sm-12">
+                            <img class="flex-shrink-0 p-2 maintain-img" src="{{mje.model.src}}" alt="">
+                        </div> 
                     </div>
                 </fieldset>
             </div> 

@@ -12,7 +12,9 @@
             http.post('/productnews/get', { 
                 "ids": [],
                 "filters": [], 
-                "keyword": ""
+                "keyword": "",
+                "sortName":"PostDate",
+                "sortDir": "desc"
             }).then(function (res) {
                 farst.loadingOut();
                 // console.log(res);
@@ -67,11 +69,13 @@
         //     }
      
         //     return rows;
-        // }     
- 
-        var urlParams = new URLSearchParams(window.location.search);
-        var greetingValue = urlParams.get('value');
+        // }      
         // alert(greetingValue) 
+        
+        pt.datetimeFormat = function(data, type, full, meta) {
+            return data ? farst.l.toLocaleDateStr(farst.l.toDatetimeLocal(data).toString(), farst.l.DATETIME_FORMAT) : '-';
+        };
+        
         getNews();
         return pt;
     };

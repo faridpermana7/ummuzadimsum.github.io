@@ -61,7 +61,7 @@
 
 
             if (!mje.isCreate) {
-                http.get('/productmajorities/' + sParam.id, {}).then(getEntry)
+                http.get('/maintainmajorities/' + sParam.id, {}).then(getEntry)
             }
 
             //validation

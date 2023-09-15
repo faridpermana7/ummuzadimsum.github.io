@@ -14,7 +14,8 @@
 			farst.Alert.confirm(
 				'Delete User',
 				'Are you sure you want to delete this user?',
-				function () {
+				function (res) { 
+					if(res.isConfirmed){ 
 					http.delete('/users/' + data.Id, {})
 						.then(function (res) {
 							if (res.status == 200) {
@@ -24,9 +25,8 @@
 								farst.Alert.error(res.message || res.data.message);
 							}
 						});
-				},
-				null
-			);
+					} 
+				});
 			return this;
 		}
 

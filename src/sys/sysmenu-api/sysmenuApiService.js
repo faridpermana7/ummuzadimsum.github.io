@@ -15,7 +15,7 @@
 			http.put('/menus/claim-update', data).then(function (res) {
 
 				if (res.success || res.status == 200) {
-					if (res.data.status == 200) {
+					if (res.data.statusCode == 200) {
 						farst.Alert.success('Menu updated!');
 						onSuccess();
 						farst.loadingOut();

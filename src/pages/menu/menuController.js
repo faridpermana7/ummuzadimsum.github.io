@@ -10,6 +10,13 @@
         mn.addChart = [];  
         mn.shoppingCarts = [];  
         mn.cartQty = 0;  
+        mn.allMenu = [];
+        mn.categories = [];
+        mn.catChoices = '';
+        
+        $scope.filterMenu = function(item){
+            mn.catChoices = item;
+        };
         
         function getMenuData(){ 
             farst.loadingIn(); 
@@ -23,25 +30,12 @@
                 // console.log(res);
                 if (res.data.statusCode == 200) {  
                     // console.log(res.data.data.records);
-                    mn.listMenu = _.filter(res.data.data.records, 
-                        function(obj){ 
-                            return obj.category == 'ORI';
-                        });
-
-                    mn.listMixMenu = _.filter(res.data.data.records, 
-                        function(obj){ 
-                            return obj.category == 'MIX';
-                        });
-                        
-                    mn.listHampresMenu = _.filter(res.data.data.records, 
-                        function(obj){ 
-                            return obj.category == 'HAMPRES';
-                        });
-                    
-                    mn.listFrozenMenu = _.filter(res.data.data.records, 
-                        function(obj){ 
-                            return obj.category == 'Frozen';
-                        });
+                    var allCategories = _.map(res.data.data.records, function(detail) {
+                        return detail.category;
+                      });
+                      
+                    mn.categories = _.uniq(allCategories, false);
+                    mn.allMenu = res.data.data.records;
                 } else {
                     if(res.status == 401 || res.status == 402){
                         farst.Alert.error(res.data.message);
@@ -56,10 +50,7 @@
             $rootScope.$broadcast('sendToNavbar', {
                 cartQty: mn.cartQty,
                 addChart: mn.addChart,
-                listMenu: mn.listMenu,
-                listMixMenu: mn.listMixMenu,
-                listHampresMenu: mn.listHampresMenu,
-                listFrozenMenu: mn.listFrozenMenu
+                allMenu: mn.allMenu
             }); 
         };
 
@@ -73,26 +64,10 @@
             //event handling logic;});
         });
 
-        mn.addToCart = async function(type, value){ 
-            
-            
+        mn.addToCart = async function(type, value){  
             if(value != undefined && value > 0){ 
-                var even = [];
-                
-                switch (type) {
-                    case "mix":
-                        even = _.find(mn.listMixMenu, function(menu){ return menu.productMenuId == value; });
-                        break;
-                    case "ham":
-                        even = _.find(mn.listHampresMenu, function(menu){ return menu.productMenuId == value; });
-                        break;
-                    case "froz":
-                        even = _.find(mn.listFrozenMenu, function(menu){ return menu.productMenuId == value; });
-                        break;
-                    default:
-                        even = _.find(mn.listMenu, function(menu){ return menu.productMenuId == value; });
-                        break;
-                }
+                var even = {};
+                even = _.find(mn.allMenu, function(menu){ return menu.productMenuId == value; });
 
                 if(even.stok == 0){
                     return farst.Alert.error('Stok sudah habis, ditunggu ya');
@@ -105,13 +80,13 @@
                     inputPlaceholder: 'Berapa pack?',
                     inputAttributes: {
                         min: 1,
-                        max: 50,
+                        max: 100,
                         step: 1,
                         pattern: "[0-9]{10}"
                     },
                     inputValidator: (value) => {
-                        if (value > 50) {
-                            return 'Maksimal pack adalah 50'
+                        if (value > 100) {
+                            return 'Maksimal pack adalah 100'
                         }
                         if (value <= 0) {
                             return 'Minimal order adalah 1 pack'
@@ -120,7 +95,7 @@
                   })
                   
                   if (pack) {
-                    var objExisting = _.find(mn.shoppingCarts, function(cart){ return cart.productMenuId == value; }); 
+                    var objExisting = _.find(mn.addChart, function(cart){ return cart.productMenuId == value; }); 
 
                     for (let index = 0; index < pack; index++) {
                         mn.addChart.push({"productMenuId": value});

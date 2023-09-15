@@ -14,7 +14,8 @@
 			console.log(data);
 			farst.Alert.confirm('Delete Role',
 				'Are you sure you want to delete this?',
-				function () {
+				function (res) { 
+					if(res.isConfirmed){ 
 					http.delete('/roles/' + data.Id, {})
 					.then(function (res) {
 						if (res.status == 200) {
@@ -24,9 +25,8 @@
 							farst.Alert.error(res.message || res.data.message);
 						}
 					});
-				},
-				null
-			);
+				} 
+			});
 			return this;
 		}
 

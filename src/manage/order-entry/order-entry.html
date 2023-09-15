@@ -1,0 +1,298 @@
+<!-- Page Header Start -->
+<div class="container-fluid page-header wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+        <!-- <h1 class="display-3 mb-3 animated slideInDown">Menu Grid</h1> --> 
+        <div ncy-breadcrumb></div>
+    </div>
+</div>
+<div class="container-fluid">
+    <form name="order" ng-submit="order.$valid && ode.ui.save()" autocomplete="off" novalidate>
+        <div class="row main-header">
+            <div class="col-md-12 p-0">
+                <f-toolbar>
+                    <f-appbar title="News"></f-appbar>
+                        <button class="btn btn-default" tooltip-placement="bottom" tabindex="9"
+                            uib-tooltip="Back to List" type="button" ng-click="ode.ui.back()"><i
+                                class="fas fa-arrow-left"></i>
+                            BACK</button>
+                        <button class="btn btn-primary float-right" tooltip-placement="bottom" tabindex="8"
+                            uib-tooltip="Save News" type="submit"><i class="far fa-save"></i> SAVE</button>
+                </f-toolbar>
+            </div>
+        </div>
+        <div class="row main-form pt-3">
+            <div class="col-5"></div>
+            <div class="col-2 pb-2">
+                <span ng-show="!ode.isCreate"
+                ng-class="{
+                    'badge rounded-pill bg-secondary': ode.model.statusId == 1,
+                    'badge rounded-pill bg-warning text-dark': ode.model.statusId == 2,
+                    'badge rounded-pill bg-info text-dark': ode.model.statusId == 3,
+                    'badge rounded-pill bg-success': ode.model.statusId == 4,
+                    'badge rounded-pill bg-dark': ode.model.statusId == 5
+                }"
+                style="position: unset;
+                font-size: 1rem;
+                line-height: 1rem;">{{ode.model.orderNumber}} | {{ode.model.status}}</span> 
+            </div> 
+            <div class="col-5"></div> 
+            <div class="col-sm-6">
+                <fieldset>
+                    <legend><i class="fa fa-map-marker-alt me-3"></i>Alamat Pengiriman</legend>
+                    <div class="row">  
+                        <div class="form-group col-sm-4" style="position: relative;">
+                            <label for="OrderDate">Order Tanggal <small class="required">*</small></label>
+                            <input date-time-picker type="text" tabindex="1" name="OrderDate"
+                                class="form-control date-picker" ng-model="ode.model.orderDate" options="ode.opts" />
+                            <div class="invalid-feedback" ng-show="ode.validate('OrderDate', 'required')">This
+                                field is required</div>
+                        </div> 
+                        <div class="form-group col-sm-4">
+                            <label for="CustomerName">Customer Name <small class="required">*</small></label>
+                            <input type="text" tabindex="1" class="form-control" name="CustomerName"
+                                ng-model="ode.model.customerName" autofocus required>
+                            <div class="invalid-feedback" ng-show="ode.validate('CustomerName', 'required')">This
+                                field is required</div>
+                        </div> 
+                        <div class="form-group col-sm-4">
+                            <label for="PhoneNumber">Nomor Hp <small class="required">*</small></label>
+                            <input type="text" tabindex="2" class="form-control" name="PhoneNumber"
+                                ng-model="ode.model.phoneNumber" required>
+                            <div class="invalid-feedback" ng-show="ode.validate('PhoneNumber', 'required')">This
+                                field is required</div>
+                        </div>  
+                    </div> 
+                    <div class="row pt-2"> 
+                        <fieldset>
+                            <legend>
+                                <label class="switch" style="position: absolute">
+                                    <input type="checkbox" tabindex="9" ng-model="ode.model.isHaveGeoPoint">
+                                    <span class="slider round"></span>
+                                </label>
+                                <label class="pl-12">
+                                    Pilih alamat otomatis dengan map
+                                </label>
+                            </legend>
+                            <div class="row"> 
+                                <div class="form-group col-12">
+                                    <label for="notes">Copy link google maps </label>
+                                    <textarea tabindex="3" class="form-control"  id="textAreaCopy" 
+                                        ng-paste="convertLinkGoogleMaps($event)"
+                                        name="notes" ng-disabled="!ode.model.isHaveGeoPoint"> </textarea>
+                                </div> 
+                                <div class="form-group col-sm-12">
+                                    <label for="Address">Alamat Detail <small class="required">*</small></label>
+                                    <textarea type="text" tabindex="2" class="form-control" name="Address"
+                                        ng-model="ode.model.address" required></textarea>
+                                    <div class="invalid-feedback" ng-show="ode.validate('Address', 'required')">This
+                                        field is required</div>
+                                </div> 
+                                <div class="form-group col-sm-12">
+                                    <label for="AddressNote">Catatan <small class="required">*</small></label>
+                                    <textarea type="text" tabindex="2" class="form-control" name="AddressNote"
+                                        ng-model="ode.model.addressNote" required></textarea>
+                                    <div class="invalid-feedback" ng-show="ode.validate('AddressNote', 'required')">This
+                                        field is required</div>
+                                </div> 
+                            </div>
+                        </fieldset> 
+                    </div> 
+                </fieldset>
+            </div> 
+            <div class="col-sm-6">
+                <fieldset>
+                    <legend><i class="fas fa-map-marked-alt"></i> MAP</legend>
+                    <div class="row">         
+                        <button class="btn btn-primary rounded"  type="button" ng-click="ode.getCurrentLocation()" ng-disabled="!ode.model.isHaveGeoPoint">
+                            <i class="fas fa-search-location text-sm"></i>
+                            <span class="text-md font-medium text-white-500">Lokasi saya</span>
+                        </button> 
+                        <div ng-class="ode.model.isHaveGeoPoint == true ? 'map-container' : 'map-container images-blur'">
+                            <div id="mapid" style="height: 366px;">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div> 
+            <div class="col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
+                <fieldset>
+                    <legend>Detail Pesanan</legend>
+                    <div class="row">        
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">No</th>
+                                    <th class="text-left">Product</th>
+                                    <th class="text-center">Harga Satuan</th>
+                                    <th class="text-center">QTY</th>
+                                    <th class="text-center">Discount</th> 
+                                    <th class="text-center">Total Pesanan</th>  
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="x in ode.model.orderItems">
+                                    <td class="text-left" width="5%">{{ $index+1 }}</td>
+                                    <td class="flex items-center" width="100%">
+                                        <img src="{{x.productMenuSRC}}" width="60"class="cover-item rounded-full"> 
+                                        <div class="flex flex-col ml-2" style="width: 100%"> 
+                                            <ui-select ng-model="x.productMenuId" on-select="ode.changeMenu($item, $index)" ng-disabled="x.productMenuId != undefined" theme="select2" title="Choose .." name="prductMenu">
+                                                <ui-select-match placeholder="Please choose ..">
+                                                    {{$select.selected.title}}
+                                                </ui-select-match>
+                                                <ui-select-choices refresh="ode.getProductMenu($select.search)" refresh-delay="0"
+                                                    repeat="menu.productMenuId as menu in ode.listProductMenu">
+                                                    <div ng-bind-html="menu.title | highlight: $select.search"></div>
+                                                </ui-select-choices>
+                                                <ui-select-no-choice>
+                                                    <div class="text-center pb-2">No record found</div>
+                                                </ui-select-no-choice>
+                                            </ui-select>
+                                            <textarea class="form-control" ng-model="x.customerNote" style="height:10px" placeholder=""></textarea> 
+                                        </div>
+                                    </td> 
+                                    <td class="text-right" width="15%"> 
+                                        <div class="input-group group-currency">
+                                            <div class="input-group-addon">Rp</div>
+                                            <input type="text" class="form-control currency" cr-numeric ng-model="x.price" ng-change="ode.changeQty($index)"> 
+                                        </div>  
+                                    </td>
+                                    <td class="text-center" width="6%"> 
+                                        <input type="number" class="form-control" ng-model="x.qty" ng-change="ode.changeQty($index)"> 
+                                    </td>
+                                    <td class="text-right" width="15%">  
+                                        <div class="input-group group-currency">
+                                            <div class="input-group-addon">Rp</div>
+                                            <input type="text" class="form-control currency" cr-numeric ng-model="x.discount" ng-change="ode.changeQty($index)"> 
+                                        </div> 
+                                    </td>
+                                    <td class="text-right" width="15%">
+                                        <div class="input-group group-currency">
+                                            <div class="input-group-addon">Rp</div>
+                                            <input type="text" class="form-control currency" cr-numeric ng-model="x.totalPrice" disabled> 
+                                        </div>
+                                    </td> 
+                                    <td><button class="btn btn-sm btn-danger mb-3" ng-click="ode.removeOrderItems($index)" type="button"><i
+                                                class="fas fa-times"></i></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="col-md-2">
+                            <button class="btn btn-sm btn-success mb-3" ng-click="ode.addOrderItems()" type="button">Add</button>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="text-right">
+                                <span class="text-lg font-bold text-gray-800 ">Rp{{ode.model.subTotalCart | currency: '':0}}</span>
+                            </div> 
+                        </div>
+                    </div>
+                </fieldset>
+            </div> 
+            
+            <div class="col-md-12 wow fadeInUp mb-14" data-wow-delay="0.5s">
+                <fieldset>
+                    <legend>Metode Pembayaran</legend>
+                    <div class="row">
+                        <div class="col-span-12 p-1">  
+                            <div class="row">
+                                <div class="col-lg-2 radio-group" ng-class="{'gray' : ode.model.paymentMethod != 'Transfer' }"> 
+                                    <div class="row d-flex px-3 radio" ng-click="ode.choosePaymentMethod('Transfer')">
+                                        <i class="pay fas fa-university text-3xl text-blue-500 text-center"></i> 
+                                        <p class="my-auto">Transfer Bank</p>
+                                    </div> 
+                                </div>
+                                <div class="col-lg-2 radio-group" ng-class="{'gray' : ode.model.paymentMethod != 'cod1' }"> 
+                                    <div class="row d-flex px-3 radio" ng-click="ode.choosePaymentMethod('cod1')">
+                                            <i class="pay fas fa-money-bill text-3xl text-center" 
+                                            ng-class="ode.model.paymentMethod != 'cod1' ? ' text-gray-500':' text-blue-500'" ></i> 
+                                        <p class="my-auto">COD (Ambil Sendiri)</p>
+                                    </div> 
+                                </div>
+                                <div class="col-lg-2 radio-group" ng-class="{'gray' : ode.model.paymentMethod != 'cod2' }"> 
+                                    <div class="row d-flex px-3 radio" ng-click="ode.choosePaymentMethod('cod2')">
+                                            <i class="pay fas fa-money-bill-wave text-3xl text-center" 
+                                            ng-class="ode.model.paymentMethod != 'cod2' ? ' text-gray-500':' text-blue-500'" ></i> 
+                                        <p class="my-auto">COD (Kirim Ojol)</p>
+                                    </div> 
+                                </div>
+                            </div> 
+                            <div class="flex justify-between items-center mt-1 pt-1 border-t" ng-hide="ode.model.paymentMethod != 'Transfer'">
+                                <fieldset class="form-group row">
+                                    <legend class="col-form-label col-sm-2 float-sm-left pt-0">Pilih Bank</legend>
+                                    <div class="col-sm-10">
+                                        <div class="d-flex mb-2 form-check">
+                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" ng-model="ode.model.bankName" value="BSI" checked>
+                                            <img class="ml-3" style="width: 35px" src="src/images/img_bankid_bsm.png"/>
+                                            <label class="form-check-label ml-3" for="gridRadios1">
+                                                Bank Syariah Indonesia (BSI)
+                                            </label>
+                                        </div>
+                                        <div class="d-flex mb-2 form-check">    
+                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" ng-model="ode.model.bankName" value="BCASyariah">
+                                            <img class="ml-3" style="width: 35px" src="src/images/img_bankid_bsa_syariah.png"/>
+                                            <label class="form-check-label ml-3" for="gridRadios1">
+                                                BCA Syariah
+                                            </label>
+                                        </div> 
+                                    </div> 
+                                </fieldset> 
+                            </div>
+                            <div class="justify-between items-center mt-1 pt-1 border-t ta-r"> 
+                                <div class="row">
+                                    <div class="form-group col-sm-4 ta-l">  
+                                        <span class="text-sm font-medium text-gray-400 mr-1">Response Pembeli</span>
+                                        <textarea class="form-control" ng-model="ode.model.customerNote" style="height:100px" placeholder="Response"></textarea> 
+                                    </div>
+                                    <div class="form-group col-sm-4 ta-l">  
+                                        <span class="text-sm font-medium text-gray-400 mr-1">Response Penjual</span>
+                                        <textarea class="form-control" ng-model="ode.model.sellerNote" style="height:100px" placeholder="Response"></textarea> 
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="row"> 
+                                            <div class="col-sm-7">
+                                                <span class="text-sm font-medium text-gray-400 mr-1">Subtotal untuk Produk :</span>
+                                            </div> 
+                                            <div class="col-sm-5">
+                                                <span class="text-lg font-bold text-gray-800 ">Rp{{ode.model.subTotalCart | currency: '':0}}</span>
+                                            </div> 
+                                            
+                                            <div class="col-sm-7">
+                                                <span class="text-sm font-medium text-gray-400 mr-1">Total Ongkos Kirim :</span>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <div class="input-group group-currency">
+                                                    <div class="input-group-addon">Rp</div>
+                                                    <input type="text" class="form-control currency" ng-disabled="ode.model.paymentMethod == 'cod1'" cr-numeric ng-model="ode.model.ongkir" ng-change="ode.calcullateOrder()"> 
+                                                </div>  
+                                            </div> 
+                                            <div class="col-sm-7">
+                                                <span class="text-sm font-medium text-gray-400 mr-1">Total Pembayaran :</span>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <span class="text-3xl font-bold text-red-800 ">Rp{{ode.model.grandTotal | currency: '':0}}</span>
+                                            </div> 
+                                            
+                                            <div class="col-sm-7">
+                                                <span class="text-sm font-medium text-gray-400 mr-1">Status :</span>
+                                            </div>
+                                            <div class="form-group col-sm-5 ta-l"> 
+                                                <ui-select tabindex="8" ng-model="ode.model.statusId" theme="select2" title="Pilih Order Status"
+                                                    name="Status" required>
+                                                    <ui-select-match placeholder="Pilih status">{{$select.selected.name}}
+                                                    </ui-select-match>
+                                                    <ui-select-choices refresh="ode.getStatus($select.search)" refresh-delay="0"
+                                                        repeat="Status.id as Status in ode.listStatus">
+                                                        <div ng-bind-html="Status.name | highlight: $select.search"></div>
+                                                    </ui-select-choices>
+                                                </ui-select>  
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div> 
+                            </div>
+                        </div> 
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </form>
+</div>

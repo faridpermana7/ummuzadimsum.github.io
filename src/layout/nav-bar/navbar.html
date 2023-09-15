@@ -1,9 +1,9 @@
 <div ng-controller="navBarCtrl as nav">
     <div class="container-fluid fixed-top px-0 wow fadeIn" data-wow-delay="0.1s">
         <div class="top-bar row gx-0 align-items-center d-none d-lg-flex">
-            <div class="col-lg-6 px-4 text-start">
+            <div class="col-lg-6 px-3 text-start">
                 <small><i class="fa fa-map-marker-alt me-2"></i>Borneo Paradiso, Balikpapan Selatan, Kalimantan Timur</small>
-                <small class="ms-4"><i class="fa fa-envelope me-2"></i>ummuza@gmail.com</small>
+                <small class="ms-4"><i class="fa fa-envelope me-2"></i>ummuzainfo@gmail.com</small>
             </div>
             <div class="col-lg-6 px-5 text-end" style="color: hsl(0, 0%, 100%)">
                 <small>Kepoin yuk:</small>
@@ -44,6 +44,9 @@
                             <li class="nav-item">
                                 <a ui-sref="app.pages.about" class="dropdown-item"><i class="fas fa-id-card-alt"></i>Tentang</a>
                             </li>
+                            <li class="nav-item">
+                                <a ng-click="nav.tracking()" class="dropdown-item"><i class="fas fa-search"></i>Cek Order</a>
+                            </li>
                             <!-- <a href="#feature" class="dropdown-item">Kenapa pilih Ummuza?</a> -->
                             <!-- <a href="#/testimoni" class="dropdown-item">Testimonial</a> -->
                             <!-- <a href="404.html" class="dropdown-item">404 Page</a> -->
@@ -52,15 +55,16 @@
                     
                 
                     <nav id="mainnav" class="navbar navbar-expand-lg navbar-light">
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="collapse navbar-collapse" id="navbarCollapse">
                             <ul class="navbar-nav mr-auto" id="nav">
                             </ul>
                         </div>
                     </nav>
+                    <a class="nav-item nav-link d-lg-fade" ng-click="nav.logout()">Login</a>
                     <a href="cart.html" class="nav-item nav-link d-lg-fade" ng-click="nav.generateShoopingCart()" data-bs-toggle="modal" data-bs-target="#shoppingCartModal">Carts
-                            <span class="badge-cart">{{nav.cartQty}}</span>
-                            <!-- <span class="badge-cart">{{someModel}}</span>  -->
-                        </a>
+                        <span class="badge-cart">{{nav.cartQty}}</span>
+                        <!-- <span class="badge-cart">{{someModel}}</span>  -->
+                    </a>
                 </div>
                 <div class="d-none d-lg-flex ms-2">
                     <a class="btn-sm-square bg-white rounded-circle ms-3" href="">
@@ -123,34 +127,37 @@
                 <div class="max-w-md mx-auto bg-gray-100 shadow-lg rounded-lg  md:max-w-5xl">
                     <div class="md:flex ">
                         <div class="w-full">
-                            <div class="md:grid md:grid-cols-3 gap-2 ">
+                            <div class="md:grid md:grid-cols-3 gap-2">
                                 <div class="col-span-2 p-3">
                                     <!-- <h1 class="text-xl font-medium ">Shopping Cart</h1> -->
-                                    <div class="flex justify-between items-center mt-6 pt-6 border-t" ng-repeat="x in nav.shoppingCarts">
-                                        <div class="flex  items-center">
-                                            <img src="{{x.src}}" width="60" class="rounded-full ">
-                                            <div class="flex flex-col ml-3">
-                                                <span class="md:text-md font-medium" style="width: 8rem;">{{x.title}}</span>
-                                                <span class="text-xs font-light text-gray-400" style="width: 8rem;">{{x.subtitle}}</span>
+                                    <div class="container item-mobile">
+                                        <div class="flex justify-between items-center mt-6 pt-6 border-t" ng-repeat="x in nav.shoppingCarts">
+                                            <div class="flex items-center flex-mobile">
+                                                <img src="{{x.src}}" width="60" class="cover-item-client rounded-full ">
+                                                <div class="flex flex-col ml-3">
+                                                    <span class="md:text-md font-medium" style="width: 8rem;">{{x.title}}</span>
+                                                    <span class="text-xs font-light text-gray-400" style="width: 8rem;">{{x.subtitle}}</span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="flex justify-center items-center">
-                                            <div class="pr-8 flex">
-                                                <span class="text-xs font-medium">Rp{{x.discountPrice | currency: '':0}}</span>
+                                            <div class="flex justify-center items-center">
+                                                <div class="pr-8 flex">
+                                                    <span class="text-xs font-medium">Rp{{x.discountPrice | currency: '':0}}</span>
+                                                </div>
+                                                <div class="pr-6 ta-c">
+                                                    <button tabindex="1" ng-click="nav.addQtyItem('minus', x.productMenuId)"><span class="font-semibold">-</span></button>
+                                                    <input type="number" ng-disabled="true" class="focus:outline-none bg-gray-100 border h-8 w-20 rounded text-sm px-2 mx-2 ta-c" value="{{x.qty}}">
+                                                    <button tabindex="2" ng-click="nav.addQtyItem('add', x.productMenuId)"><span class="font-semibold">+</span></button>
+                                                </div>
+                                                <div class="pr-6 " style="width: 4.5rem;">
+                                                    <span class="text-xs font-medium">Rp{{x.subPrice | currency: '':0}}</span>
+                                                </div>
+                                                <div>
+                                                    <i class="fa fa-close text-xs font-medium"></i>
+                                                </div>
                                             </div>
-                                            <div class="pr-6">
-                                                <button tabindex="1" ng-click="nav.addQtyItem('minus', x.productMenuId)"><span class="font-semibold">-</span></button>
-                                                <input type="number" ng-disabled="true" class="focus:outline-none bg-gray-100 border h-6 w-8 rounded text-sm px-2 mx-2" value="{{x.qty}}">
-                                                <button tabindex="2" ng-click="nav.addQtyItem('add', x.productMenuId)"><span class="font-semibold">+</span></button>
-                                            </div>
-                                            <div class="pr-6 " style="width: 4.5rem;">
-                                                <span class="text-xs font-medium">Rp{{x.subPrice | currency: '':0}}</span>
-                                            </div>
-                                            <div>
-                                                <i class="fa fa-close text-xs font-medium"></i>
-                                            </div>
-                                        </div>
-                                    </div> 
+                                        </div> 
+
+                                    </div>
                                     <div class="flex justify-between items-center mt-6 pt-6 border-t"> 
                                         <div class="flex items-center">
                                             <button data-bs-dismiss="modal">
@@ -199,13 +206,13 @@
                                         <label class="text-xs text-gray-100 ">Nama</label>
                                         <input type="text" tabindex="4" class="focus:outline-none w-full h-6 bg-gray-800 
                                             text-white placeholder-gray-500 text-sm border-b border-gray-400 py-4" 
-                                            placeholder="Masukkan Nama" ng-model="nav.model.name">
+                                            placeholder="Masukkan Nama" ng-model="nav.model.customerName">
                                     </div>
                                     <div class="flex justify-center flex-col pt-3">
                                         <label class="text-xs text-gray-100 ">Nomor Handphone (WA)</label>
                                         <input type="text" tabindex="5" class="focus:outline-none w-full h-6 bg-gray-800 
                                             text-white placeholder-gray-500 text-sm border-b border-gray-400 py-4" 
-                                            placeholder="Masukkan nomor (cth. 0812 0000 000)" ng-model="nav.model.noHp">
+                                            placeholder="Masukkan nomor (cth. 0812 0000 000)" ng-model="nav.model.phoneNumber">
                                     </div>
                                     <!-- <div class="grid grid-cols-3 gap-2 pt-2 mb-3">
                                         <div class="col-span-2 ">

@@ -29,6 +29,7 @@
                 getLatesNews();
             });  
         }; 
+
         
         function getLatesNews(){ 
             http.post('/productnews/get', { 
@@ -57,7 +58,13 @@
             pendingRequest.cancelAll();
         }); 
         
+        main.datetimeFormat = function(data, type, full, meta) {
+            return data ? farst.l.toLocaleDateStr(farst.l.toDatetimeLocal(data).toString(), farst.l.DATETIME_FORMAT) : '-';
+        };
+        
         main.init = function ($scope) {  
+                
+            
             getUnggulData(); 
         }($scope);
          

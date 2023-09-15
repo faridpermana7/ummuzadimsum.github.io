@@ -16,7 +16,8 @@
 			console.log(data);
 			farst.Alert.confirm('Delete Menu',
 				'Are you sure you want to delete this?',
-				function () {
+				function (res) { 
+					if(res.isConfirmed){ 
 					http.delete('/menus/delete', [data.Id]).then(function (res) {
 						if (res.data.statusCode == 200) {
 							farst.Alert.success('Menu deleted!');
@@ -25,9 +26,8 @@
 							farst.Alert.error(res.message || res.data.message);
 						}
 					});
-				},
-				null
-			);
+				} 
+			});
 			return this;
 		}
 

@@ -1,23 +1,14 @@
 (function () {
 	'use strict';
-
-	/**
-	 * @ngdoc function
-	 * @name app.service:dausrboardService
-	 * @description
-	 * # dausrboardService
-	 * Service of the app
-	 */
-
+ 
 	angular
-	angular.module('farst')
+	angular.module('ummuza')
 		.factory('ForgotService', Forgot);
 
-	Forgot.$inject = ['HttpService', 'FarstService'];
+	Forgot.$inject = ['HttpService', 'farst'];
 
-	function Forgot(HttpService, fsvc) {
-		var fgt = this;
-		var http = HttpService;
+	function Forgot(http, farst) {
+		var fgt = this; 
 
 		fgt.sendEmail = function (data, onSuccess) { 
 			http.post('/emails/send', {
@@ -26,15 +17,15 @@
 
 				if (res.success || res.status == 200) {
 					if (res.data.statusCode == 200) {
-						// fsvc.Alert.success(res.data.message);
+						// farst.Alert.success(res.data.message);
 						onSuccess("true"); 
 					} else {
-						fsvc.Alert.error(res.data.message); 
+						farst.Alert.error(res.data.message); 
 						onSuccess("false"); 
 					}
 				}
 				else {
-					fsvc.Alert.error(res.data.message); 
+					farst.Alert.error(res.data.message); 
 					onSuccess("false"); 
 				}
 			});
