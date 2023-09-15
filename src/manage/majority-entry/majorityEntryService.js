@@ -52,20 +52,21 @@
 		mjs.deleteProduct = function (data, dt) {
 			farst.Alert.confirm('Delete Product Majority',
 				'Are you sure you want to delete this?',
-				function () {
-					http.delete('/maintainmajorities/' + data.Id, {})
-						.then(function (res) {
-							
-							if (res.status == 200) {
-								farst.Alert.success('Product Majorities deleted!');
-								dt.draw();
-							} else {
-								farst.Alert.error(res.message || res.data.message);
-							}
-						});
-				},
-				null
-			);
+				function (res) { 
+					if(res.isConfirmed){
+						farst.loadingIn();
+						http.delete('/maintainmajorities/' + data.Id, {})
+							.then(function (res) {
+								
+								if (res.status == 200) {
+									farst.Alert.success('Product Majorities deleted!');
+									dt.draw();
+								} else {
+									farst.Alert.error(res.message || res.data.message);
+								}
+							});
+					} 
+				});
 			return this;
 		}
 

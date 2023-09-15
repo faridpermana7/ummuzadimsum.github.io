@@ -4,9 +4,9 @@
     .controller('newsCtrl', newsCtrl);
 
     newsCtrl.$inject = ['$scope', 'farst', '$window', '$timeout', 'datatableService',
-        'pendingRequest', 'ConfigService', 'HttpService'];
+        'pendingRequest', 'newsEntryService', 'HttpService', '$state'];
     function newsCtrl($scope, farst, $window, $timeout, datatableService,
-        pendingRequest, cs, http){
+        pendingRequest, service, http, $state){
         var nw = this;
 
         nw.ui = {};
@@ -87,19 +87,19 @@
         // });
 
         nw.ui.add = function () {
-            $state.go('app.manage.news-entry', {
+            $state.go('app.management.news-entry', {
                 'id': 'new'
             });
         };
 
         nw.ui.edit = function (data) {
-            $state.go('app.manage.news-entry', {
+            $state.go('app.management.news-entry', {
                 'id': data
             });
         };
 
         nw.ui.delete = function (data) {
-            service.deleteUser({
+            service.deleteNews({
                 'Id': data
             }, nw.datatable);
         };
@@ -141,7 +141,7 @@
             // };
             nw.dtService = datatableService.getService();
             nw.dtOptions = nw.dtService.initTable($scope, '/maintainnews/get', {
-                route: 'app.manage.news-entry',
+                route: 'app.management.news-entry',
                 fixedColumn: [3, 1]
             }, 'productNewsId', false, null, null, {
                 onStateSaveParam: function (data) {

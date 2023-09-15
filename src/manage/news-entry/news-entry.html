@@ -1,0 +1,94 @@
+<!-- Page Header Start -->
+<div class="container-fluid page-header wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+        <!-- <h1 class="display-3 mb-3 animated slideInDown">Menu Grid</h1> --> 
+        <div ncy-breadcrumb></div>
+    </div>
+</div>
+<div class="container-fluid">
+    <form name="news" ng-submit="news.$valid && ne.ui.save()" autocomplete="off" novalidate>
+        <div class="row main-header">
+            <div class="col-md-12 p-0">
+                <f-toolbar>
+                    <f-appbar title="News"></f-appbar>
+                        <button class="btn btn-default" tooltip-placement="bottom" tabindex="9"
+                            uib-tooltip="Back to List" type="button" ng-click="ne.ui.back()"><i
+                                class="fas fa-arrow-left"></i>
+                            BACK</button>
+                        <button class="btn btn-primary float-right" tooltip-placement="bottom" tabindex="8"
+                            uib-tooltip="Save News" type="submit"><i class="far fa-save"></i> SAVE</button>
+                </f-toolbar>
+            </div>
+        </div>
+        <div class="row main-form pt-3">
+            <div class="col-sm-6">
+                <fieldset>
+                    <legend>Base Info</legend>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="Type">Type <small class="required">*</small></label>
+                            <input type="text" tabindex="1" class="form-control" name="Type"
+                                ng-model="ne.model.type" autofocus required>
+                            <div class="invalid-feedback" ng-show="ne.validate('Type', 'required')">This
+                                field is required</div>
+                        </div> 
+                        <div class="form-group col-sm-6">
+                            <label for="User">User <small class="required">*</small></label>
+                            <input type="text" tabindex="2" class="form-control" name="User"
+                                ng-model="ne.model.user" required>
+                            <div class="invalid-feedback" ng-show="ne.validate('User', 'required')">This
+                                field is required</div>
+                        </div>    
+                        <div class="form-group col-sm-12">
+                            <label for="Title">Title <small class="required">*</small></label>
+                            <input type="text" tabindex="3" class="form-control" name="Title"
+                                ng-model="ne.model.title" autofocus required>
+                            <div class="invalid-feedback" ng-show="ne.validate('Title', 'required')">This
+                                field is required</div>
+                        </div> 
+                        <div class="form-group col-sm-12">
+                            <label for="Subtitle">Subtitle (Description)<small class="required">*</small></label>
+                            <textarea tabindex="4" name="Detail" class="form-control" 
+                                ng-model="ne.model.subtitle"required></textarea>
+                                <div class="invalid-feedback" ng-show="ne.validate('Subtitle', 'required')">This
+                                    field is required</div>
+                        </div>  
+                        <div class="form-group col-sm-6">
+                            <label>Post Date <small class="required">*</small></label>
+                            <input date-time-picker type="text" tabindex="5" name="PostDate"
+                                class="form-control date-picker" ng-model="ne.model.postDate" options="ne.opts" />
+                            <div class="invalid-feedback" ng-show="usre.validate('PostDate', 'required')">This
+                                field is required</div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div> 
+            <div class="col-sm-6">
+                <fieldset>
+                    <legend>Image</legend>
+                    <div class="row"> 
+                        <div class="form-group col-sm-10">
+                            <label for="SRC">SRC <small class="required">*</small></label>
+                            <input type="text" tabindex="6" class="form-control" name="SRC"
+                                ng-model="ne.model.src" required>
+                            <div class="invalid-feedback" ng-show="ne.validate('SRC', 'required')">This
+                                field is required</div>
+                        </div> 
+                        
+                        <div class="form-group col-sm-2">
+                                <label for="Delay">Delay <small class="required">*</small></label>
+                                <input type="text" tabindex="7" class="form-control" name="Delay"
+                                    ng-model="ne.model.delay" required>
+                                <div class="invalid-feedback" ng-show="ne.validate('Delay', 'required')">This
+                                    field is required</div>
+                            </div> 
+                        
+                        <div class="form-group col-sm-12">
+                            <img class="flex-shrink-0 p-2 maintain-img" src="{{ne.model.src}}" alt="">
+                        </div> 
+                    </div>
+                </fieldset>
+            </div> 
+        </div>
+    </form>
+</div>

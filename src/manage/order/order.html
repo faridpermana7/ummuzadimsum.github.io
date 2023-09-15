@@ -1,0 +1,86 @@
+<!-- Page Header Start -->
+<div class="container-fluid page-header wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+        <!-- <h1 class="display-3 mb-3 animated slideInDown">Menu Grid</h1> --> 
+        <div ncy-breadcrumb></div>
+    </div>
+</div>
+<!-- Page Header End --> 
+<div class="container-fluid">
+	<div class="row main-header">
+		<div class="col-md-12 p-0">
+			<div class="toolbar mt-2">
+				<div class="row">
+					<div class="col-md-12 p-0"> 
+						<f-filter> 
+							<button class="btn btn-default" tabindex="1" tooltip-placement="bottom" uib-tooltip="New User" ng-click="od.ui.add()"><i
+									class="fas fa-plus"></i> ADD</button> 
+							<div class="search" ><i class="fas fa-search"></i> <input type="text" placeholder="Search .." ng-model="od.Keyword"
+									ng-model-options="{ debounce: 300 }" ng-change="od.ui.search()" />
+							</div>
+							<div class="col-md-12 overlayed-search" ng-class="{'show-overlay': toogleOverlay}">
+								<div uib-collapse="od.isCollapsed">  
+									<div id="AdvanceSearch"> 
+										<fieldset class="pb-0">
+											<div class="row"> 
+												<div class="form-group col-sm-2">
+													<label for="OrderNumber">Order Number</label>
+													<input type="text" tabindex="1" class="form-control" name="OrderNumber"
+														ng-model="od.orderNumber" autofocus>
+												</div> 
+												<div class="form-group col-sm-2">
+													<label for="Customer">Customer Name</label>
+													<input type="text" tabindex="2" class="form-control" name="Customer"
+														ng-model="od.customerName" autofocus>
+												</div>  
+												<div class="form-group col-sm-2">
+													<label for="PaymentMethod">Payment Method</label>
+													<select ng-model="od.category" tabindex="3" ng-options="item.value as item.label for item in od.paymentMethodParam">
+													</select>
+												</div> 
+												<div class="pt-1 pb-1" style="display: inline-flex;"> 
+													<label for="button"></label>
+													<button class="btn btn-white" tabindex="4" type="button" ng-click="od.ui.clear()">Clear</button>
+													<button class="btn btn-primary" tabindex="5" type="button" ng-click="od.ui.filter()">Filter</button>
+												</div>
+											</div>
+										</fieldset>
+									</div> 
+								</div>
+							</div>
+							<div class="showAdvanceSearch">
+								<a href="javascript:void(0)" ng-click="od.isCollapsed = !od.isCollapsed">
+									<i ng-class="{'fa fa-angle-double-up': !od.isCollapsed, 'fa fa-angle-double-down': od.isCollapsed}"></i>
+									Show Advance Search
+								</a>  
+							</div> 
+						</f-filter> 
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="row main-body">
+		<div class="col-md-12 p-0 fixed-table">
+			<table id="news" datatable="" dt-options="od.dtOptions" dt-columns="od.dtColumns" dt-instance="od.dtCallback"
+			 class="row-border hover">
+				<thead>
+					<tr>
+						<th>No</th> 
+						<th>Order Number</th>
+						<th>Order Date</th>
+						<th>Customer</th>  
+						<th>Final Price</th>
+						<th>Metode Pembayaran</th> 
+						<th>Status</th>  
+						<th>Updated By</th>
+						<th>Updated Date</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+	</div>
+</div>

@@ -6,7 +6,7 @@
     
     navBarCtrl.$inject = ['$scope', '$state', 'farst', 'HttpService', '$rootScope', 
         '$window', '$timeout', '$cookies', 'navService']; 
-    function navBarCtrl($scope, state, farst, http, $rootScope, $window, $timeout, 
+    function navBarCtrl($scope, $state, farst, http, $rootScope, $window, $timeout, 
         $cookies, navService){
         var nav = this; 
         nav.cartQty = 0;
@@ -20,10 +20,7 @@
 
         nav.addChart = []; 
         nav.shoppingCarts = [];
-        nav.listMenu = [];
-        nav.listMixMenu = [];
-        nav.listHampresMenu = [];
-        nav.listFrozenMenu = [];
+        nav.allMenu = []; 
 
         nav.model = {}; 
         nav.opts = farst.singleDateFormat(farst.l.DATEFORMAT); 
@@ -43,10 +40,7 @@
             $scope.$apply(() => { 
                 nav.cartQty = msg.cartQty;
                 nav.addChart = msg.addChart;
-                nav.listMenu = msg.listMenu;
-                nav.listMixMenu = msg.listMixMenu;
-                nav.listHampresMenu = msg.listHampresMenu;
-                nav.listFrozenMenu = msg.listFrozenMenu;
+                nav.allMenu = msg.allMenu; 
                 
             });
             //event handling logic;});
@@ -59,10 +53,7 @@
 
                 var menu = {};
                 var id = nav.addChart[index].productMenuId;
-                var listMenu = nav.listMenu.concat(nav.listMixMenu, 
-                    nav.listHampresMenu, 
-                    nav.listFrozenMenu
-                ); 
+                var listMenu = nav.allMenu;
                 
                 var objMenu = _.find(listMenu, function(menu){ return menu.productMenuId == id; }); 
                 var objExisting = _.find(nav.shoppingCarts, function(cart){ return cart.productMenuId == id; }); 
@@ -133,17 +124,17 @@
             if(nav.model.orderDate == undefined){
                 return 'Tolong masukkan tanggal pemesanan';
             }
-            else if(nav.model.name == undefined){
+            else if(nav.model.customerName == undefined){
                 return 'Tolong masukkan nama anda'; 
             }
-            else if(nav.model.noHp == undefined){
+            else if(nav.model.phoneNumber == undefined){
                 return 'Tolong masukkan nomor anda (yang terhubung dengan WA)'; 
             }
             else if(nav.shoppingCarts.length == 0){
                 return 'Anda belum ada masukkan pesanan dimsum, silahkan tambah terlebih dahulu.'; 
             }
             else{
-                if(farst.validasiNomorSeluler(nav.model.noHp) == false){
+                if(farst.validasiNomorSeluler(nav.model.phoneNumber) == false){
                     return 'Format nomor yang anda masukkan salah. Pastikan nomor anda aktif dan terdaftar provider di Indonesia.'; 
                 }
                 else
@@ -194,6 +185,11 @@
             }
         }
 
+        nav.tracking = function(){
+            $state.go('app.pages.tracking', {
+                'ordernumber': ""
+            });
+        }
         nav.changeMenu = function(id){
             nav.bar = id;
         };
@@ -204,7 +200,7 @@
 		};
 
 		function logoutProccess() {
-			state.go('login');
+			$state.go('login');
 
 			$cookies.remove('token');
 			$cookies.remove('User');

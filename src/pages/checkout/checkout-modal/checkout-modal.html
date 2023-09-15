@@ -1,0 +1,25 @@
+<form name="checkout" ng-submit="checkout.$valid && ckm.ui.save()" autocomplete="off" novalidate>
+    <div class="modal-header">
+        <h5 class="modal-title">{{ckm.titleForm}}</h5>
+    </div>
+
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12 ta-c">
+                <h5>ORDER NUMBER : {{ckm.orderNumber}}</h5> 
+            </div> 
+            <div class="col-sm-12">
+                <div id="qrcode_container1" class="qrcode"></div> 
+            </div>
+            <div class="col-sm-12 ta-c">
+                <a class="text-lg font-bold text-gray-800 ta-c" style="cursor: grab;" ng-click="ckm.redirect()"><u>KLIK LINK</u></a>
+            </div>
+            <div class="col-sm-12">
+                <span class="text-sm font-medium text-gray-400 mr-1"><i>*Simpan nomor order anda, karena nomor ini bisa anda gunakan untuk tracking pesanan.</i></span>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-default" type="button" ng-click="ckm.closeModal()">Tutup</button>
+    </div>
+</form>

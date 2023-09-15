@@ -1,20 +1,12 @@
 'use strict';
-
-/**
- * @ngdoc function
- * @name app.route:dashboardRoute
- * @description
- * # dashboardRoute
- * Route of the app
- */
-
-angular.module('farst')
+ 
+angular.module('ummuza')
     .config(['$stateProvider', function ($stateProvider) {
 
         $stateProvider
             .state('forgot', {
                 url: '/forgot',
-                templateUrl: 'app/modules/login/forgot-password/forgotPassword.html',
+                templateUrl: 'src/login/forgot-password/forgotPassword.html',
                 controller: 'ForgotPasswordCtrl',
                 controllerAs: 'fgt'
             });

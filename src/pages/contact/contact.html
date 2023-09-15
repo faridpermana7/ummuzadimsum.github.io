@@ -19,7 +19,7 @@
                         <h5 class="text-white">Telepon/WA</h5>
                         <p class="mb-5"><i class="fa fa-phone-alt me-3"></i>+62 815-4902-7460</p>
                         <h5 class="text-white">Email Kami</h5>
-                        <p class="mb-5"><i class="fa fa-envelope me-3"></i>ummuza@example.com</p>
+                        <p class="mb-5"><i class="fa fa-envelope me-3"></i>ummuzainfo@gmail.com</p>
                         <h5 class="text-white">Alamat</h5>
                         <p class="mb-5"><i class="fa fa-map-marker-alt me-3"></i>Borneo Paradiso, Cluster Rooswood, Blok H17, Balikpapan Selatan, Kalimantan Timur</p>
                         <h5 class="text-white">Ikuti Ummuza</h5>
@@ -32,35 +32,43 @@
                     </div>
                 </div>
                 <div class="col-lg-7 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
-                    <p class="mb-4">Untuk saat ini, fitur sedang dikembangkan. Mohon ditunggu ya, terima kasih</a>.</p>
-                    <form>
+                    <p class="mb-4">Silahkan dikirm ya sahabat.</a>.</p>
+                    <form name="contact" ng-submit="contact.$valid && ct.ui.save()" autocomplete="off" novalidate>
                         <div class="row g-3">
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="name" placeholder="Name">
+                            <div class="col-md-6"> 
+                                <div class="form-group form-floating"> 
+                                    <input type="text" tabindex="1" class="form-control" name="name"
+                                        ng-model="ct.model.name" placeholder="Name" autofocus required>
                                     <label for="name">Nama</label>
-                                </div>
+                                    <div class="invalid-feedback" ng-show="ct.validate('name', 'required')">This
+                                        field is required</div>
+                                </div>  
                             </div>
                             <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="email" class="form-control" id="email" placeholder="Email">
+                                <div class="form-group form-floating"> 
+                                    <input ng-model="ct.model.email" tabindex="2" type="email" class="form-control" id="email" placeholder="Email">
                                     <label for="email">Email</label>
+                                    <div class="invalid-feedback" ng-show="ct.validate('email', 'email')">You must type in an email</div>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="subject" placeholder="Judul">
+                                <div class="form-group form-floating"> 
+                                    <input ng-model="ct.model.title" tabindex="3" type="text" name="subject" class="form-control" placeholder="Judul" required>
                                     <label for="subject">Judul</label>
+                                    <div class="invalid-feedback" ng-show="ct.validate('subject', 'required')">This
+                                        field is required</div>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 200px"></textarea>
+                                <div class="form-group form-floating"> 
+                                    <textarea ng-model="ct.model.isi" tabindex="4" class="form-control" placeholder="Leave a message here" name="message" style="height: 200px" required></textarea>
                                     <label for="message">Isi</label>
+                                    <div class="invalid-feedback" ng-show="ct.validate('message', 'required')">This
+                                        field is required</div>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary rounded-pill py-3 px-5" type="submit">Kirim</button>
+                                <button class="btn btn-primary rounded-pill py-3 px-5" tabindex="5" type="submit">Kirim</button>
                             </div>
                         </div>
                     </form>

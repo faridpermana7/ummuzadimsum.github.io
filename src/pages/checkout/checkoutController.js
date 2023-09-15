@@ -19,8 +19,8 @@
         
         var finalValue = ck.param.replace(/\s/g, "+");
         var decryptedBytes = CryptoJS.AES.decrypt(finalValue, 'kNISDIqad91210201013lz821b');
-        var plaintext = decryptedBytes.toString(CryptoJS.enc.Utf8);
-        ck.model = farst.getLocalStorage(plaintext);  
+        var key = decryptedBytes.toString(CryptoJS.enc.Utf8);
+        ck.model = farst.getLocalStorage(key);   
         ck.model.isHaveGeoPoint = true; 
 
         // MAP SETTING
@@ -30,8 +30,8 @@
                     mymap.removeLayer(marker);
                 }
 
-                ck.model.latitude = formatGCS(lat);
-                ck.model.longitude = formatGCS(long);
+                ck.model.lat = formatGCS(lat);
+                ck.model.long = formatGCS(long);
 
                 mymap.panTo(new L.LatLng(lat, long));
 
@@ -39,18 +39,55 @@
                     mymap.flyTo(new L.LatLng(lat, long), zoom);
                 }
 
-                marker = new L.marker([ck.model.latitude, ck.model.longitude], { draggable: true });
+                marker = new L.marker([ck.model.lat, ck.model.long], { draggable: true });
                 marker.on('dragend', function (event) {
                     var latlng = event.target.getLatLng();
                     $timeout(function () {
-                        ck.model.latitude = latlng.lat;
-                        ck.model.longitude = latlng.lng;
+                        ck.model.lat = latlng.lat;
+                        ck.model.long = latlng.lng;
                     }, 0);
                 });
 
                 marker.addTo(mymap);
                 mymap.addLayer(marker); 
-                getFullAddress(ck.model.latitude, ck.model.longitude);
+                getFullAddress(ck.model.lat, ck.model.long);
+
+                if (place) {
+                    marker.bindPopup("<b>Lokasi</b>. <br/>" + place).openPopup();
+                }
+                else {
+                    marker.bindPopup("<b>Lokasi</b>. <br/>").openPopup();
+                }
+            }
+        };
+        // MAP SETTING
+        ck.setMarker = function (lat, long, zoom, place) {
+            if (ck.model.isHaveGeoPoint) {
+                if (marker) {
+                    mymap.removeLayer(marker);
+                }
+
+                ck.model.lat = formatGCS(lat);
+                ck.model.long = formatGCS(long);
+
+                mymap.panTo(new L.LatLng(lat, long));
+
+                if (zoom) {
+                    mymap.flyTo(new L.LatLng(lat, long), zoom);
+                }
+
+                marker = new L.marker([ck.model.lat, ck.model.long], { draggable: true });
+                marker.on('dragend', function (event) {
+                    var latlng = event.target.getLatLng();
+                    $timeout(function () {
+                        ck.model.lat = latlng.lat;
+                        ck.model.long = latlng.lng;
+                    }, 0);
+                });
+
+                marker.addTo(mymap);
+                mymap.addLayer(marker); 
+                getFullAddress(ck.model.lat, ck.model.long);
 
                 if (place) {
                     marker.bindPopup("<b>Lokasi</b>. <br/>" + place).openPopup();
@@ -65,8 +102,8 @@
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position){ 
                     
-                    ck.model.latitude = position.coords.latitude;
-                    ck.model.longitude = position.coords.longitude;
+                    ck.model.lat = position.coords.latitude;
+                    ck.model.long = position.coords.longitude;
                     
                     ck.setMarker(position.coords.latitude, position.coords.longitude, 17, 'lokasi saya');
                 }, function(error){
@@ -183,8 +220,8 @@
                 marker.bindPopup("<b>Alamat saya disini</b>.").openPopup();
                 if (ck.model.isHaveGeoPoint) {
                     $timeout(function () {
-                        ck.model.latitude = lat;
-                        ck.model.longitude = long;
+                        ck.model.lat = lat;
+                        ck.model.long = long;
                         getFullAddress(lat, long);
                     }, 0);
                 } 
@@ -195,8 +232,8 @@
         function onDragEnd(event) {
             var latlng = event.target.getLatLng();
             $timeout(function () {
-                ck.model.latitude = formatGCS(latlng.lat);
-                ck.model.longitude = formatGCS(latlng.lng);
+                ck.model.lat = formatGCS(latlng.lat);
+                ck.model.long = formatGCS(latlng.lng);
             }, 0);
         }
 
@@ -237,7 +274,8 @@
         // MAP SETTING END
 
         // PAYMENT DETAIL
-        ck.model.paymentMethod = 'transfer';
+        ck.model.paymentMethod = 'Transfer';
+        ck.model.bankName = 'BSI';
         ck.model.ongkir = 0;
         ck.model.grandTotal = ck.model.subTotalCart + ck.model.ongkir;
         // $('.radio-group .radio').click(function(){
@@ -246,10 +284,86 @@
         // });
 
         ck.choosePaymentMethod = function(value){
+            ck.model.bankName = null;
             ck.model.paymentMethod = value;
             ck.model.grandTotal = ck.model.subTotalCart + ck.model.ongkir;
+
+            if(value == 'Transfer'){
+                ck.model.bankName = 'BSI';
+            }
             // farst.Alert.warning(value);
         }
+
+        function remappingItems(){ 
+            ck.model.orderItems = [];
+
+            ck.model.shoppingCarts.forEach(element => {
+                var obj = {}; 
+                obj.productMenuId = element.productMenuId;
+                obj.productName = element.title;
+                obj.subtitle = element.subtitle;
+                obj.price = element.discountPrice;
+                obj.qty = element.qty;
+                obj.totalPrice = element.subPrice;
+                obj.discount = 0;
+                obj.src = element.src;
+                ck.model.orderItems.push(obj);
+            });
+            ck.model.statusId = 1;
+        }
+
+        ck.orderNow = function(){
+            if(ck.model.address == undefined){
+                farst.Alert.warning("Masukkan alamat anda");
+            }
+            else if(ck.model.addressNote == undefined){
+                farst.Alert.warning("Tolong beri catatan pada alamat, lebih memudahkan dalam pencarian");
+            }
+            else if(ck.model.shoppingCarts.length == 0){
+                farst.Alert.warning("Anda belum memesan 1 produk dari ummuza");
+            }
+            else if(ck.model.isHaveGeoPoint == true && (ck.model.lat == undefined || ck.model.lat == false)){
+                farst.Alert.warning("Anda memilih alamat otomatis, pilih alamat dimap dengan cara Lokasi Saya atau klik menggunakan marker");
+            }else{
+                    
+                // var qrcode = new QRCode(document.getElementById("qrcode_container"), {
+                //     width : 100,
+                //     height : 100
+                // }); 
+                // qrcode.makeCode("faridpermana");
+                
+                // ck.showCheckoutModal("ORD-0101230i123-9120");
+                farst.loadingIn();
+                http.post('/clientorders/save', ck.model).then(function (res) {
+                    console.log(res);
+                    farst.loadingOut();
+                    if (res.data.statusCode == 200) {
+                        farst.Alert.success("Terima kasih sudah order. Nomor Ordermu:"+res.data.data); 
+                        ck.showCheckoutModal(res.data.data);
+                    } else {
+                        farst.Alert.error(res.data.message); 
+                    }
+                });
+            }
+
+        };
+        
+
+        ck.onModalCheckoutCloseCallback = function (data) { 
+            if (data) {
+                // ck.dtService.param.data.status = 100; 
+            }
+        };
+
+        ck.showCheckoutModal = function (orderNumber) {
+            // console.log(ck.modalMenuCallback.modalInstance);
+            
+            farst.removeLocalStorage(key);
+            ck.modalCheckoutCallback.modalInstance({
+                orderNumber: orderNumber || ''
+            });
+        };
+
 
         ck.printDiv = function() 
         {  
@@ -280,14 +394,15 @@
                 a.download = ck.model.name +'_'+ck.model.orderDate+'_invoice.jpg';
                 a.click();
             });
-        }
-        
-        
-        ck.init = function ($scope) { 
-                
+        } 
+        ck.init = function ($scope) {  
             // $timeout(function () {
             // }, 0); 
+            // ck.model.address = 'test';
+            // ck.model.addressNote = 'test';
+            // ck.model.isHaveGeoPoint = false; 
             ck.setmap(); 
+            remappingItems();
         }($scope);
          
         return ck;

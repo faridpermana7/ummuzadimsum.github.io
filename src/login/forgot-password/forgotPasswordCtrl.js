@@ -1,21 +1,13 @@
 (function () {
     'use strict';
-
-    /**
-     * @ngdoc function
-     * @name app.controller:orderCtrl
-     * @description
-     * # dashboardCtrl
-     * Controller of the app
-     */
-
+ 
     angular
-        .module('farst')
+        .module('ummuza')
         .controller('ForgotPasswordCtrl', ForgotPassword);
 
-    ForgotPassword.$inject = ['$scope', '$stateParams', '$state', 'FarstService', 'HttpAuthInterceptorService', '$http', '$q', 'ConfigService', '$httpParamSerializer', '$window', 'PendingRequest', 'ForgotService'];
+    ForgotPassword.$inject = ['$scope', '$stateParams', '$state', 'farst', 'HttpAuthInterceptorService', '$http', '$q', 'ConfigService', '$httpParamSerializer', '$window', 'pendingRequest', 'ForgotService'];
 
-    function ForgotPassword($scope, sParam, $state, wz, authService, $http, $q, cs, $httpParamSerializer, $window, PendingRequest, service) {
+    function ForgotPassword($scope, sParam, $state, farst, authService, $http, $q, cs, $httpParamSerializer, $window, pendingRequest, service) {
         var fgt = this;  
         fgt.isSuccess = false;
 
@@ -42,7 +34,7 @@
         }
 
         $scope.$on('$destroy', function () { 
-            //PendingRequest.cancelAll();
+            //pendingRequest.cancelAll();
         });
 
         fgt.init = function (asvc) {

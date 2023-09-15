@@ -174,7 +174,8 @@ function generateIndexHTML() {
     .pipe(replace('app.config.js', 'app.config.min.js'))
     .pipe(replace('farstFactory.js', 'farstFactory.min.js'))
     .pipe(replace('httpService.js', 'httpService.min.js'))
-    .pipe(replace('navbarService.js', 'navBarService.min.js'))
+    // .pipe(replace('navbarService.js', 'navBarService.min.js'))
+    .pipe(replace('src/layout/nav-bar/navbarService.js', 'lib/navbarService.js'))
     .pipe(replace('datatableService.js', 'datatableService.min.js'))
     .pipe(replace('validationService.js', 'validationService.min.js'))
     
@@ -216,6 +217,9 @@ function generateIndexHTML() {
     .pipe(replace('checkoutRoute.js', 'checkoutRoute.min.js'))
     .pipe(replace('productController.js', 'productController.min.js'))
     .pipe(replace('productRoute.js', 'productRoute.min.js'))
+    .pipe(replace('productEntryRoute.js', 'productEntryRoute.min.js'))
+    .pipe(replace('productEntryController.js', 'productEntryController.min.js'))
+    .pipe(replace('productEntryService.js', 'productEntryService.min.js'))
     .pipe(replace('newsController.js', 'newsController.min.js'))
     .pipe(replace('newsRoute.js', 'newsRoute.min.js'))
     .pipe(replace('majorityController.js', 'majorityController.min.js'))
@@ -301,6 +305,7 @@ function copyNodeJsFile() {
     'node_modules/datatables.net-select/js/dataTables.select.js',
     'node_modules/datatables.net-fixedcolumns/js/dataTables.fixedColumns.js', 
     'node_modules/datatables.net-rowgroup/js/dataTables.rowGroup.js',
+    'src/layout/nav-bar/navbarService.js',
   ])
     .pipe(gulp.dest('dist/lib/'));
 }
