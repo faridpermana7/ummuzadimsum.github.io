@@ -2,10 +2,8 @@
 	'use strict'; 
 	angular
 		.module('ummuza')
-		.service('navService', navService);
-
-        navService.$inject = ['$http', '$window', '$compile'];
-
+		.service('navService', navService); 
+        navService.$inject = ['$http', '$window', '$compile']; 
 	function navService($http, $window, $compile) {
         var nav = {}; 
         var tpl = '';

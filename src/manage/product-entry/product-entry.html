@@ -1,0 +1,125 @@
+<!-- Page Header Start -->
+<div class="container-fluid page-header wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+        <!-- <h1 class="display-3 mb-3 animated slideInDown">Menu Grid</h1> --> 
+        <div ncy-breadcrumb></div>
+    </div>
+</div>
+<div class="container-fluid">
+    <form name="product" ng-submit="product.$valid && pre.ui.save()" autocomplete="off" novalidate>
+        <div class="row main-header">
+            <div class="col-md-12 p-0">
+                <f-toolbar>
+                    <f-appbar title="Product"></f-appbar>
+                        <button class="btn btn-default" tooltip-placement="bottom" tabindex="13"
+                            uib-tooltip="Back to List" type="button" ng-click="pre.ui.back()"><i
+                                class="fas fa-arrow-left"></i>
+                            BACK</button>
+                        <button class="btn btn-primary float-right" tooltip-placement="bottom" tabindex="12"
+                            uib-tooltip="Save Product" type="submit"><i class="far fa-save"></i> SAVE</button>
+                </f-toolbar>
+            </div>
+        </div>
+        <div class="row main-form pt-3">
+            <div class="col-sm-6">
+                <fieldset>
+                    <legend>Base Info</legend>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="Category">Category <small class="required">*</small></label>
+                            <input type="text" tabindex="1" class="form-control" name="Category"
+                                ng-model="pre.model.category" autofocus required>
+                            <div class="invalid-feedback" ng-show="pre.validate('Category', 'required')">This
+                                field is required</div>
+                        </div> 
+                        <div class="form-group col-sm-6">
+                            <label for="Title">Title <small class="required">*</small></label>
+                            <input type="text" tabindex="2" class="form-control" name="Title"
+                                ng-model="pre.model.title" required>
+                            <div class="invalid-feedback" ng-show="pre.validate('Title', 'required')">This
+                                field is required</div>
+                        </div>    
+                        <div class="form-group col-sm-12">
+                            <label for="Subtitle">Subtitle <small class="required">*</small></label>
+                            <textarea tabindex="3" name="Subtitle" class="form-control" 
+                                ng-model="pre.model.subtitle"required></textarea>
+                                <div class="invalid-feedback" ng-show="pre.validate('Subtitle', 'required')">This
+                                    field is required</div>
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="DiscountPrice">Final Discount Price </label>
+                            <input type="text" tabindex="4" class="form-control" name="DiscountPrice"
+                                ng-model="pre.model.discountPrice" required>
+                            <div class="invalid-feedback" ng-show="pre.validate('DiscountPrice', 'required')">This
+                                field is required</div>
+                        </div> 
+                        <div class="form-group col-sm-4">
+                            <label for="OriginPrice">Origin Price </label>
+                            <input type="text" tabindex="5" class="form-control" name="OriginPrice"
+                                ng-model="pre.model.originPrice" required>
+                            <div class="invalid-feedback" ng-show="pre.validate('OriginPrice', 'required')">This
+                                field is required</div>
+                        </div> 
+                        <div class="form-group col-sm-4">
+                            <label for="Stok">Stok </label>
+                            <input type="text" tabindex="6" class="form-control" name="Stok"
+                                ng-model="pre.model.stok" required>
+                            <div class="invalid-feedback" ng-show="pre.validate('Stok', 'required')">This
+                                field is required</div>
+                        </div> 
+                        <div class="col-md-4">
+                            <label class="control control--checkbox mt-4">
+                                <input type="checkbox" tabindex="7" name="isGroup" class="form-control" placeholder=""
+                                    ng-model="pre.model.isDiscount">
+                                <div class="control__indicator"></div>
+                                Use Discount
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control control--checkbox mt-4">
+                                <input type="checkbox" tabindex="8" name="isActive" class="form-control" placeholder=""
+                                    ng-model="pre.model.isNew">
+                                <div class="control__indicator"></div>
+                                New
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control control--checkbox mt-4">
+                                <input type="checkbox" tabindex="9" name="IsSystemProtected" class="form-control" placeholder=""
+                                    ng-model="pre.model.isBest">
+                                <div class="control__indicator"></div>
+                                Best
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div> 
+            <div class="col-sm-6">
+                <fieldset>
+                    <legend>Image</legend>
+                    <div class="row"> 
+                        <div class="form-group col-sm-10">
+                            <label for="SRC">SRC <small class="required">*</small></label>
+                            <input type="text" tabindex="10" class="form-control" name="SRC"
+                                ng-model="pre.model.src" required>
+                            <div class="invalid-feedback" ng-show="pre.validate('SRC', 'required')">This
+                                field is required</div>
+                        </div> 
+                        
+                        <div class="form-group col-sm-2">
+                                <label for="Delay">Delay <small class="required">*</small></label>
+                                <input type="text" tabindex="11" class="form-control" name="Delay"
+                                    ng-model="pre.model.delay" required>
+                                <div class="invalid-feedback" ng-show="pre.validate('Delay', 'required')">This
+                                    field is required</div>
+                            </div> 
+                        
+                        <div class="form-group col-sm-12">
+                            <img class="flex-shrink-0 p-2 maintain-img" src="{{pre.model.src}}" alt="">
+                        </div> 
+                    </div>
+                </fieldset>
+            </div> 
+        </div>
+    </form>
+</div>

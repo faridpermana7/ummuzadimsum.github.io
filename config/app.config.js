@@ -17,18 +17,18 @@ var $wConfig;
 
         vm.config = new WConfig({
             apiProtocol: "https://",
-            usePort: true,
+            usePort: false,
             autoDefineApi: false,
             autoDefineApiPort: false,
             apiPort: "44346",
             apiPoint: "/api",
-            // apiUrl: "ummuza.bsite.net",
-            apiUrl: "localhost",
+            // apiUrl: "localhost",
+            apiUrl: "ummuza.bsite.net",
             log: false,
             apiPrefix: undefined, 
             osmAttrib: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
             maxboxUrl: 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
-            maxboxAttrib: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+            maxboxAttrib: 'Map data &cdeopy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
             accessToken: 'pk.eyJ1Ijoid3p5LWRldiIsImEiOiJjanhwanA1eXcwaWhoM2JvNzhzenprNm1kIn0.6BuQGkMfAS5WG9yeZp0wpg',
             defaultLat: -1.2399448,
             defaultLong: 116.8582612

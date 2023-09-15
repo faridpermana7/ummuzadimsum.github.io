@@ -84,6 +84,7 @@
             service.deleteProduct({
                 'Id': data
             }, mj.datatable);
+			farst.loadingOut();
         };
 
         $scope.$on('ui.layout.resize', function (e, beforeContainer, afterContainer) {

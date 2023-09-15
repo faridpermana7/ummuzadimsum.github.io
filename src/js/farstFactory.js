@@ -89,6 +89,16 @@
         farst.removeLocalStorage = function (key) {
             $window.localStorage.removeItem(key);
         } 
+
+        farst.dCurrency = {
+            aSep: ',',
+            aDec: '.',
+            aSign: '',
+            pSign: 'p',
+            mDec: '0',
+            vMin: '-999999999999',
+            vMax: '999999999999',
+        };
         
         farst.getDateRange = function (callback) {
             return {

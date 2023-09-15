@@ -4,9 +4,9 @@
     .controller('productCtrl', productCtrl);
 
     productCtrl.$inject = ['$scope', 'farst', '$window', '$timeout', 'datatableService',
-        'pendingRequest', 'ConfigService', 'HttpService'];
+        'pendingRequest', '$state', 'HttpService', 'productEntryService'];
     function productCtrl($scope, farst, $window, $timeout, datatableService,
-        pendingRequest, cs, http){
+        pendingRequest, $state, http, service){
         var pd = this;
 
         pd.ui = {};
@@ -87,21 +87,22 @@
         // });
 
         pd.ui.add = function () {
-            $state.go('app.manage.product-entry', {
+            $state.go('app.management.product-entry', {
                 'id': 'new'
             });
         };
 
         pd.ui.edit = function (data) {
-            $state.go('app.manage.product-entry', {
+            $state.go('app.management.product-entry', {
                 'id': data
             });
         };
 
         pd.ui.delete = function (data) {
-            service.deleteUser({
+            service.deleteMenu({
                 'Id': data
             }, pd.datatable);
+            farst.loadingOut();
         };
 
         $scope.$on('ui.layout.resize', function (e, beforeContainer, afterContainer) {
@@ -141,7 +142,7 @@
             // };
             pd.dtService = datatableService.getService();
             pd.dtOptions = pd.dtService.initTable($scope, '/maintainmenus/get', {
-                route: 'app.manage.product-entry',
+                route: 'app.management.product-entry',
                 fixedColumn: [3, 1]
             }, 'productMenuId', false, null, null, {
                 onStateSaveParam: function (data) {
@@ -240,11 +241,7 @@
                 } 
             ];  
         }($scope);
-
-        function getUserProfile(data) {
-            return "<img src='" + cs.config.getApiUrl() + "/galery/profile-picture/" + data + "' style='width:20px'/>";
-        }
-
+ 
         function onNotifyLogin(res) {
             if (res) {
                 if (res.reload) {

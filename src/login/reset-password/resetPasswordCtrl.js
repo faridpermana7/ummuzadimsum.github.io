@@ -1,21 +1,15 @@
 (function () {
-    'use strict';
-
-    /**
-     * @ngdoc function
-     * @name app.controller:orderCtrl
-     * @description
-     * # dashboardCtrl
-     * Controller of the app
-     */
-
+    'use strict'; 
     angular
-        .module('farst')
+        .module('ummuza')
         .controller('ResetPasswordCtrl', ResetPassword);
 
-    ResetPassword.$inject = ['$scope', '$stateParams', '$state', 'FarstService', 'HttpService', '$http', '$q', 'ConfigService', '$httpParamSerializer', '$window', 'PendingRequest', 'NavService', '$timeout'];
+    ResetPassword.$inject = ['$scope', '$stateParams', '$state', 'farst', 
+        'HttpService', '$http', '$q', 'ConfigService', '$httpParamSerializer', '$window', 
+        'pendingRequest', 'navService', '$timeout'];
 
-    function ResetPassword($scope, sParam, $state, fsvc, http, $http, $q, cs, $httpParamSerializer, $window, PendingRequest, NavService, $timeout) {
+    function ResetPassword($scope, sParam, $state, farst, http, $http, $q, cs, 
+        $httpParamSerializer, $window, pendingRequest, navService, $timeout) {
         var rst = this;
         rst.isReset = false; 
         rst.model = {}; 
@@ -40,7 +34,7 @@
         rst.reset = function () {    
             var msg = ValidatePassword();
             if(msg != ""){
-                fsvc.Alert.error(msg);
+                farst.Alert.error(msg);
                 return;
             } 
 
@@ -55,24 +49,24 @@
 
                     if (res.success || res.status == 200) {
                         if (res.data.statusCode == 200) {
-                            // fsvc.Alert.success(res.data.message); 
+                            // farst.Alert.success(res.data.message); 
                             rst.isReset = true;
                             rst.resetFinished();
                         } else {
-                            // fsvc.Alert.error(res.data.message);
+                            // farst.Alert.error(res.data.message);
                             rst.isReset = false;
                             rst.resetFinished();
                         }
                     }
                     else {
-                        // fsvc.Alert.error(res.data.message);
+                        // farst.Alert.error(res.data.message);
                         rst.isReset = false;
                         rst.resetFinished();
                     }
                 });
             }
             else{
-                fsvc.Alert.error(rst.invalidPass); 
+                farst.Alert.error(rst.invalidPass); 
                 rst.isReset = false; 
             }
         } 
@@ -104,14 +98,14 @@
 
         $scope.$on('$destroy', function () {
             // consousre.log('destroyed');
-            PendingRequest.cancelAll();
+            pendingRequest.cancelAll();
         });
 
         rst.init = function () {
-			fsvc.loadingIn();
+			farst.loadingIn();
             if (rst.generateToken == "" || rst.generateToken == undefined) {
-                fsvc.Alert.error("Token is invalid");
-                fsvc.loadingOut();
+                farst.Alert.error("Token is invalid");
+                farst.loadingOut();
                 $state.go("forgot"); 
             }  
             else{
@@ -120,18 +114,18 @@
                 }).then(function (res) {
                     if (res.success || res.status == 200) {
                         if (res.data.statusCode == 200) {
-                            fsvc.Alert.success(res.data.message); 
+                            farst.Alert.success(res.data.message); 
                             rst.model = res.data;
-                            fsvc.loadingOut();
+                            farst.loadingOut();
                         } else {
-                            fsvc.Alert.error(res.data.message);
-                            fsvc.loadingOut();
+                            farst.Alert.error(res.data.message);
+                            farst.loadingOut();
                             $state.go("forgot"); 
                         }
                     }
                     else {
-                        fsvc.Alert.error(res.data.message);
-                        fsvc.loadingOut();
+                        farst.Alert.error(res.data.message);
+                        farst.loadingOut();
                         $state.go("forgot"); 
                     }
                 });

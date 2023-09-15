@@ -1,0 +1,274 @@
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div ncy-breadcrumb></div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+    <!-- Tracking Start -->
+    <div class="container-xxl py-5">
+        <div class="container"> 
+            <form name="tracking" ng-submit="tracking.$valid && trc.ui.save()" autocomplete="off" novalidate>
+                <div class="row">   
+                    <div class="form-group col-sm-6">
+                        <input type="text" tabindex="1" class="form-control" placeholder=""
+                        ng-model="trc.model.orderNumber" name="orderNumber" >
+                        <div class="invalid-feedback" ng-show="trc.validate('orderNumber', '')">This
+                            field is </div>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <button class="btn btn-primary float-left btn-cari" tooltip-placement="bottom" tabindex="2"
+                        uib-tooltip="Cari Ordermu" type="submit"><i class="fas fa-search"></i> CARI</button>
+                    </div> 
+                </div>
+                <div class="row pt-4"> 
+                    <div class="row" ng-show="trc.model.status"> 
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-8 pb-2 ta-c">
+                            <span 
+                            ng-class="{
+                                'badge rounded-pill bg-secondary': trc.model.statusId == 1,
+                                'badge rounded-pill bg-warning text-dark': trc.model.statusId == 2,
+                                'badge rounded-pill bg-info text-dark': trc.model.statusId == 3,
+                                'badge rounded-pill bg-success': trc.model.statusId == 4,
+                                'badge rounded-pill bg-dark': trc.model.statusId == 5
+                            }"
+                            style="position: unset;
+                            font-size: 2rem;
+                            line-height: 3rem;">{{trc.model.status}}</span> 
+                        </div> 
+                        <div class="col-sm-2"></div> 
+                    </div>
+                    <uib-accordion close-others="trc.oneAtATime"> 
+                        <div uib-accordion-group is-open="trc.status.infoGeneral">
+                            <uib-accordion-heading>
+                                Informasi Pesanan
+                                <i class="float-right fas fa-chevron-right" ng-class="{'fas fa-chevron-down': trc.status.infoGeneral, 'fas fa-chevron-right': !trc.status.infoGeneral}"></i>
+                            </uib-accordion-heading> 
+                            <div class="row"> 
+                                <div class="col-md-6">
+                                    <fieldset>
+                                        <legend><i class="fa fa-map-marker-alt me-3"></i>Alamat Pengiriman</legend>
+                                        <div class="row"> 
+                                            <div class="col-sm-4 ta-r">
+                                                <span class="text-sm font-medium text-gray-400 mr-1">Tanggal Order :</span>
+                                            </div> 
+                                            <div class="col-sm-8">
+                                                <span class="text-lg font-bold text-gray-800 ">{{trc.datetimeFormat(trc.model.orderDate)}}</span>
+                                            </div>  
+                                            <div class="col-sm-4 ta-r">
+                                                <span class="text-sm font-medium text-gray-400 mr-1">Nama pemesan :</span>
+                                            </div>
+                                            <div class="col-sm-8"> 
+                                                <span class="text-lg font-bold text-gray-800 ">{{trc.model.customerName}}</span>
+                                            </div> 
+                                            <div class="col-sm-4 ta-r">
+                                                <span class="text-sm font-medium text-gray-400 mr-1">Nomor Hp :</span>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <span class="text-lg font-bold text-gray-800 ">{{trc.model.phoneNumber}}</span>
+                                            </div> 
+                                            
+                                            <div class="col-sm-4 ta-r">
+                                                <span class="text-sm font-medium text-gray-400 mr-1">Alamat :</span>
+                                            </div>
+                                            <div class="form-group col-sm-8 ta-l">  
+                                                <span class="text-lg font-bold text-gray-800 ">{{trc.model.address}}</span>
+                                            </div>
+                                            
+                                            <div class="col-sm-4 ta-r">
+                                                <span class="text-sm font-medium text-gray-400 mr-1">Catatan Kurir :</span>
+                                            </div>
+                                            <div class="form-group col-sm-8 ta-l">  
+                                                <span class="text-lg font-bold text-gray-800 ">{{trc.model.addressNote}}</span>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div> 
+                                <div class="col-md-6">
+                                    <fieldset>
+                                        <legend><i class="fas fa-map-marked-alt"></i> MAP</legend>
+                                        <div id="mapidtrack" style="height: 196px;">
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div> 
+                        </div>
+                        <div uib-accordion-group is-open="trc.status.orderItems">
+                            <uib-accordion-heading>
+                                Detail Pesanan
+                                <i class="float-right fas fa-chevron-right" ng-class="{'fas fa-chevron-down': trc.status.orderItems, 'fas fa-chevron-right': !trc.status.orderItems}"></i>
+                            </uib-accordion-heading>
+                            <fieldset>
+                                <legend>Detail Pesanan</legend>
+                                <div class="row table-mobile">        
+                                    <table class="table tbl-mobile">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">No</th>
+                                                <th class="text-left">Product</th>
+                                                <th class="text-center">Harga Satuan</th>
+                                                <th class="text-center">QTY</th>
+                                                <th class="text-center">Discount</th> 
+                                                <th class="text-center">Total Pesanan</th>  
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="x in trc.model.orderItems">
+                                                <td class="text-left" width="5%">{{ $index+1 }}</td>
+                                                <td class="flex items-center" width="100%">
+                                                    <img src="{{x.productMenuSRC}}" width="60"class="cover-item rounded-full">  
+                                                    <div class="flex flex-col ml-2" style="width: 100%"> 
+                                                        <span class="text-sm font-bold text-gray-800 ">{{x.productName}}</span>
+                                                        <span class="text-sm font-bold text-gray-400 ">Catatan: {{x.customerNote}}</span>
+                                                    </div>
+                                                </td> 
+                                                <td class="text-right" width="15%">  
+                                                    <span class="text-lg font-bold text-gray-800 ">Rp{{x.price | currency: '':0}}</span>
+                                                </td>
+                                                <td class="text-center" width="6%"> 
+                                                    <span class="text-lg font-bold text-gray-800 ">{{x.qty}}</span> 
+                                                </td>
+                                                <td class="text-right" width="15%">  
+                                                    <span class="text-lg font-bold text-gray-800 ">Rp{{x.discount | currency: '':0}}</span>  
+                                                </td>
+                                                <td class="text-right" width="15%">
+                                                    <span class="text-lg font-bold text-gray-800 ">Rp{{x.totalPrice | currency: '':0}}</span>  
+                                                </td>  
+                                            </tr>
+                                        </tbody>
+                                    </table> 
+                                    <div class="col-md-12">
+                                        <div class="text-right">
+                                            <span class="text-lg font-bold text-gray-800 ">Rp{{trc.model.subTotalCart | currency: '':0}}</span>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div uib-accordion-group is-open="trc.status.payment">
+                            <uib-accordion-heading>
+                                Detail Pembayaran
+                                <i class="float-right fas fa-chevron-right" ng-class="{'fas fa-chevron-down': trc.status.payment, 'fas fa-chevron-right': !trc.status.payment}"></i>
+                            </uib-accordion-heading>
+                            <fieldset>
+                                <legend>Metode Pembayaran</legend>
+                                <div class="row">
+                                    <div class="col-span-12 p-1">  
+                                        <div class="row">
+                                            <div class="col-lg-2 radio-group" ng-class="{'gray' : trc.model.paymentMethod != 'Transfer' }"> 
+                                                <div class="row d-flex px-3 radio" ng-click="trc.choosePaymentMethod('Transfer')">
+                                                    <i class="pay fas fa-university text-3xl text-blue-500 text-center"></i> 
+                                                    <p class="my-auto">Transfer Bank</p>
+                                                </div> 
+                                            </div>
+                                            <div class="col-lg-2 radio-group" ng-class="{'gray' : trc.model.paymentMethod != 'cod1' }"> 
+                                                <div class="row d-flex px-3 radio" ng-click="trc.choosePaymentMethod('cod1')">
+                                                        <i class="pay fas fa-money-bill text-3xl text-center" 
+                                                        ng-class="trc.model.paymentMethod != 'cod1' ? ' text-gray-500':' text-blue-500'" ></i> 
+                                                    <p class="my-auto">COD (Ambil Sendiri)</p>
+                                                </div> 
+                                            </div>
+                                            <div class="col-lg-2 radio-group" ng-class="{'gray' : trc.model.paymentMethod != 'cod2' }"> 
+                                                <div class="row d-flex px-3 radio" ng-click="trc.choosePaymentMethod('cod2')">
+                                                        <i class="pay fas fa-money-bill-wave text-3xl text-center" 
+                                                        ng-class="trc.model.paymentMethod != 'cod2' ? ' text-gray-500':' text-blue-500'" ></i> 
+                                                    <p class="my-auto">COD (Kirim Ojol)</p>
+                                                </div> 
+                                            </div>
+                                        </div> 
+                                        <div class="flex justify-between items-center mt-1 pt-1 border-t" ng-hide="trc.model.paymentMethod != 'Transfer'">
+                                            <fieldset class="form-group row">
+                                                <legend class="col-form-label col-sm-2 float-sm-left pt-0">Pilih Bank</legend>
+                                                <div class="col-sm-10">
+                                                    <div class="d-flex mb-2 form-check">
+                                                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" ng-model="trc.model.bankName" value="BSI" checked disabled>
+                                                        <img class="ml-3" style="width: 35px; height: 35px;" src="src/images/img_bankid_bsm.png"/>
+                                                        <label class="form-check-label ml-3" for="gridRadios1">
+                                                            Bank Syariah Indonesia (BSI)
+                                                        </label>
+                                                    </div>
+                                                    <div class="d-flex mb-2 form-check">    
+                                                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" ng-model="trc.model.bankName" value="BCASyariah" disabled>
+                                                        <img class="ml-3" style="width: 35px" src="src/images/img_bankid_bsa_syariah.png"/>
+                                                        <label class="form-check-label ml-3" for="gridRadios1">
+                                                            BCA Syariah
+                                                        </label>
+                                                    </div> 
+                                                </div>
+                                            </fieldset> 
+                                        </div>
+                                        <div class="justify-between items-center mt-1 pt-1 border-t ta-r"> 
+                                            <div class="row">
+                                                <div class="form-group col-sm-6 ta-l">  
+                                                    <!-- <div class="row">
+                                                        <div class="col-12">
+                                                            <span class="text-sm font-medium text-gray-400 mr-1">Response Pembeli</span>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <textarea class="form-control" ng-model="trc.model.customerNote" style="height:100px" placeholder="Response"></textarea>
+                                                        </div>
+                                                    </div> -->
+                                                    <!-- <div class="row">
+                                                        <div class="col-sm-8">
+                                                            <label class="control control--checkbox mt-2">
+                                                                <input type="checkbox" tabindex="23" name="isOngkir" class="form-control" placeholder=""
+                                                                    ng-model="trc.isOngkir" ng-disabled="trc.model.statusId != 2" >
+                                                                <div class="control__indicator"></div>
+                                                                Apakah anda setuju dengan ongkirnya?
+                                                            </label> 
+                                                        </div>
+                                                        <div class="col-sm-4"> 
+                                                            <button class="btn btn-primary float-right mt-2" tooltip-placement="bottom" tabindex="18"
+                                                            uib-tooltip="Update Response" ng-click="trc.ui.updateResponse()" type="button"><i class="fas fa-save"></i> Kirim</button> 
+                                                        </div> 
+                                                    </div> -->
+                                                    <div class="row"> 
+                                                        <div class="col-sm-12">
+                                                            <span class="text-sm font-medium text-gray-400 mr-1"><i class="fab fa-rocketchat"></i>Catatan Penjual</span>
+                                                        </div>
+                                                        <div class="col-sm-12">
+                                                            <textarea class="form-control" ng-model="trc.model.sellerNote" style="height:100px" placeholder="Response" disabled></textarea> 
+                                                        </div> 
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="row"> 
+                                                        <div class="col-sm-7">
+                                                            <span class="text-sm font-medium text-gray-400 mr-1">Subtotal untuk Produk :</span>
+                                                        </div> 
+                                                        <div class="col-sm-5">
+                                                            <span class="text-lg font-bold text-gray-800 ">Rp{{trc.model.subTotalCart | currency: '':0}}</span>
+                                                        </div> 
+                                                        
+                                                        <div class="col-sm-7">
+                                                            <span class="text-sm font-medium text-gray-400 mr-1">Total Ongkos Kirim :</span>
+                                                        </div>
+                                                        <div class="col-sm-5">
+                                                                <span class="text-lg font-bold text-gray-800 ">Rp{{trc.model.ongkir | currency: '':0}}</span> 
+                                                        </div> 
+                                                        <div class="col-sm-7">
+                                                            <span class="text-sm font-medium text-gray-400 mr-1">Total Pembayaran :</span>
+                                                        </div>
+                                                        <div class="col-sm-5">
+                                                            <span class="text-3xl font-bold text-red-800 ">Rp{{trc.model.grandTotal | currency: '':0}}</span>
+                                                        </div>  
+                                                    </div> 
+                                                </div>
+                                            </div> 
+                                        </div>
+                                    </div> 
+                                </div>
+                            </fieldset>
+                        </div>
+                    </uib-accordion>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Tracking End --> 
+    
+    <!-- footer Start -->
+    <!-- <div ng-include="'src/layout/footer/footer.html'"></div> -->
+    <!-- footer End -->

@@ -7,40 +7,34 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
-
-    <!-- Favicon -->
-    <link href="src/img/umuza.png" rel="icon">
-
-    <!-- Google Web Fonts -->
+ 
+    <link href="src/images/umuza.png" rel="icon">
+ 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Lora:wght@600;700&display=swap" rel="stylesheet"> 
-
-    <!-- Icon Font Stylesheet -->
+ 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
 
-    <!-- Libraries Stylesheet -->
-    <link rel="stylesheet" href="lib/animate/animate.min.css">
-    <link rel="stylesheet" href="lib/owlcarousel/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="lib/tailwind/tailwind.min.css">
-    <link rel="stylesheet" href="node_modules/sweetalert2/dist/sweetalert2.min.css">
-	<link rel="stylesheet" href="node_modules/datatables/media/css/jquery.dataTables.min.css">
-	<link rel="stylesheet" href="node_modules/angular-datatables/dist/css/angular-datatables.min.css">
-	<link rel="stylesheet" href="node_modules/ui-select/dist/select.css">
-	<link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css">
-	<link rel="stylesheet" href="node_modules/leaflet.markercluster/dist/MarkerCluster.css">
-	<link rel="stylesheet" href="node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css">
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link rel="stylesheet" href="src/css/bootstrap.min.css">
-
-    <!-- Template Stylesheet -->
-	<link rel="stylesheet" href="src/css/bootstrap-datetimepicker.css">
-	<link rel="stylesheet" href="src/css/select2.css">
-    <link rel="stylesheet" href="src/css/loader.css">
-    <link rel="stylesheet" href="src/css/style.css">
+	<!-- injector:css -->
+	<link rel="stylesheet" href="/lib/animate/animate.min.css">
+	<link rel="stylesheet" href="/lib/owlcarousel/assets/owl.carousel.min.css">
+	<link rel="stylesheet" href="/lib/tailwind/tailwind.min.css">
+	<link rel="stylesheet" href="/src/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/node_modules/datatables/media/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" href="/node_modules/sweetalert2/dist/sweetalert2.min.css">
+	<link rel="stylesheet" href="/node_modules/angular-datatables/dist/css/angular-datatables.min.css">
+	<link rel="stylesheet" href="/node_modules/ui-select/dist/select.css">
+	<link rel="stylesheet" href="/node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css">
+	<link rel="stylesheet" href="/node_modules/leaflet.markercluster/dist/MarkerCluster.css">
+	<link rel="stylesheet" href="/node_modules/leaflet/dist/leaflet.css">
+	<link rel="stylesheet" href="/src/css/bootstrap-datetimepicker.css">
+	<link rel="stylesheet" href="/src/css/loader.css">
+	<link rel="stylesheet" href="/src/css/select2.css">
+	<link rel="stylesheet" href="/src/css/style.css">
+	<!-- endinjector -->
 </head>
 
 <body class="header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
@@ -52,121 +46,139 @@
     
 	<!--Beginning-->
 	<div class="view-slide-in" ui-view></div> 
-	<!--End-->
-
-
+	<!--End--> 
+	
     <!-- Footer Start -->
     <!-- <div ng-include="'src/layout/footer/footer.html'"></div> -->
     <!-- Footer End -->
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <button class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></button>
 
 
-    <!-- Structure Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="node_modules/angular/angular.js"></script>
-	<script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
-	<script src="node_modules/angular-breadcrumb/dist/angular-breadcrumb.min.js"></script>
-	<script src="node_modules/angular-cookies/angular-cookies.min.js"></script>
-	<script src="node_modules/angular-animate/angular-animate.js"></script>
-	<script src="node_modules/angular-touch/angular-touch.js"></script>
-	<script src="node_modules/angular-sanitize/angular-sanitize.js"></script>
-	<script src="node_modules/ui-bootstrap4/dist/ui-bootstrap-tpls.js"></script> 
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <!-- NodeJs --> 
-	<script src="node_modules/moment/moment.js"></script>
-    <script src="node_modules/moment-timezone/moment-timezone.js"></script> 
-	<script src="node_modules/datatables/media/js/jquery.dataTables.min.js"></script>
-	<script src="node_modules/datatables-scroller/js/dataTables.scroller.js"></script>
-	<script src="node_modules/datatables.net-select/js/dataTables.select.js"></script>
-	<script src="node_modules/datatables.net-fixedcolumns/js/dataTables.fixedColumns.js"></script>
-	<script src="node_modules/datatables.net-rowgroup/js/dataTables.rowGroup.js"></script>
-    <script src="node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
-	<script src="node_modules/angular-datatables/dist/angular-datatables.min.js"></script>
-	<script src="node_modules/angular-datatables/dist/plugins/scroller/angular-datatables.scroller.min.js"></script>
-	<script src="node_modules/angular-datatables/dist/plugins/select/angular-datatables.select.min.js"></script>
-	<script src="node_modules/angular-datatables/dist/plugins/fixedcolumns/angular-datatables.fixedcolumns.js"></script>
-    <script src="node_modules/select2/dist/js/select2.js"></script>
-    <script src="node_modules/ui-select/dist/select.min.js"></script> 
-    <script src="node_modules/underscore/underscore-min.js"></script>
-	<script src="node_modules/leaflet/dist/leaflet.js"></script>
-    <script src="node_modules/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
-    <script src="node_modules/html2canvas/dist/html2canvas.min.js"></script> 
-
-    <!-- Core --> 
-    <script src="src/app.js"></script> 
-	<script src="lib/farst-lib.js"></script>
-    <script src="lib/bootstrapDatetimePicker.js"></script> 
-    <script src="src/js/farstFactory.js"></script> 
-    <script src="src/js/httpService.js"></script> 
-    <script src="src/js/datatableService.js"></script> 
-    <script src="src/js/validationService.js"></script> 
-    <script src="src/directive/datetimePickerDirective.js"></script> 
-    <script src="src/directive/toolbarDirective.js"></script> 
-    <script src="src/login/modalLoginService.js"></script> 
-    <script src="src/login/modalLoginDirective.js"></script> 
-
-    <!-- Controller & Route --> 
-    <script src="config/app.config.js"></script>    
-    <script src="src/layout/appCtrl.js"></script> 
-	<script src="src/layout/appRoute.js"></script>
-	<script src="src/layout/main-page/mainPageRoute.js"></script>
-	<script src="src/layout/main-page/mainPageController.js"></script>
-    <script src="src/layout/nav-bar/navBarController.js"></script>  
-    <script src="src/layout/nav-bar/navbarService.js"></script>  
-    <script src="src/layout/footer/footerController.js"></script>  
-	<script src="src/login/modalLoginCtrl.js"></script>
-	<script src="src/login/modalLoginRoute.js"></script> 
-	<script src="src/pages/post/postController.js"></script>
-	<script src="src/pages/post/postRoute.js"></script>
-	<script src="src/pages/menu/menuController.js"></script>
-	<script src="src/pages/menu/menuRoute.js"></script>
-	<script src="src/pages/about/aboutController.js"></script>
-	<script src="src/pages/about/aboutRoute.js"></script>
-	<script src="src/pages/contact/contactController.js"></script>
-	<script src="src/pages/contact/contactRoute.js"></script>
-	<script src="src/pages/checkout/checkoutController.js"></script>
-	<script src="src/pages/checkout/checkoutRoute.js"></script>
-	<script src="src/manage/product/productController.js"></script>
-	<script src="src/manage/product/productRoute.js"></script>
-	<script src="src/manage/news/newsController.js"></script>
-	<script src="src/manage/news/newsRoute.js"></script>
-	<script src="src/manage/majority/majorityController.js"></script>
-	<script src="src/manage/majority/majorityRoute.js"></script>
-	<script src="src/manage/majority-entry/majorityEntryController.js"></script>
-	<script src="src/manage/majority-entry/majorityEntryRoute.js"></script>
-	<script src="src/manage/majority-entry/majorityEntryService.js"></script>
-	<script src="src/sys/sysmenu/sysmenuCtrl.js"></script>
-	<script src="src/sys/sysmenu/sysmenuRoute.js"></script>
-	<script src="src/sys/sysmenu-entry/sysmenuEntryCtrl.js"></script>
-	<script src="src/sys/sysmenu-entry/sysmenuEntryRoute.js"></script>
-	<script src="src/sys/sysmenu-entry/sysmenuEntryDirective.js"></script>
-	<script src="src/sys/sysmenu-entry/sysmenuEntryService.js"></script>
-	<script src="src/sys/sysmenu-entry/icon-modal/iconModalCtrl.js"></script>
-	<script src="src/sys/sysmenu-entry/icon-modal/iconModalDirective.js"></script>
-	<script src="src/sys/sysmenu-api/sysmenuApiCtrl.js"></script>
-	<script src="src/sys/sysmenu-api/sysmenuApiDirective.js"></script>
-	<script src="src/sys/sysmenu-api/sysmenuApiService.js"></script>
-	<script src="src/sys/role/roleCtrl.js"></script>
-	<script src="src/sys/role/roleRoute.js"></script>
-	<script src="src/sys/role-entry/roleEntryCtrl.js"></script>
-	<script src="src/sys/role-entry/roleEntryRoute.js"></script>
-	<script src="src/sys/role-entry/roleEntryService.js"></script>
-	<script src="src/sys/user/userCtrl.js"></script>
-	<script src="src/sys/user/userRoute.js"></script>
-	<script src="src/sys/user-entry/userEntryCtrl.js"></script>
-	<script src="src/sys/user-entry/userEntryRoute.js"></script>
-	<script src="src/sys/user-entry/userEntryService.js"></script>
-
-    <!-- Template Javascript --> 
-    <script src="src/main.js"></script> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+	<!-- injector:js -->
+	<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="/node_modules/angular/angular.js"></script>
+	<script src="/node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="/node_modules/angular-cookies/angular-cookies.min.js"></script>
+	<script src="/node_modules/angular-breadcrumb/dist/angular-breadcrumb.min.js"></script>
+	<script src="/node_modules/angular-animate/angular-animate.js"></script>
+	<script src="/node_modules/angular-touch/angular-touch.js"></script>
+	<script src="/node_modules/angular-sanitize/angular-sanitize.js"></script>
+	<script src="/node_modules/angular-datatables/dist/angular-datatables.min.js"></script>
+	<script src="/node_modules/angular-datatables/dist/plugins/scroller/angular-datatables.scroller.min.js"></script>
+	<script src="/node_modules/angular-datatables/dist/plugins/select/angular-datatables.select.min.js"></script>
+	<script src="/node_modules/angular-datatables/dist/plugins/fixedcolumns/angular-datatables.fixedcolumns.js"></script>
+	<script src="/node_modules/ui-bootstrap4/dist/ui-bootstrap-tpls.js"></script>
+	<script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+	<script src="/node_modules/underscore/underscore-min.js"></script>
+	<script src="/node_modules/moment/moment.js"></script>
+	<script src="/node_modules/moment-timezone/moment-timezone.js"></script>
+	<script src="/node_modules/html2canvas/dist/html2canvas.min.js"></script>
+	<script src="/node_modules/select2/dist/js/select2.js"></script>
+	<script src="/node_modules/ui-select/dist/select.min.js"></script>
+	<script src="/node_modules/datatables/media/js/jquery.dataTables.min.js"></script>
+	<script src="/node_modules/datatables-scroller/js/dataTables.scroller.js"></script>
+	<script src="/node_modules/datatables.net-select/js/dataTables.select.js"></script>
+	<script src="/node_modules/datatables.net-fixedcolumns/js/dataTables.fixedColumns.js"></script>
+	<script src="/node_modules/datatables.net-rowgroup/js/dataTables.rowGroup.js"></script>
+	<script src="/node_modules/leaflet/dist/leaflet.js"></script>
+	<script src="/node_modules/leaflet/dist/leaflet-src.js"></script>
+	<script src="/node_modules/leaflet.markercluster/dist/leaflet.markercluster-src.js"></script>
+	<script src="/node_modules/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+	<script src="/src/app.js"></script>
+	<script src="/lib/wow/wow.js"></script>
+	<script src="/lib/owlcarousel/owl.carousel.js"></script>
+	<script src="/src/main.js"></script>
+	<script src="/lib/farst-lib.js"></script>
+	<script src="/lib/bootstrapDatetimePicker.js"></script>
+	<script src="/lib/crypto.js"></script>
+	<script src="/lib/qrcode.js"></script>
+	<script src="/config/app.config.js"></script>
+	<script src="/src/js/farstFactory.js"></script>
+	<script src="/src/js/datatableService.js"></script>
+	<script src="/src/js/httpService.js"></script>
+	<script src="/src/js/validationService.js"></script>
+	<script src="/src/layout/nav-bar/navbarService.js"></script>
+	<script src="/src/login/forgot-password/forgotService.js"></script>
+	<script src="/src/login/modalLoginService.js"></script>
+	<script src="/src/manage/majority-entry/majorityEntryService.js"></script>
+	<script src="/src/manage/news-entry/newsEntryService.js"></script>
+	<script src="/src/manage/order-entry/orderEntryService.js"></script>
+	<script src="/src/manage/product-entry/productEntryService.js"></script>
+	<script src="/src/pages/checkout/checkout-modal/checkoutModalService.js"></script>
+	<script src="/src/pages/contact/contactService.js"></script>
+	<script src="/src/sys/role-entry/roleEntryService.js"></script>
+	<script src="/src/sys/sysmenu-api/sysmenuApiService.js"></script>
+	<script src="/src/sys/sysmenu-entry/sysmenuEntryService.js"></script>
+	<script src="/src/sys/user-entry/userEntryService.js"></script>
+	<script src="/src/layout/appCtrl.js"></script>
+	<script src="/src/login/forgot-password/forgotPasswordCtrl.js"></script>
+	<script src="/src/login/modalLoginCtrl.js"></script>
+	<script src="/src/login/reset-password/resetPasswordCtrl.js"></script>
+	<script src="/src/pages/checkout/checkout-modal/checkoutModalCtrl.js"></script>
+	<script src="/src/sys/role-entry/roleEntryCtrl.js"></script>
+	<script src="/src/sys/role/roleCtrl.js"></script>
+	<script src="/src/sys/sysmenu-api/sysmenuApiCtrl.js"></script>
+	<script src="/src/sys/sysmenu-entry/icon-modal/iconModalCtrl.js"></script>
+	<script src="/src/sys/sysmenu-entry/sysmenuEntryCtrl.js"></script>
+	<script src="/src/sys/sysmenu/sysmenuCtrl.js"></script>
+	<script src="/src/sys/user-entry/userEntryCtrl.js"></script>
+	<script src="/src/sys/user/userCtrl.js"></script>
+	<script src="/src/layout/footer/footerController.js"></script>
+	<script src="/src/layout/main-page/mainPageController.js"></script>
+	<script src="/src/layout/nav-bar/navBarController.js"></script>
+	<script src="/src/manage/complaint/complaintController.js"></script>
+	<script src="/src/manage/majority-entry/majorityEntryController.js"></script>
+	<script src="/src/manage/majority/majorityController.js"></script>
+	<script src="/src/manage/news-entry/newsEntryController.js"></script>
+	<script src="/src/manage/news/newsController.js"></script>
+	<script src="/src/manage/order-entry/orderEntryController.js"></script>
+	<script src="/src/manage/order/orderController.js"></script>
+	<script src="/src/manage/product-entry/productEntryController.js"></script>
+	<script src="/src/manage/product/productController.js"></script>
+	<script src="/src/pages/about/aboutController.js"></script>
+	<script src="/src/pages/checkout/checkoutController.js"></script>
+	<script src="/src/pages/contact/contactController.js"></script>
+	<script src="/src/pages/menu/menuController.js"></script>
+	<script src="/src/pages/post/postController.js"></script>
+	<script src="/src/pages/tracking/trackingController.js"></script>
+	<script src="/src/layout/appRoute.js"></script>
+	<script src="/src/layout/main-page/mainPageRoute.js"></script>
+	<script src="/src/login/forgot-password/forgotPasswordRoute.js"></script>
+	<script src="/src/login/modalLoginRoute.js"></script>
+	<script src="/src/login/reset-password/resetPasswordRoute.js"></script>
+	<script src="/src/manage/complaint/complaintRoute.js"></script>
+	<script src="/src/manage/majority-entry/majorityEntryRoute.js"></script>
+	<script src="/src/manage/majority/majorityRoute.js"></script>
+	<script src="/src/manage/news-entry/newsEntryRoute.js"></script>
+	<script src="/src/manage/news/newsRoute.js"></script>
+	<script src="/src/manage/order-entry/orderEntryRoute.js"></script>
+	<script src="/src/manage/order/orderRoute.js"></script>
+	<script src="/src/manage/product-entry/productEntryRoute.js"></script>
+	<script src="/src/manage/product/productRoute.js"></script>
+	<script src="/src/pages/about/aboutRoute.js"></script>
+	<script src="/src/pages/checkout/checkoutRoute.js"></script>
+	<script src="/src/pages/contact/contactRoute.js"></script>
+	<script src="/src/pages/menu/menuRoute.js"></script>
+	<script src="/src/pages/post/postRoute.js"></script>
+	<script src="/src/pages/tracking/trackingRoute.js"></script>
+	<script src="/src/sys/role-entry/roleEntryRoute.js"></script>
+	<script src="/src/sys/role/roleRoute.js"></script>
+	<script src="/src/sys/sysmenu-entry/sysmenuEntryRoute.js"></script>
+	<script src="/src/sys/sysmenu/sysmenuRoute.js"></script>
+	<script src="/src/sys/user-entry/userEntryRoute.js"></script>
+	<script src="/src/sys/user/userRoute.js"></script>
+	<script src="/src/directive/autoNumericDirective.js"></script>
+	<script src="/src/directive/datetimePickerDirective.js"></script>
+	<script src="/src/directive/toolbarDirective.js"></script>
+	<script src="/src/login/modalLoginDirective.js"></script>
+	<script src="/src/sys/sysmenu-api/sysmenuApiDirective.js"></script>
+	<script src="/src/sys/sysmenu-entry/icon-modal/iconModalDirective.js"></script>
+	<script src="/src/sys/sysmenu-entry/sysmenuEntryDirective.js"></script>
+	<script src="/src/pages/checkout/checkout-modal/checkoutModalDirective.js"></script>
+	<!-- endinjector -->
 </body>
 
 </html>
